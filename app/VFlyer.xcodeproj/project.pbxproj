@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1B7EB7061E6C735A0069D549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EB7051E6C735A0069D549 /* AppDelegate.swift */; };
-		1B7EB7081E6C735B0069D549 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EB7071E6C735A0069D549 /* ViewController.swift */; };
+		1B7EB7081E6C735B0069D549 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EB7071E6C735A0069D549 /* LoginViewController.swift */; };
 		1B7EB70B1E6C735B0069D549 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7EB7091E6C735B0069D549 /* Main.storyboard */; };
 		1B7EB70D1E6C735B0069D549 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7EB70C1E6C735B0069D549 /* Assets.xcassets */; };
 		1B7EB7101E6C735B0069D549 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7EB70E1E6C735B0069D549 /* LaunchScreen.storyboard */; };
 		1B7EB71B1E6C735B0069D549 /* VFlyerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EB71A1E6C735B0069D549 /* VFlyerTests.swift */; };
+		8EA7C1971E71EB850051C277 /* Flyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7C1961E71EB850051C277 /* Flyer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +29,7 @@
 /* Begin PBXFileReference section */
 		1B7EB7021E6C735A0069D549 /* VFlyer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VFlyer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7EB7051E6C735A0069D549 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1B7EB7071E6C735A0069D549 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1B7EB7071E6C735A0069D549 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1B7EB70A1E6C735B0069D549 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B7EB70C1E6C735B0069D549 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B7EB70F1E6C735B0069D549 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +37,7 @@
 		1B7EB7161E6C735B0069D549 /* VFlyerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VFlyerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7EB71A1E6C735B0069D549 /* VFlyerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFlyerTests.swift; sourceTree = "<group>"; };
 		1B7EB71C1E6C735B0069D549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EA7C1961E71EB850051C277 /* Flyer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flyer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				1B7EB7051E6C735A0069D549 /* AppDelegate.swift */,
-				1B7EB7071E6C735A0069D549 /* ViewController.swift */,
+				1B7EB7071E6C735A0069D549 /* LoginViewController.swift */,
+				8EA7C1961E71EB850051C277 /* Flyer.swift */,
 				1B7EB7091E6C735B0069D549 /* Main.storyboard */,
 				1B7EB70C1E6C735B0069D549 /* Assets.xcassets */,
 				1B7EB70E1E6C735B0069D549 /* LaunchScreen.storyboard */,
@@ -201,7 +204,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B7EB7081E6C735B0069D549 /* ViewController.swift in Sources */,
+				1B7EB7081E6C735B0069D549 /* LoginViewController.swift in Sources */,
+				8EA7C1971E71EB850051C277 /* Flyer.swift in Sources */,
 				1B7EB7061E6C735A0069D549 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +416,7 @@
 				1B7EB7211E6C735B0069D549 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B7EB7221E6C735B0069D549 /* Build configuration list for PBXNativeTarget "VFlyerTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +425,7 @@
 				1B7EB7241E6C735B0069D549 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
