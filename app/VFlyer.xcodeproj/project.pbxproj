@@ -13,6 +13,7 @@
 		1B7EB70D1E6C735B0069D549 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7EB70C1E6C735B0069D549 /* Assets.xcassets */; };
 		1B7EB7101E6C735B0069D549 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7EB70E1E6C735B0069D549 /* LaunchScreen.storyboard */; };
 		1B7EB71B1E6C735B0069D549 /* VFlyerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EB71A1E6C735B0069D549 /* VFlyerTests.swift */; };
+		8E3C70361E76029900EBC3EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C70351E76029900EBC3EC /* User.swift */; };
 		8EA7C1971E71EB850051C277 /* Flyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7C1961E71EB850051C277 /* Flyer.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		1B7EB7161E6C735B0069D549 /* VFlyerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VFlyerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7EB71A1E6C735B0069D549 /* VFlyerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFlyerTests.swift; sourceTree = "<group>"; };
 		1B7EB71C1E6C735B0069D549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E3C70351E76029900EBC3EC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8EA7C1961E71EB850051C277 /* Flyer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flyer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 				1B7EB7051E6C735A0069D549 /* AppDelegate.swift */,
 				1B7EB7071E6C735A0069D549 /* LoginViewController.swift */,
 				8EA7C1961E71EB850051C277 /* Flyer.swift */,
+				8E3C70351E76029900EBC3EC /* User.swift */,
 				1B7EB7091E6C735B0069D549 /* Main.storyboard */,
 				1B7EB70C1E6C735B0069D549 /* Assets.xcassets */,
 				1B7EB70E1E6C735B0069D549 /* LaunchScreen.storyboard */,
@@ -204,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E3C70361E76029900EBC3EC /* User.swift in Sources */,
 				1B7EB7081E6C735B0069D549 /* LoginViewController.swift in Sources */,
 				8EA7C1971E71EB850051C277 /* Flyer.swift in Sources */,
 				1B7EB7061E6C735A0069D549 /* AppDelegate.swift in Sources */,
