@@ -1,29 +1,24 @@
 //
-//  SettingsViewController.swift
+//  DiscoverViewController.swift
 //  VFlyer
 //
-//  Created by Mat Wilkie on 2017-03-13.
+//  Created by Mat Wilkie on 2017-03-14.
 //  Copyright © 2017 Mat Wilkie. All rights reserved.
 //
 
 import UIKit
 
-class SettingsViewController: UIViewController {
-    
-    //MARK: Properties
-    
-    @IBOutlet weak var snapSlider: SnapSlider!
-    
+class DiscoverViewController: UIViewController {
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        let icon: UIImage = #imageLiteral(resourceName: "settingsIcon")
+        
+        let icon: UIImage = #imageLiteral(resourceName: "discoverIcon")
         let iconImage = UIImageView(image:icon)
         self.navigationItem.titleView = iconImage
-        
-        
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,14 +26,6 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: Actions
-    
-    @IBAction func snapSliderChanged(_ sender: SnapSlider)
-    {
-        
-        snapSlider.value = snapSlider.snap()
-        
-    }
 
     /*
     // MARK: - Navigation
