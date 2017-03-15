@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -219,7 +220,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Th-V5-reC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sg8-vD-yhG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Sg8-vD-yhG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -232,7 +233,7 @@
             </objects>
             <point key="canvasLocation" x="841" y="249"/>
         </scene>
-        <!--List-->
+        <!--My Flyers-->
         <scene sceneID="6ig-8C-IE5">
             <objects>
                 <tableViewController id="6cH-lV-j0j" sceneMemberID="viewController">
@@ -240,13 +241,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="Wx5-Qz-ERj">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="6cH-lV-j0j" id="5Wz-wr-6Gx"/>
+                            </connections>
+                        </searchBar>
+                        <stackView key="tableFooterView" opaque="NO" contentMode="scaleToFill" axis="vertical" id="rOV-LY-7jw">
+                            <rect key="frame" x="0.0" y="603" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover More Flyers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfh-U2-odQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="U2v-ql-qTV">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="141" id="U2v-ql-qTV">
+                                <rect key="frame" x="0.0" y="72" width="375" height="141"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2v-ql-qTV" id="hf1-TK-Ju8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KQf-Fb-EF2">
+                                            <rect key="frame" x="8" y="8" width="359" height="124"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="124" placeholderIntrinsicHeight="124" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="7kX-zN-x2f">
+                                                    <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="7kX-zN-x2f" secondAttribute="height" multiplier="1:1" id="sDc-a5-H2f"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEI-eW-FyO">
+                                                    <rect key="frame" x="128" y="0.0" width="231" height="124"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="4Kg-Eh-MU9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="231" height="124"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Flyer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxG-Y0-9bh">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="231" height="57"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2017-01-01 8:30 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvQ-3f-n5t">
+                                                                    <rect key="frame" x="0.0" y="70" width="231" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Univeristy of Regina" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hu-cN-Jmn">
+                                                                    <rect key="frame" x="0.0" y="103.5" width="231" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="KQf-Fb-EF2" secondAttribute="bottom" id="cL1-zi-NwN"/>
+                                        <constraint firstItem="KQf-Fb-EF2" firstAttribute="top" secondItem="hf1-TK-Ju8" secondAttribute="topMargin" id="lTI-li-UQZ"/>
+                                        <constraint firstItem="KQf-Fb-EF2" firstAttribute="leading" secondItem="hf1-TK-Ju8" secondAttribute="leadingMargin" id="o3A-Ab-VIo"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="KQf-Fb-EF2" secondAttribute="trailing" id="wm9-4e-tT1"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -255,7 +324,7 @@
                             <outlet property="delegate" destination="6cH-lV-j0j" id="e0D-OF-JvU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="List" id="yaL-hx-J7D">
+                    <navigationItem key="navigationItem" title="My Flyers" id="yaL-hx-J7D">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="U3j-zR-Uhk">
                             <connections>
                                 <segue destination="xgI-bT-fre" kind="show" id="Fv5-UU-fbZ"/>
@@ -263,17 +332,29 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Discover" id="349-8C-cPG"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="1tK-eV-6wf" id="OOT-9i-yhA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhd-Fc-BUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="1tK-eV-6wf">
+                    <connections>
+                        <outlet property="delegate" destination="6cH-lV-j0j" id="wVr-PX-kSb"/>
+                        <outlet property="searchBar" destination="Wx5-Qz-ERj" id="Mmn-nf-AZy"/>
+                        <outlet property="searchContentsController" destination="6cH-lV-j0j" id="GRB-Zt-Squ"/>
+                        <outlet property="searchResultsDataSource" destination="6cH-lV-j0j" id="hnR-27-kOD"/>
+                        <outlet property="searchResultsDelegate" destination="6cH-lV-j0j" id="Hca-Ow-Rip"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-249" y="-710"/>
+            <point key="canvasLocation" x="-250.40000000000001" y="-710.19490254872574"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HNE-Mx-S7O">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bzD-Ws-e0J" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LeO-AZ-UZg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LeO-AZ-UZg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -291,7 +372,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c8w-jS-Yuc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="laK-HA-yNY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="laK-HA-yNY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -309,7 +390,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cFc-CL-VHO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E3f-nl-J3q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="E3f-nl-J3q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -327,6 +408,6 @@
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RDZ-yp-bDj"/>
+        <segue reference="Fv5-UU-fbZ"/>
     </inferredMetricsTieBreakers>
 </document>
