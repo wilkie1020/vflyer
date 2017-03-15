@@ -293,7 +293,7 @@
         <!--My Flyers-->
         <scene sceneID="6ig-8C-IE5">
             <objects>
-                <tableViewController id="6cH-lV-j0j" sceneMemberID="viewController">
+                <tableViewController id="6cH-lV-j0j" customClass="MyFlyersTableViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vVg-Ue-ZC6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,7 +324,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="141"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2v-ql-qTV" id="hf1-TK-Ju8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="141"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KQf-Fb-EF2">
@@ -382,12 +382,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Flyers" id="yaL-hx-J7D">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="U3j-zR-Uhk">
+                        <barButtonItem key="leftBarButtonItem" image="settingsIcon" id="U3j-zR-Uhk">
                             <connections>
                                 <segue destination="xgI-bT-fre" kind="show" id="Fv5-UU-fbZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Discover" id="349-8C-cPG"/>
+                        <barButtonItem key="rightBarButtonItem" image="discoverIcon" id="349-8C-cPG">
+                            <connections>
+                                <segue destination="bzD-Ws-e0J" kind="presentation" id="rxF-m4-ETf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="1tK-eV-6wf" id="OOT-9i-yhA"/>
@@ -405,7 +409,8 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-250.40000000000001" y="-710.19490254872574"/>
-        </scene>        <!--Navigation Controller-->
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="HNE-Mx-S7O">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bzD-Ws-e0J" sceneMemberID="viewController">
@@ -467,6 +472,6 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZVE-8V-UHZ"/>
+        <segue reference="Fv5-UU-fbZ"/>
     </inferredMetricsTieBreakers>
 </document>

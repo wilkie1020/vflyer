@@ -1,5 +1,5 @@
 //
-//  UserListTableViewController.swift
+//  MyFlyersTableViewController.swift
 //  VFlyer
 //
 //  Created by Mat Wilkie on 2017-03-14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserListTableViewController: UITableViewController {
+class MyFlyersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
