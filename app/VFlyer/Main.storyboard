@@ -277,7 +277,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Th-V5-reC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Sg8-vD-yhG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sg8-vD-yhG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -293,7 +293,7 @@
         <!--My Flyers-->
         <scene sceneID="6ig-8C-IE5">
             <objects>
-                <tableViewController id="6cH-lV-j0j" customClass="UserListTableViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="6cH-lV-j0j" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vVg-Ue-ZC6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -384,9 +384,10 @@
                     <navigationItem key="navigationItem" title="My Flyers" id="yaL-hx-J7D">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="U3j-zR-Uhk">
                             <connections>
-                                <segue destination="bzD-Ws-e0J" kind="show" id="Ibj-Zt-NQV"/>
+                                <segue destination="xgI-bT-fre" kind="show" id="Fv5-UU-fbZ"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Discover" id="349-8C-cPG"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="1tK-eV-6wf" id="OOT-9i-yhA"/>
@@ -404,13 +405,12 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-250.40000000000001" y="-710.19490254872574"/>
-        </scene>
-        <!--Navigation Controller-->
+        </scene>        <!--Navigation Controller-->
         <scene sceneID="HNE-Mx-S7O">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bzD-Ws-e0J" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LeO-AZ-UZg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LeO-AZ-UZg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -428,7 +428,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c8w-jS-Yuc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="laK-HA-yNY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="laK-HA-yNY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -446,7 +446,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cFc-CL-VHO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="E3f-nl-J3q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E3f-nl-J3q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -467,6 +467,6 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fv5-UU-fbZ"/>
+        <segue reference="ZVE-8V-UHZ"/>
     </inferredMetricsTieBreakers>
 </document>
