@@ -77,11 +77,38 @@ router.route('/:id')
             if (err) {
                 return res.json(500, err);
             } else if (data == null) {
-                return res.json(404, {"message": "User Not Found"})
+                return res.json(404, {"message": "Event Not Found"})
             }
 
             res.json(200, data);
         })
+    })
+    .put(function(req, res) {
+        req.checkBody(eventValidator);
+
+        req.getValidationResult().then(function(result) {
+            if (!result.isEmpty()) {
+              return res.json(400, result.array());
+            }
+        });
+
+        Event.findOne({
+            _id : req.params.id
+        }, function(err, event) {
+            if (err) {
+                return res.json(500, err);
+            } else if (user == null) {
+                return res.json(404, {"message": "Event Not Found"});
+            }
+
+            event.name = req.body.name;
+            event.description = req.body.description;
+            event.startDate = req.body.startDate;
+            event.endDate = req.body.endDate;
+            event.save();
+
+            res.json(200, {"message": "User updated successfully"});
+        });
     })
     .delete(function(req, res) {
         Event.remove({
@@ -90,7 +117,7 @@ router.route('/:id')
             if (err) {
                 return res.json(500, err);
             } else if (data == null) {
-                return res.json(404, {"message": "User Not Found"})
+                return res.json(404, {"message": "Event Not Found"})
             }
 
             res.json(200, data);
