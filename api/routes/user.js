@@ -1,9 +1,17 @@
 var User = require('../models/user');
+var userValidator = require('../validation/user');
 var express = require('express');
 var router = express.Router();
 
 router.route('/')
     .post(function(req, res) {
+        req.checkBody(userValidator);
+        req.getValidationResult().then(function(result) {
+            if (!result.isEmpty()) {
+              return res.json(400, result.array());
+            }
+        });
+
         var user = new User(req.body);
         user.save(function(err, data) {
             if (err) {
