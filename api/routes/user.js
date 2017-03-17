@@ -13,21 +13,21 @@ router.route('/')
         });
 
         var user = new User(req.body);
-        user.save(function(err, data) {
+        user.save(function(err, user) {
             if (err) {
                 return res.json(500, err);
             }
 
-            res.json(201, {"_id": data._id});
+            res.json(201, {"_id": user._id});
         })
     })
     .get(function(req, res) {
-        User.find({}, function(err, data) {
+        User.find({}, function(err, users) {
             if (err) {
                 return res.json(500, err);
             }
 
-            res.json(200, data);
+            res.json(200, users);
         });
     })
 
@@ -35,23 +35,49 @@ router.route('/:id')
     .get(function(req, res) {
         User.findOne({
             _id: req.params.id
-        }, function(err, data) {
+        }, function(err, user) {
             if (err) {
                 return res.json(500, err);
-            } else if (data == null) {
+            } else if (user == null) {
                 return res.json(404, {"message": "User Not Found"})
             }
 
-            res.json(200, data);
+            res.json(200, user);
         })
+    })
+    .put(function(req, res) {
+        req.checkBody(userValidator);
+
+        req.sanitizeBody('radius').toInt();
+
+        req.getValidationResult().then(function(result) {
+            if (!result.isEmpty()) {
+              return res.json(400, result.array());
+            }
+        });
+
+        User.findOne({
+            _id : req.params.id
+        }, function(err, user) {
+            if (err) {
+                return res.json(500, err);
+            } else if (user == null) {
+                return res.json(404, {"message": "User Not Found"});
+            }
+
+            user.radius = req.body.radius;
+            user.save();
+
+            res.json(200, {"message": "User updated successfully"});
+        });
     })
     .delete(function(req, res) {
         User.remove({
             _id: req.params.id
-        }, function(err, data) {
+        }, function(err, user) {
             if (err) {
                 return res.json(500, err);
-            } else if (data == null) {
+            } else if (user == null) {
                 return res.json(404, {"message": "User Not Found"})
             }
 
@@ -61,55 +87,51 @@ router.route('/:id')
 
 router.route('/:id/liked')
     .post(function(req, res) {
-        if (!req.query.eventId) {
-            return res.json(400, {"message": "EventId required"})
-        }
+        req.checkQuery('eventId').isMongoId();
         var eventId = req.query.eventId;
 
         User.findOne({
             _id : req.params.id
-        }, function(err, data) {
+        }, function(err, user) {
             if (err) {
                 return res.json(500, err)
-            } else if (data == null) {
+            } else if (user == null) {
                 return res.json(404, {"message": "User Not Found"})
             }
 
-            var index = data.liked.indexOf(eventId)
+            var index = user.liked.indexOf(eventId)
             if (index >= 0) {
                 res.json(403, {"message": "User has already liked this event"})
             } else {
-                data.liked.push(eventId);
-                if (data.viewed.indexOf(eventId) < 0) {
-                    data.viewed.push(eventId);
+                user.liked.push(eventId);
+                if (user.viewed.indexOf(eventId) < 0) {
+                    user.viewed.push(eventId);
                 }
-                data.save();
+                user.save();
 
                 res.json(200, {"message": "Event liked"});
             }
         })
     })
     .delete(function(req, res) {
-        if (!req.query.eventId) {
-            return res.json(400, {"message": "EventId required"})
-        }
+        req.checkQuery('eventId').isMongoId();
         var eventId = req.query.eventId;
 
         User.findOne({
             _id : req.params.id
-        }, function(err, data) {
+        }, function(err, user) {
             if (err) {
                 return res.json(500, err)
-            } else if (data == null) {
+            } else if (user == null) {
                 return res.json(404, {"message": "User Not Found"})
             }
 
-            var index = data.liked.indexOf(eventId)
+            var index = user.liked.indexOf(eventId)
             if (index < 0) {
                 res.json(403, {"message": "User has not liked this event"})
             } else {
-                data.liked.splice(index, 1);
-                data.save();
+                user.liked.splice(index, 1);
+                user.save();
 
                 res.json(200, {"message": "Event unliked"});
             }
@@ -120,69 +142,65 @@ router.route('/:id/liked')
             _id : req.params.id
         })
         .populate('liked')
-        .exec(function(err, data) {
+        .exec(function(err, user) {
             if (err) {
                 return res.json(500, err);
-            } else if (data == null) {
+            } else if (user == null) {
                 return res.json(404, {"message": "User Not Found"});
             }
 
-            res.json(200, data.liked)
+            res.json(200, user.liked)
         })
     })
 
 router.route('/:id/viewed')
     .post(function(req, res) {
-        if (!req.query.eventId) {
-            return res.json(400, {"message": "EventId required"})
-        }
+        req.checkQuery('eventId').isMongoId();
         var eventId = req.query.eventId;
 
         User.findOne({
             _id : req.params.id
-        }, function(err, data) {
+        }, function(err, user) {
             if (err) {
                 return res.json(500, err)
-            } else if (data == null) {
+            } else if (user == null) {
                 return res.json(404, {"message": "User Not Found"})
             }
 
-            var index = data.liked.indexOf(eventId)
+            var index = user.liked.indexOf(eventId)
             if (index >= 0) {
                 res.json(403, {"message": "User has already viewed this event"})
             } else {
-                data.viewed.push(eventId);
-                data.save();
+                user.viewed.push(eventId);
+                user.save();
 
                 res.json(200, {"message": "Event viewed"});
             }
         })
     })
     .delete(function(req, res) {
-        if (!req.query.eventId) {
-            return res.json(400, {"message": "EventId required"})
-        }
+        req.checkQuery('eventId').isMongoId();
         var eventId = req.query.eventId;
 
         User.findOne({
             _id : req.params.id
-        }, function(err, data) {
+        }, function(err, user) {
             if (err) {
                 return res.json(500, err)
-            } else if (data == null) {
+            } else if (user == null) {
                 return res.json(404, {"message": "User Not Found"})
             }
 
-            var index = data.viewed.indexOf(eventId)
+            var index = user.viewed.indexOf(eventId)
             if (index < 0) {
                 res.json(403, {"message": "User has not viewed this event"})
             } else {
-                var index2 = data.liked.indexOf(eventId)
+                var index2 = user.liked.indexOf(eventId)
                 if (index2 < 0) {
-                    data.liked.splice(index2, 1);
+                    user.liked.splice(index2, 1);
                 }
-                data.viewed.splice(index, 1);
-                data.save();
+                user.viewed.splice(index, 1);
+                user.save();
 
                 res.json(200, {"message": "Event unviewed"});
             }
@@ -193,14 +211,14 @@ router.route('/:id/viewed')
             _id : req.params.id
         })
         .populate('viewed')
-        .exec(function(err, data) {
+        .exec(function(err, user) {
             if (err) {
                 return res.json(500, err);
-            } else if (data == null) {
+            } else if (user == null) {
                 return res.json(404, {"message": "User Not Found"});
             }
 
-            res.json(200, data.viewed);
+            res.json(200, user.viewed);
         })
     })
 

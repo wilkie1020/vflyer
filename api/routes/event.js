@@ -25,11 +25,10 @@ router.route('/')
     .get(function(req, res) {
         req.checkQuery('lon', 'Invalid longitude').isFloat();
         req.checkQuery('lat', 'Invalid latitude').isFloat();
-        req.checkQuery('r', 'Invalid radius').isInt();
+        req.checkQuery('userId', 'Invalid user id').isMongoId();
 
-        req.sanitize('lon').toFloat();
-        req.sanitize('lat').toFloat();
-        req.sanitize('r').toInt();
+        req.sanitizeQuery('lon').toFloat();
+        req.sanitizeQuery('lat').toFloat();
 
         req.getValidationResult().then(function(result) {
             if (!result.isEmpty()) {
@@ -38,30 +37,35 @@ router.route('/')
         });
 
         var query = {};
-        if (req.query.lon && req.query.lat && req.query.r) {
-            var coords = [Number];
-            coords[0] = req.query.lon;
-            coords[1] = req.query.lat;
+        User.findOne({
+            _id: req.query.userId
+        }, function(err, user) {
+            if (err) {
+                return res.json(500, err);
+            } else if (user == null) {
+                return res.json(404, {"message": "User Not Found"})
+            }
 
-            var distance = req.query.r;
-
+            query._id = {
+                $nin: user.viewed.map(String)
+            }
             query.location = {
                 $near : {
                     $geometry : {
                         type : "Point",
-                        coordinates : coords
+                        coordinates : [req.query.lon, req.query.lat]
                     },
-                    $maxDistance : distance
+                    $maxDistance : user.radius
                 }
             }
-        }
 
-        Event.find(query, function(err, events) {
-            if (err) {
-                return res.json(500, err);
-            }
+            Event.find(query, function(err, events) {
+                if (err) {
+                    return res.json(500, events);
+                }
 
-            res.json(200, events);
+                res.json(200, events);
+            });
         });
     })
 
