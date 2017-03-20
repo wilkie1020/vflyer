@@ -8,12 +8,27 @@
 //  Description: A view controller for the login view.
 
 import UIKit
+import FacebookLogin
+import FacebookCore
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //if the user is already logged in then no need to create loggin button.
+        if let accessToken = AccessToken.current {
+            // User is logged in, use 'accessToken' here.
+            
+            //TODO: Add segue into app.
+        } else {
+            //Creates Facebook login button at center of the screen.
+            let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+            loginButton.center = view.center
+        
+            view.addSubview(loginButton)
+        }
     }
 
     override func didReceiveMemoryWarning() {
