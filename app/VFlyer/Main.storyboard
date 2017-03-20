@@ -24,15 +24,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="boH-VT-flP" kind="show" identifier="loginSegue" id="fve-b1-ZlO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994.39999999999998" y="197.45127436281859"/>
+            <point key="canvasLocation" x="-679" y="249"/>
         </scene>
-        <!--View Controller-->
+        <!--Discover View Controller-->
         <scene sceneID="EQE-d6-wP9">
             <objects>
-                <viewController id="boH-VT-flP" sceneMemberID="viewController">
+                <viewController id="boH-VT-flP" customClass="DiscoverViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sjs-JJ-RMI"/>
                         <viewControllerLayoutGuide type="bottom" id="hYm-r0-cee"/>
@@ -527,5 +530,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZVE-8V-UHZ"/>
+        <segue reference="fve-b1-ZlO"/>
     </inferredMetricsTieBreakers>
 </document>

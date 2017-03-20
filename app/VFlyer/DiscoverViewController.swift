@@ -10,6 +10,9 @@ import UIKit
 
 class DiscoverViewController: UIViewController {
 
+    //MARK: Properties
+    var userId: String?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -17,8 +20,6 @@ class DiscoverViewController: UIViewController {
         let icon: UIImage = #imageLiteral(resourceName: "discoverIcon")
         let iconImage = UIImageView(image:icon)
         self.navigationItem.titleView = iconImage
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
