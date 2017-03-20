@@ -53,7 +53,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let discoverViewController = segue.destination as? DiscoverViewController {
             if let accessToken = AccessToken.current {
-                discoverViewController.userId = accessToken.appId
+                discoverViewController.userId = accessToken.userId
             }
         }
     }
