@@ -10,16 +10,16 @@ router.route('/')
             if (!result.isEmpty()) {
               return res.json(400, result.array());
             }
+
+            var user = new User(req.body);
+            user.save(function(err, user) {
+                if (err) {
+                    return res.json(500, err);
+                }
+
+                res.json(201, {"_id": user._id});
+            })
         });
-
-        var user = new User(req.body);
-        user.save(function(err, user) {
-            if (err) {
-                return res.json(500, err);
-            }
-
-            res.json(201, {"_id": user._id});
-        })
     })
     .get(function(req, res) {
         User.find({}, function(err, users) {
@@ -54,21 +54,21 @@ router.route('/:id')
             if (!result.isEmpty()) {
               return res.json(400, result.array());
             }
-        });
 
-        User.findOne({
-            _id : req.params.id
-        }, function(err, user) {
-            if (err) {
-                return res.json(500, err);
-            } else if (user == null) {
-                return res.json(404, {"message": "User Not Found"});
-            }
+            User.findOne({
+                _id : req.params.id
+            }, function(err, user) {
+                if (err) {
+                    return res.json(500, err);
+                } else if (user == null) {
+                    return res.json(404, {"message": "User Not Found"});
+                }
 
-            user.radius = req.body.radius;
-            user.save();
+                user.radius = req.body.radius;
+                user.save();
 
-            res.json(200, {"message": "User updated successfully"});
+                res.json(200, {"message": "User updated successfully"});
+            });
         });
     })
     .delete(function(req, res) {

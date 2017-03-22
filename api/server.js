@@ -3,7 +3,7 @@ var expressValiator = require('express-validator');
 var GJV = require("geojson-validation");
 var bodyParser = require('body-parser');
 var events = require('./routes/event');
-var users = require('./routes/user')
+var users = require('./routes/user');
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));

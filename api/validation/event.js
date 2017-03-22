@@ -1,7 +1,7 @@
 var validation = {
     'name': {
         notEmpty: {
-            errorMessage: "Must not be empty"
+            errorMessage: "Must not be left empty"
         }
     },
     'location': {
@@ -11,7 +11,7 @@ var validation = {
     },
     'description': {
         notEmpty: {
-            errorMessage: "Must not be empty"
+            errorMessage: "Must not be left empty"
         }
     },
     'startDate': {

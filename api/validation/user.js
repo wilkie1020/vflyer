@@ -1,6 +1,8 @@
 var validation = {
     'userId': {
-        
+        notEmpty: {
+            errorMessage: "Must not be left empty"
+        }
     },
     'radius': {
         isInt: {
