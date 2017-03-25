@@ -13,6 +13,21 @@ class DiscoverViewController: UIViewController {
     //MARK: Properties
     var user: User?
     
+    //Buttons
+    @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var checkButton: UIButton!
+    
+    //Text/Labels
+    @IBOutlet weak var flyerName: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateTime: UILabel!
+    @IBOutlet weak var descriptionText: UITextView!
+    
+    //Photo
+    @IBOutlet weak var flyerPhoto: UIImageView!
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -37,5 +52,12 @@ class DiscoverViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    //MARK: Functions
+    
+    
+    //MARK: Actions
+    
 
 }
