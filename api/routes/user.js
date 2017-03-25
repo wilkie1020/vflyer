@@ -31,6 +31,40 @@ router.route('/')
         });
     })
 
+router.route('/login')
+    .post(function(req, res) {
+        req.checkQuery('fbUserId', 'Facebook User Id Required').notEmpty();
+
+        req.getValidationResult().then(function(result) {
+            if (!result.isEmpty()) {
+              return res.json(400, result.array());
+            }
+
+            var query = {};
+            User.findOne({
+                userId: req.query.fbUserId
+            }, function(err, user) {
+                if (err) {
+                    return res.json(500, err);
+                } else if (user != null) {
+                    return res.json(200, user);
+                } else {
+                    var user = new User({
+                        userId: req.query.fbUserId,
+                        radius: 5000
+                    });
+                    user.save(function(err, user) {
+                        if (err) {
+                            return res.json(500, err);
+                        }
+
+                        res.json(201, user);
+                    });
+                }
+            });
+        });
+    })
+
 router.route('/:id')
     .get(function(req, res) {
         User.findOne({
