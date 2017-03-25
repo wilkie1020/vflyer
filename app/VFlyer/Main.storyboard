@@ -35,17 +35,17 @@
                     </view>
                     <connections>
                         <outlet property="userIdLabel" destination="1wX-5h-VRI" id="NXG-JJ-2Jy"/>
-                        <segue destination="boH-VT-flP" kind="show" identifier="loginSegue" id="fve-b1-ZlO"/>
+                        <segue destination="o99-GD-pBG" kind="show" id="uNx-gS-Vgs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-679.20000000000005" y="248.72563718140933"/>
         </scene>
-        <!--Discover View Controller-->
+        <!--Flyer View Controller-->
         <scene sceneID="EQE-d6-wP9">
             <objects>
-                <viewController id="boH-VT-flP" customClass="DiscoverViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="boH-VT-flP" customClass="FlyerViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sjs-JJ-RMI"/>
                         <viewControllerLayoutGuide type="bottom" id="hYm-r0-cee"/>
@@ -562,7 +562,7 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jQl-U2-E5l"/>
-        <segue reference="fve-b1-ZlO"/>
+        <segue reference="uNx-gS-Vgs"/>
+        <segue reference="ZVE-8V-UHZ"/>
     </inferredMetricsTieBreakers>
 </document>

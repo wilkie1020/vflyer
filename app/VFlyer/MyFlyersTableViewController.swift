@@ -12,7 +12,6 @@ class MyFlyersTableViewController: UITableViewController {
     
     //MARK: Properties
     var user: User?
-    var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,16 +134,16 @@ class MyFlyersTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        switch(segue.identifier ?? "") {
-        case "viewFlyer":
-            
-        case "settings":
-            
-        case "discover":
-
-        default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)");
-        }
+//        switch(segue.identifier ?? "") {
+//        case "viewFlyer":
+//            
+//        case "settings":
+//            
+//        case "discover":
+//
+//        default:
+//            fatalError("Unexpected Segue Identifier; \(segue.identifier)");
+//        }
 
     }
     
