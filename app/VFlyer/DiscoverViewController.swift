@@ -59,8 +59,34 @@ class DiscoverViewController: UIViewController {
     //MARK: Functions
     func getFlyers()
     {
+        if(locationController.service())
+        {
         
-        locationLabel.text = String(format: "location: (%0.6f, %0.6f)", locationController.returnLocation().latitude, locationController.returnLocation().longitude)
+            locationLabel.text = String(format: "location: (%0.6f, %0.6f)", locationController.returnLocation().latitude, locationController.returnLocation().longitude)
+        }
+        else
+        {
+            //pop up option to enable gps
+            
+            let alert = UIAlertController(title: "GPS Unavailable", message: "GPS Unavailable, enable GPS?", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Settings", style: .default)
+            { action in
+                
+                if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    UIApplication.shared.openURL(settingsURL as URL)
+                    
+                }
+                
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default)
+            { action in
+                
+                self.dismiss(animated: true, completion: nil)
+                
+            })
+            self.present(alert, animated: true)
+            
+        }
         
     }
 
