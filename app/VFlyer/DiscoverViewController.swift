@@ -55,9 +55,27 @@ class DiscoverViewController: UIViewController {
     
     
     //MARK: Functions
+    func getFlyers()
+    {
     
-    
+    }
+
     //MARK: Actions
+    
+    @IBAction func yesButtonPressed(_ sender: Any)
+    {
+        
+    }
+    
+    @IBAction func noButtonPressed(_ sender: Any)
+    {
+        
+    }
+    
+    @IBAction func checkButtonPressed(_ sender: Any)
+    {
+        
+    }
     
 
 }

@@ -99,6 +99,9 @@
                                         <rect key="frame" x="291" y="333" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Check"/>
+                                        <connections>
+                                            <action selector="checkButtonPressed:" destination="boH-VT-flP" eventType="touchUpInside" id="uJ3-ge-SP9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </scrollView>
@@ -110,6 +113,9 @@
                                         <rect key="frame" x="8" y="23" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="No"/>
+                                        <connections>
+                                            <action selector="noButtonPressed:" destination="boH-VT-flP" eventType="touchUpInside" id="9gp-NO-c0P"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wX-k6-tRu">
                                         <rect key="frame" x="321" y="23" width="46" height="30"/>
