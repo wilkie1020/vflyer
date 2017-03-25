@@ -19,15 +19,12 @@ class LocationController: NSObject, CLLocationManagerDelegate{
         self.locationManager.delegate = self
         self.locationManager.requestAlwaysAuthorization()
         
-        locationManager.startUpdatingLocation()
-        
-        
     }
     
-    func returnLocation(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) -> CLLocationCoordinate2D
+    func returnLocation() -> CLLocationCoordinate2D
     {
         
-        return (locations.last?.coordinate)!
+        return (locationManager.location?.coordinate)!
     }
     
 }
