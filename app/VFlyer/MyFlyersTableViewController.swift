@@ -134,18 +134,16 @@ class MyFlyersTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-//        switch(segue.identifier ?? "") {
-//        case "viewFlyer":
-//            
-//        case "settings":
-//            
-//        case "discover":
-//
-//        default:
-//            fatalError("Unexpected Segue Identifier; \(segue.identifier)");
-//        }
+        switch(segue.identifier ?? "") {
+        case "listToView":
+            print("segue to view")
+        case "listToSettings":
+            print("segue to settings")
+        case "listToDiscover":
+            print("segue to Discover")
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)");
+        }
 
     }
-    
-
 }
