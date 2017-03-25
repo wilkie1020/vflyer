@@ -12,7 +12,7 @@ class MyFlyersTableViewController: UITableViewController {
     
     //MARK: Properties
     var user: User?
-    var events: [Event] = []
+    var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +71,7 @@ class MyFlyersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return events.count
     }
 
     /*
