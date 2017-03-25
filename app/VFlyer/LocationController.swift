@@ -44,7 +44,7 @@ class LocationController: NSObject, CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
-        <#code#>
+
     }
     
     func returnLocation() -> CLLocationCoordinate2D
