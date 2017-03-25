@@ -53,32 +53,12 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             if let accessToken = AccessToken.current {
                 //Unwraps the userId. If there is not user ID something is wrong. Otherwise, query the API for the user associated with that userId.
                 if let userId = accessToken.userId {
-                    let endpoint = "http://159.203.7.42:8000/api/users/login/" + userId
-                    let url = URL(string: endpoint)!
-                    let request = URLRequest(url: url)
-                
-                    let config = URLSessionConfiguration.default
-                    let session = URLSession(configuration: config)
-                
-                    let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-                    
-                        if let error = error {
-                            // The error should bhe extracted from it's JSON dictionary and presented to the user.
-                            print ("Problems upstream. Following errors occured: " + error.localizedDescription)
-                        
-                        } else if let data = data {
-                            let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                            if let response = json as? [String: Any] {
-                                if let user = User(json: response) {
-                                    //Sets the user on the discover page to the response object user before segueing.
-                                    discoverViewController.user?._id = user._id
-                                    discoverViewController.user?.userId = user.userId
-                                    discoverViewController.user?.radius = user.radius
-                                }
-                            }
-                        }
+                    let user = User(userId: userId)
+                    user.login().then(success: {
+                        discoverViewController.user?._id = user._id
+                        discoverViewController.user?.userId = user.userId
+                        discoverViewController.user?.radius = user.radius
                     })
-                    task.resume()
                 } else {
                     print("Error acessToken has no userId")
                 }
