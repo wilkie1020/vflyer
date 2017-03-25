@@ -65,24 +65,30 @@ class MyFlyersTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return events.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "FlyerTableViewCell"
+        
+        //unwrap the returned optional using the guard. If it doesn't return something that can be unwrapped to a MealTableViewCell then a fatal error has occured.
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? FlyerTableViewCell else {
+            fatalError("The dequeued cell is not an instance of FlyerTableViewCell.")
+        }
+        
+        let event = self.events[indexPath.row] //set the variable meal to the object in the meals array at the current row index.
+        
+        // Configuring cell
+        //cell.nameLabel.text = meal.name
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
