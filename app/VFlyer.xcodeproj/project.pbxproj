@@ -20,6 +20,7 @@
 		4FABF60D7E2376DB10EA50E1 /* Pods_VFlyerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14B6EC77CF8F95C3DD2DF68 /* Pods_VFlyerTests.framework */; };
 		7615C620A1FE8DB7598BD07D /* Pods_VFlyer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0820C25DE13B2A667F94F29 /* Pods_VFlyer.framework */; };
 		8E3C70361E76029900EBC3EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C70351E76029900EBC3EC /* User.swift */; };
+		8E4DBCCE1E86F4C0002BADBB /* FlyerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DBCCD1E86F4C0002BADBB /* FlyerTableViewCell.swift */; };
 		8EA7C1971E71EB850051C277 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7C1961E71EB850051C277 /* Event.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		38B5205944FEE88B2C3F4163 /* Pods-VFlyerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFlyerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VFlyerTests/Pods-VFlyerTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E3C70351E76029900EBC3EC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8E4DBCCC1E86DC35002BADBB /* VFlyer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VFlyer.entitlements; sourceTree = "<group>"; };
+		8E4DBCCD1E86F4C0002BADBB /* FlyerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyerTableViewCell.swift; sourceTree = "<group>"; };
 		8EA7C1961E71EB850051C277 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		B0820C25DE13B2A667F94F29 /* Pods_VFlyer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VFlyer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14B6EC77CF8F95C3DD2DF68 /* Pods_VFlyerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VFlyerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 				8EA7C1961E71EB850051C277 /* Event.swift */,
 				1BDD80941E779CA500D74B97 /* SettingsViewController.swift */,
 				1BAD2E121E78C88500126F7D /* MyFlyersTableViewController.swift */,
+				8E4DBCCD1E86F4C0002BADBB /* FlyerTableViewCell.swift */,
 				1BDD80961E779CAC00D74B97 /* SnapSlider.swift */,
 				1BAD2E141E78C9F900126F7D /* DiscoverViewController.swift */,
 				8E3C70351E76029900EBC3EC /* User.swift */,
@@ -365,6 +368,7 @@
 				1BAD2E151E78C9F900126F7D /* DiscoverViewController.swift in Sources */,
 				1BDD80951E779CA500D74B97 /* SettingsViewController.swift in Sources */,
 				1B7EB7061E6C735A0069D549 /* AppDelegate.swift in Sources */,
+				8E4DBCCE1E86F4C0002BADBB /* FlyerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
