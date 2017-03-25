@@ -22,25 +22,15 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No User Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wX-5h-VRI">
-                                <rect key="frame" x="11" y="376" width="348" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="userIdLabel" destination="1wX-5h-VRI" id="NXG-JJ-2Jy"/>
                         <segue destination="o99-GD-pBG" kind="show" id="uNx-gS-Vgs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-679.20000000000005" y="248.72563718140933"/>
+            <point key="canvasLocation" x="-914" y="-1539"/>
         </scene>
         <!--Flyer View Controller-->
         <scene sceneID="EQE-d6-wP9">
@@ -132,6 +122,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="date" destination="foj-pX-DNK" id="b2h-ft-slw"/>
+                        <outlet property="dateTiime" destination="foj-pX-DNK" id="YQu-9T-A20"/>
+                        <outlet property="description" destination="szL-FO-uJ8" id="Rad-aa-lby"/>
+                        <outlet property="descriptionTextView" destination="szL-FO-uJ8" id="a0i-eO-pKS"/>
+                        <outlet property="location" destination="5Og-ph-kG3" id="JKd-r0-0kn"/>
+                        <outlet property="name" destination="9o6-t5-bbr" id="dfF-Uj-01K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zH-z6-AFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -449,6 +447,7 @@
                                     <outlet property="label" destination="rxG-Y0-9bh" id="8R9-JF-YTn"/>
                                     <outlet property="location" destination="6hu-cN-Jmn" id="Vfj-LP-vus"/>
                                     <outlet property="picture" destination="7kX-zN-x2f" id="Aad-pd-3dQ"/>
+                                    <segue destination="boH-VT-flP" kind="presentation" identifier="listToView" id="pbm-p5-DH7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -460,12 +459,12 @@
                     <navigationItem key="navigationItem" title="My Flyers" id="yaL-hx-J7D">
                         <barButtonItem key="leftBarButtonItem" image="settingsIcon" id="U3j-zR-Uhk">
                             <connections>
-                                <segue destination="xgI-bT-fre" kind="show" id="Fv5-UU-fbZ"/>
+                                <segue destination="xgI-bT-fre" kind="show" identifier="listToSettings" id="Fv5-UU-fbZ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="discoverIcon" id="349-8C-cPG">
                             <connections>
-                                <segue destination="bzD-Ws-e0J" kind="presentation" id="rxF-m4-ETf"/>
+                                <segue destination="bzD-Ws-e0J" kind="presentation" identifier="listToDiscover" id="rxF-m4-ETf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -502,7 +501,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edT-pN-HTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841" y="-710"/>
+            <point key="canvasLocation" x="631" y="-2276"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sKB-Lw-wNP">
@@ -548,7 +547,8 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uNx-gS-Vgs"/>
+        <segue reference="pbm-p5-DH7"/>
+        <segue reference="wRO-YX-M8B"/>
         <segue reference="ZVE-8V-UHZ"/>
     </inferredMetricsTieBreakers>
 </document>

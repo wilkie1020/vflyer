@@ -9,6 +9,11 @@
 import UIKit
 
 class FlyerViewController: UIViewController {
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
