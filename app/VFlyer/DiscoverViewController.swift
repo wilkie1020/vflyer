@@ -21,6 +21,7 @@ class DiscoverViewController: UIViewController {
 
     
     //Text/Labels
+    @IBOutlet weak var locationLabel: UILabel!
  
     
     //Photo
@@ -34,6 +35,8 @@ class DiscoverViewController: UIViewController {
         let icon: UIImage = #imageLiteral(resourceName: "discoverIcon")
         let iconImage = UIImageView(image:icon)
         self.navigationItem.titleView = iconImage
+        
+        locationController.locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,38 +59,8 @@ class DiscoverViewController: UIViewController {
     //MARK: Functions
     func getFlyers()
     {
-        let endpoint = "http://159.203.7.42:8000/api/events?" + "" + user._id
-        let url = URL(string: endpoint)!
-        let request = URLRequest(url: url)
         
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            let config = URLSessionConfiguration.default
-            let session = URLSession(configuration: config)
-            
-            let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-                
-                if let error = error {
-                    // The error should bhe extracted from it's JSON dictionary and presented to the user.
-                    print ("Problems upstream. Following errors occured: " + error.localizedDescription)
-                } else if let data = data {
-                    let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                    if let response = json as? [[String: Any]] {
-                        for item in response {
-                            if let event = Event(json: item) {
-                                self.events.append(event)
-                            }
-                        }
-                    }
-                }
-            })
-            task.resume()
-        } else {
-            print("Error no user ID could not get list of Events")
-        }
+        locationLabel.text = String(format: "location: (%0.6f, %0.6f)", locationController.returnLocation().latitude, locationController.returnLocation().longitude)
         
     }
 

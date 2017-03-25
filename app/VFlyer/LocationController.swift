@@ -12,22 +12,30 @@ import CoreLocation
 class LocationController: NSObject, CLLocationManagerDelegate{
     
     let locationManager = CLLocationManager()
+    var location: CLLocationCoordinate2D?
     
     override init()
     {
         super.init()
+        location = nil
         self.locationManager.delegate = self
         self.locationManager.requestAlwaysAuthorization()
         
-        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        if(locations.last != nil)
+        {
+            location = (locations.last?.coordinate)!
+        }
         
     }
     
-    func returnLocation(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) -> CLLocationCoordinate2D
+    func returnLocation() -> CLLocationCoordinate2D
     {
         
-        return (locations.last?.coordinate)!
+        return location!
     }
     
 }
