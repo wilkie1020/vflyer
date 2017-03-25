@@ -14,6 +14,7 @@ class User {
     var _id: String?
     var userId: String
     var radius: Int?
+    var events = [Event]()
     
     //MARK: Initialization
     init?(userId: String) {
