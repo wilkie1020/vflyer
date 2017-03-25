@@ -39,18 +39,18 @@ class LocationController: NSObject, CLLocationManagerDelegate{
         {
             location = (locations.last?.coordinate)!
         }
+        else
+        {
+            location = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+        }
         
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-    {
-
-    }
-    
+ 
     func returnLocation() -> CLLocationCoordinate2D
     {
-        
-        return location!
+  
+            return location!
     }
     
 }

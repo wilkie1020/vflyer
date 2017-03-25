@@ -584,8 +584,9 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pbm-p5-DH7"/>
+        <segue reference="uNx-gS-Vgs"/>
         <segue reference="uNx-gS-Vgs"/>
         <segue reference="jQl-U2-E5l"/>
+        <segue reference="pbm-p5-DH7"/>
     </inferredMetricsTieBreakers>
 </document>
