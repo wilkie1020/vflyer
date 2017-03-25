@@ -17,7 +17,7 @@ class User {
     var events = [Event]()
     
     //MARK: Initialization
-    init?(userId: String) {
+    init(userId: String) {
         self.userId = userId
     }
     

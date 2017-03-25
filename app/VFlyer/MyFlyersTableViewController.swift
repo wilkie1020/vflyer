@@ -39,7 +39,8 @@ class MyFlyersTableViewController: UITableViewController {
                     if let response = json as? [[String: Any]] {
                         for item in response {
                             if let event = Event(json: item) {
-                                self.events.append(event)
+                        
+                                user?.events.append(event)
                             }
                         }
                     }
