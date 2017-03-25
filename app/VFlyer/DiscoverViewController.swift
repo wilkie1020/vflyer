@@ -12,6 +12,9 @@ class DiscoverViewController: UIViewController {
 
     //MARK: Properties
     var user: User?
+    var flyers = [Flyers]()
+    //set user in the list view when segueing
+    //2 strings and int. user ids and radius
     
     //Buttons
     @IBOutlet weak var noButton: UIButton!
@@ -58,6 +61,35 @@ class DiscoverViewController: UIViewController {
     func getFlyers()
     {
     
+        let endpoint = "http://159.203.7.42:8000/api/events?" + "&" +user._id
+        let url = URL(string: endpoint)!
+        let request = URLRequest(url: url)
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            if let error = error {
+                // The error should bhe extracted from it's JSON dictionary and presented to the user.
+                print ("Problems upstream. Following errors occured: " + error.localizedDescription)
+                
+            } else if let data = data
+            {
+                let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                
+                
+                if let response = json as? [String: Any]
+                {
+                    if let flyers = Flyers(json: response)
+                    {
+                        
+                    }
+                }
+            }
+        })
+        task.resume()
+        
     }
 
     //MARK: Actions
@@ -78,4 +110,5 @@ class DiscoverViewController: UIViewController {
     }
     
 
+    
 }
