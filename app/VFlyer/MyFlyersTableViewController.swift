@@ -69,7 +69,10 @@ class MyFlyersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.user?.events.count)!
+        if let rowAmount = self.user?.events.count {
+            return rowAmount
+        }
+        return 0
     }
 
     
@@ -85,9 +88,9 @@ class MyFlyersTableViewController: UITableViewController {
         let event = self.user?.events[indexPath.row] //set the variable meal to the object in the meals array at the current row index.
         
         // Configuring cell
-        cell.label.text = event?.name
-        cell.date.text = event?.endDate.description
-        cell.location.text = "Not set yet"
+        //cell.label.text = event?.name
+        //cell.date.text = event.endDate.description
+        //cell.location.text = "Not set yet"
         //cell.picture.image =
 
         return cell
