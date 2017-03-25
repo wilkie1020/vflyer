@@ -11,7 +11,6 @@ import CoreLocation
 
 class DiscoverViewController: UIViewController, LocationControllerDelegate {
 
-
     //MARK: Properties
     var user: User?
     var locationController = LocationController()
@@ -97,6 +96,15 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     
 
     //MARK: Actions
+    
+    @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
+        print("\n\n listButtonPressed function called \n\n")
+        user?.loadLikedEvents().then(success: {
+            print("\n\n events loaded \n\n")
+            self.performSegue(withIdentifier: "discoverToList", sender: nil)
+        })
+    }
+    
     
     //location testing
     /*

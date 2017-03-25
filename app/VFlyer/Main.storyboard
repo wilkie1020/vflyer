@@ -134,6 +134,8 @@
         <!--Discover-->
         <scene sceneID="WeR-qH-t8v">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Jm1-xz-bsN"/>
                 <viewController id="o99-GD-pBG" customClass="DiscoverViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vKY-tP-fi6"/>
@@ -207,18 +209,17 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="listViewIcon" id="vES-kx-UWW">
                             <connections>
-                                <segue destination="6cH-lV-j0j" kind="show" id="6tc-7k-3dh"/>
+                                <action selector="listButtonPressed:" destination="o99-GD-pBG" id="dha-bZ-xvh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="locationLabel" destination="1vT-gB-syL" id="inO-uf-Bg9"/>
+                        <segue destination="6cH-lV-j0j" kind="show" identifier="discoverToList" id="MHg-DH-sLf"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Jm1-xz-bsN"/>
             </objects>
-            <point key="canvasLocation" x="2198" y="-1540"/>
+            <point key="canvasLocation" x="2402" y="-1540"/>
         </scene>
         <!--Settings-->
         <scene sceneID="cGq-Dy-0HI">
@@ -567,7 +568,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pbm-p5-DH7"/>
-        <segue reference="6tc-7k-3dh"/>
+        <segue reference="MHg-DH-sLf"/>
         <segue reference="g0f-3c-rtu"/>
         <segue reference="jQl-U2-E5l"/>
     </inferredMetricsTieBreakers>

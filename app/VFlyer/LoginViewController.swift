@@ -58,6 +58,10 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                         discoverViewController.user?._id = user._id
                         discoverViewController.user?.userId = user.userId
                         discoverViewController.user?.radius = user.radius
+                        //sets up the liked events before seguing
+                        discoverViewController.user?.loadLikedEvents().then {
+                            print("Done loading liked events");
+                        }
                     })
                 } else {
                     print("Error acessToken has no userId")
