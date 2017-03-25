@@ -85,7 +85,10 @@ class MyFlyersTableViewController: UITableViewController {
         let event = self.events[indexPath.row] //set the variable meal to the object in the meals array at the current row index.
         
         // Configuring cell
-        //cell.nameLabel.text = meal.name
+        cell.label.text = event.name
+        cell.date.text = event.endDate.description
+        cell.location.text = "Not set yet"
+        //cell.picture.image =
 
         return cell
     }
@@ -125,14 +128,25 @@ class MyFlyersTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        switch(segue.identifier ?? "") {
+        case "viewFlyer":
+            
+        case "settings":
+            
+        case "discover":
+
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)");
+        }
+
     }
-    */
+    
 
 }

@@ -61,7 +61,7 @@ class DiscoverViewController: UIViewController {
     func getFlyers()
     {
     
-        let endpoint = "http://159.203.7.42:8000/api/events?" + "&" +user._id
+        let endpoint = "http://159.203.7.42:8000/api/events?" + "" + user._id
         let url = URL(string: endpoint)!
         let request = URLRequest(url: url)
         
