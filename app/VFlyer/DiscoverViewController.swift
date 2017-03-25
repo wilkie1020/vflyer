@@ -11,7 +11,7 @@ import UIKit
 class DiscoverViewController: UIViewController {
 
     //MARK: Properties
-    var userId: String?
+    var user: User?
     
     override func viewDidLoad()
     {

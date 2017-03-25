@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         if let accessToken = AccessToken.current {
             print(accessToken)
             //segue to the discover page.
-            performSegue(withIdentifier: "loginSegue", sender: nil)
+            //performSegue(withIdentifier: "loginSegue", sender: nil)
         } else {
             //Creates Facebook login button at center of the screen.
             let loginButton = LoginButton(readPermissions: [ .publicProfile ])
@@ -46,14 +46,14 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
-        print("logged out");
+        print("logged out")
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let discoverViewController = segue.destination as? DiscoverViewController {
             if let accessToken = AccessToken.current {
-                discoverViewController.userId = accessToken.userId
+                discoverViewController.user?.id = accessToken.userId!
             }
         }
     }
