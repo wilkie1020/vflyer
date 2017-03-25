@@ -13,6 +13,9 @@ import FacebookCore
 
 class LoginViewController: UIViewController, LoginButtonDelegate {
 
+    //MARK: Properties
+    @IBOutlet weak var userIdLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,9 +24,10 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     override func viewDidAppear(_ animated: Bool) {
         //if the user is already logged in then no need to create loggin button.
         if let accessToken = AccessToken.current {
-            print(accessToken)
             //segue to the discover page.
-            //performSegue(withIdentifier: "loginSegue", sender: nil)
+            performSegue(withIdentifier: "loginSegue", sender: nil)
+            print(accessToken.userId!);
+            userIdLabel.text = accessToken.userId
         } else {
             //Creates Facebook login button at center of the screen.
             let loginButton = LoginButton(readPermissions: [ .publicProfile ])
@@ -36,7 +40,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
         switch result {
         case .success(_, _, let accessToken):
-            print(accessToken.authenticationToken);
+            print(accessToken.userId!);
+            userIdLabel.text = accessToken.userId
             performSegue(withIdentifier: "loginSegue", sender: nil)
         case .failed(let errors):
             print("failed because: " + errors.localizedDescription)
