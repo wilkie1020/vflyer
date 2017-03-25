@@ -60,7 +60,7 @@ router.route('/')
 
                 Event.find(query, function(err, events) {
                     if (err) {
-                        return res.json(500, events);
+                        return res.json(500, err);
                     }
 
                     res.json(200, events);
