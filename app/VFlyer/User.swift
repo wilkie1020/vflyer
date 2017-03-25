@@ -15,7 +15,7 @@ class User {
     var _id: String?
     var userId: String
     var radius: Int?
-    var events = [Event]()
+    var likedEvents = [Event]()
     
     //MARK: Initialization
     init(userId: String) {
@@ -83,13 +83,13 @@ class User {
                     let json = try? JSONSerialization.jsonObject(with: data, options: [])
                     var events = [Event]()
                     if let response = json as? [[String: Any]] {
-                        events.removeAll()
                         for item in response {
                             if let event = Event(json: item) {
                                 events.append(event)
                             }
                         }
                     }
+                    self.likedEvents = events;
                     fulfill(events)
                 } else {
                     fatalError("Something has gone horribly wrong.")
