@@ -38,9 +38,8 @@ class User {
     let BASE_URL = URL(string: "http://159.203.7.42:8000/api/")
     
     // MARK: Methods
-    public func login() -> Promise {
-        let p = Promise.defer()
-        
+    
+    public func login() -> Promise<Void> {
         let url = URL(string: "users/login?fbUserId=\(userId)", relativeTo: BASE_URL)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -48,93 +47,54 @@ class User {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            if let error = error {
-                print ("Problems upstream. Following errors occured: " + error.localizedDescription)
-                p.reject()
-            } else if let data = data {
-                let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                if let response = json as? [String: Any] {
-                    self._id = response["_id"] as! String
-                    self.userId = response["userId"] as! String
-                    self.radius = response["radius"] as! Int
+        return Promise<Void>(work: { fulfill, reject in
+            session.dataTask(with: request, completionHandler: { data, response, error in
+                if let error = error {
+                    reject(error)
+                } else if let data = data, let _ = response as? HTTPURLResponse {
+                    let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                    if let response = json as? [String: Any] {
+                        self._id = response["_id"] as! String
+                        self.userId = response["userId"] as! String
+                        self.radius = response["radius"] as! Int
+                    }
+                    fulfill()
+                } else {
+                    fatalError("Something has gone horribly wrong.")
                 }
-                p.resolve()()
-            }
+            }).resume()
         })
-        task.resume()
-        
-        return p
     }
     
-    public func loadLikedEvents() -> Promise {
-        let p = Promise.defer()
-        
+    public func loadLikedEvents() -> Promise<[Event]> {
         let url = URL(string: "users/\(_id!)/liked", relativeTo: BASE_URL)!
         var request = URLRequest(url: url)
-        print(url.absoluteURL)
         request.httpMethod = "GET"
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            if let error = error {
-                print ("Problems upstream. Following errors occured: " + error.localizedDescription)
-                p.reject()
-            } else if let data = data {
-                let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                if let response = json as? [[String: Any]] {
-                    self.events.removeAll()
-                    for item in response {
-                        if let event = Event(json: item) {
-                            self.events.append(event)
+        return Promise<[Event]>(work: { fulfill, reject in
+            session.dataTask(with: request, completionHandler: { data, response, error in
+                if let error = error {
+                    reject(error)
+                } else if let data = data, let _ = response as? HTTPURLResponse {
+                    let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                    var events = [Event]()
+                    if let response = json as? [[String: Any]] {
+                        events.removeAll()
+                        for item in response {
+                            if let event = Event(json: item) {
+                                events.append(event)
+                            }
                         }
                     }
+                    fulfill(events)
+                } else {
+                    fatalError("Something has gone horribly wrong.")
                 }
-                p.resolve()()
-            }
+            }).resume()
         })
-        task.resume()
-        
-        return p
     }
-    
-    public func discoverEvents(coordinates:CLLocationCoordinate2D) -> Promise {
-        let p = Promise.defer()
-        
-        let lat = coordinates.latitude
-        let lon = coordinates.longitude
-        
-        let url = URL(string: "events?lat=\(lat)&lon=\(lon)&userId=\(_id!)", relativeTo: BASE_URL)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            if let error = error {
-                print ("Problems upstream. Following errors occured: " + error.localizedDescription)
-                p.reject()
-            } else if let data = data {
-                let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                if let response = json as? [[String: Any]] {
-                    self.events.removeAll()
-                    for item in response {
-                        if let event = Event(json: item) {
-                            self.events.append(event)
-                        }
-                    }
-                }
-                p.resolve()()
-            }
-        })
-        task.resume()
-        
-        return p
-    }
+
 }
