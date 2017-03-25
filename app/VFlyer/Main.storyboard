@@ -207,7 +207,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="listViewIcon" id="vES-kx-UWW">
                             <connections>
-                                <segue destination="c8w-jS-Yuc" kind="show" id="8Az-Pr-27e"/>
+                                <segue destination="6cH-lV-j0j" kind="show" id="6tc-7k-3dh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -463,7 +463,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="discoverIcon" id="349-8C-cPG">
                             <connections>
-                                <segue destination="bzD-Ws-e0J" kind="show" identifier="listToDiscover" id="rxF-m4-ETf"/>
+                                <segue destination="o99-GD-pBG" kind="show" id="g0f-3c-rtu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -483,24 +483,6 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-250.40000000000001" y="-710.19490254872574"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="HNE-Mx-S7O">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bzD-Ws-e0J" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LeO-AZ-UZg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8gG-3M-pNf" kind="relationship" relationship="rootViewController" id="wRO-YX-M8B"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="edT-pN-HTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="617" y="-2053"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sKB-Lw-wNP">
@@ -523,7 +505,6 @@
         <!--Navigation Controller-->
         <scene sceneID="E1I-As-Wje">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YJJ-RQ-tc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cFc-CL-VHO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="E3f-nl-J3q">
@@ -535,6 +516,7 @@
                         <segue destination="3hR-rX-cA7" kind="relationship" relationship="rootViewController" id="RYU-Db-lac"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YJJ-RQ-tc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3455.1999999999998" y="-1504.4977511244379"/>
         </scene>
@@ -584,9 +566,9 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uNx-gS-Vgs"/>
-        <segue reference="uNx-gS-Vgs"/>
-        <segue reference="jQl-U2-E5l"/>
         <segue reference="pbm-p5-DH7"/>
+        <segue reference="6tc-7k-3dh"/>
+        <segue reference="g0f-3c-rtu"/>
+        <segue reference="jQl-U2-E5l"/>
     </inferredMetricsTieBreakers>
 </document>
