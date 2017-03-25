@@ -57,6 +57,9 @@ router.route('/')
                         $maxDistance : user.radius
                     }
                 }
+                query.startDate = {
+                    $gte: new Date()
+                }
 
                 Event.find(query, function(err, events) {
                     if (err) {
@@ -96,7 +99,7 @@ router.route('/:id')
             }, function(err, event) {
                 if (err) {
                     return res.json(500, err);
-                } else if (user == null) {
+                } else if (event == null) {
                     return res.json(404, {"message": "Event Not Found"});
                 }
 
@@ -106,7 +109,7 @@ router.route('/:id')
                 event.endDate = req.body.endDate;
                 event.save();
 
-                res.json(200, {"message": "User updated successfully"});
+                res.json(200, {"message": "Event updated successfully"});
             });
         });
     })

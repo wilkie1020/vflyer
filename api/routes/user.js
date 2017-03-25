@@ -175,7 +175,10 @@ router.route('/:id/liked')
         User.findOne({
             _id : req.params.id
         })
-        .populate('liked')
+        .populate({
+            path: 'liked',
+            match: { startDate: { $gte: new Date() } }
+        })
         .exec(function(err, user) {
             if (err) {
                 return res.json(500, err);
@@ -183,7 +186,13 @@ router.route('/:id/liked')
                 return res.json(404, {"message": "User Not Found"});
             }
 
-            res.json(200, user.liked)
+            var events = user.liked.sort((x,y) => {
+                if (x.startDate < y.startDate) return -1;
+                if (x.startDate > y.startDate) return 1;
+                return 0;
+            });
+
+            res.json(200, events);
         })
     })
 
@@ -244,7 +253,10 @@ router.route('/:id/viewed')
         User.findOne({
             _id : req.params.id
         })
-        .populate('viewed')
+        .populate({
+            path: 'viewed',
+            match: { startDate: { $gte: new Date() } }
+        })
         .exec(function(err, user) {
             if (err) {
                 return res.json(500, err);
@@ -252,7 +264,13 @@ router.route('/:id/viewed')
                 return res.json(404, {"message": "User Not Found"});
             }
 
-            res.json(200, user.viewed);
+            var events = user.viewed.sort((x,y) => {
+                if (x.startDate < y.startDate) return -1;
+                if (x.startDate > y.startDate) return 1;
+                return 0;
+            });
+
+            res.json(200, events);
         })
     })
 
