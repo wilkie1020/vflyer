@@ -9,17 +9,25 @@
 import UIKit
 import CoreLocation
 
+protocol LocationControllerDelegate {
+    func locationDidUpdate(location: CLLocation?)
+}
+
 class LocationController: NSObject, CLLocationManagerDelegate{
     
+    static let SharedManager = LocationController()
     let locationManager = CLLocationManager()
     var location: CLLocationCoordinate2D?
+    
+    var delegate : LocationControllerDelegate?
     
     override init()
     {
         super.init()
-        location = nil
+        self.location = nil
         self.locationManager.delegate = self
         self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
         
     }
     
@@ -37,11 +45,12 @@ class LocationController: NSObject, CLLocationManagerDelegate{
         
         if(locations.last != nil)
         {
-            location = (locations.last?.coordinate)!
+            self.location = (locations.last?.coordinate)!
+            self.delegate?.locationDidUpdate(location: (locations.last)!)
         }
         else
         {
-            location = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+            self.location = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
         }
         
     }
@@ -49,8 +58,15 @@ class LocationController: NSObject, CLLocationManagerDelegate{
  
     func returnLocation() -> CLLocationCoordinate2D
     {
-  
-            return location!
+        if(location != nil)
+        {
+            return self.location!
+        }
+        else
+        {
+            return CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+        }
+        
     }
     
 }
