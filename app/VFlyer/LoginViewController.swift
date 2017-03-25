@@ -12,9 +12,6 @@ import FacebookLogin
 import FacebookCore
 
 class LoginViewController: UIViewController, LoginButtonDelegate {
-
-    //MARK: Properties
-    @IBOutlet weak var userIdLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
