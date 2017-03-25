@@ -7,15 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
-class DiscoverViewController: UIViewController {
+class DiscoverViewController: UIViewController, LocationControllerDelegate {
+
 
     //MARK: Properties
     var user: User?
-    var events = [Event]()
     var locationController = LocationController()
-    //set user in the list view when segueing
-    //2 strings and int. user ids and radius
     
     //Buttons
 
@@ -36,9 +35,9 @@ class DiscoverViewController: UIViewController {
         let iconImage = UIImageView(image:icon)
         self.navigationItem.titleView = iconImage
         
-        locationController.locationManager.startUpdatingLocation()
+        locationController.delegate = self
         
-        
+        getFlyers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,7 +63,8 @@ class DiscoverViewController: UIViewController {
         if(locationController.service())
         {
         
-            locationLabel.text = String(format: "location: (%0.6f, %0.6f)", locationController.returnLocation().latitude, locationController.returnLocation().longitude)
+            //user.discoverEvents
+            
         }
         else
         {
@@ -75,10 +75,10 @@ class DiscoverViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Settings", style: .default)
             { action in
                 
-                //if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
-                   // UIApplication.shared.openURL(settingsURL as URL)
+                if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    UIApplication.shared.openURL(settingsURL as URL)
                     
-               // }
+               }
                 self.dismiss(animated: true, completion: nil)
                 
             })
@@ -93,11 +93,38 @@ class DiscoverViewController: UIViewController {
         }
         
     }
+    
+    
 
     //MARK: Actions
     
-
+    //location testing
+    /*
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        
+        if(locations.last != nil)
+        {
+            locationLabel.text = String(format: "location: (%0.6f, %0.6f)", (locations.last?.coordinate.latitude)!, (locations.last?.coordinate.longitude)!)
+        }
+        else
+        {
+            locationLabel.text = "0, 0"
+        }
+        
+    }*/
     
+    func locationDidUpdate(location: CLLocation?)
+    {
+        if(location != nil)
+        {
+            locationLabel.text = String(format: "location: (%0.6f, %0.6f)", (location!.coordinate.latitude), (location!.coordinate.longitude))
+        }
+        else
+        {
+            locationLabel.text = "0, 0"
+        }
+    }
 
     
 }
