@@ -60,11 +60,8 @@ class User {
                     self._id = response["_id"] as! String
                     self.userId = response["userId"] as! String
                     self.radius = response["radius"] as! Int
-                    
-                    p.resolve()()
-                } else {
-                    p.reject()
                 }
+                p.resolve()()
             }
         })
         task.resume()

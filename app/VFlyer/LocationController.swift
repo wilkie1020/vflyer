@@ -23,13 +23,28 @@ class LocationController: NSObject, CLLocationManagerDelegate{
         
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func service() -> Bool
+    {
+        if CLLocationManager.locationServicesEnabled()
+        {
+            return true
+        }
+        else { return false }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
         
         if(locations.last != nil)
         {
             location = (locations.last?.coordinate)!
         }
         
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
+        <#code#>
     }
     
     func returnLocation() -> CLLocationCoordinate2D
