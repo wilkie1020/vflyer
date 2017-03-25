@@ -58,7 +58,7 @@ class DiscoverViewController: UIViewController {
     {
     
         if let _id = user?._id {
-            let endpoint = "http://159.203.7.42:8000/api/events?lat=" + LocationController.
+            let endpoint = "http://159.203.7.42:8000/api/events?lat="
             let url = URL(string: endpoint)!
             let request = URLRequest(url: url)
             
