@@ -25,7 +25,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <segue destination="o99-GD-pBG" kind="show" id="uNx-gS-Vgs"/>
+                        <segue destination="o99-GD-pBG" kind="show" identifier="loginSegue" id="uNx-gS-Vgs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -550,8 +550,8 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wRO-YX-M8B"/>
-        <segue reference="pbm-p5-DH7"/>
+        <segue reference="uNx-gS-Vgs"/>
         <segue reference="jQl-U2-E5l"/>
+        <segue reference="pbm-p5-DH7"/>
     </inferredMetricsTieBreakers>
 </document>

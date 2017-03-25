@@ -37,6 +37,8 @@ class DiscoverViewController: UIViewController {
         self.navigationItem.titleView = iconImage
         
         locationController.locationManager.startUpdatingLocation()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,15 +69,17 @@ class DiscoverViewController: UIViewController {
         else
         {
             //pop up option to enable gps
+            locationLabel.text = "Nothing"
             
             let alert = UIAlertController(title: "GPS Unavailable", message: "GPS Unavailable, enable GPS?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Settings", style: .default)
             { action in
                 
-                if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
-                    UIApplication.shared.openURL(settingsURL as URL)
+                //if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                   // UIApplication.shared.openURL(settingsURL as URL)
                     
-                }
+               // }
+                self.dismiss(animated: true, completion: nil)
                 
             })
             alert.addAction(UIAlertAction(title: "Cancel", style: .default)
