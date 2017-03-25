@@ -384,7 +384,7 @@
                             </subviews>
                         </stackView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myFlyersCell" rowHeight="141" id="U2v-ql-qTV">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myFlyersCell" rowHeight="141" id="U2v-ql-qTV" customClass="FlyerTableViewCell" customModule="VFlyer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="141"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2v-ql-qTV" id="hf1-TK-Ju8">
@@ -444,6 +444,12 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="KQf-Fb-EF2" secondAttribute="trailing" id="wm9-4e-tT1"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="date" destination="bvQ-3f-n5t" id="DuP-zq-ASN"/>
+                                    <outlet property="label" destination="rxG-Y0-9bh" id="8R9-JF-YTn"/>
+                                    <outlet property="location" destination="6hu-cN-Jmn" id="Vfj-LP-vus"/>
+                                    <outlet property="picture" destination="7kX-zN-x2f" id="Aad-pd-3dQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -542,7 +548,11 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="jQl-U2-E5l"/>
+=======
+        <segue reference="Fv5-UU-fbZ"/>
+>>>>>>> 61aa1926d26fd3b999461333896e0c0ebc9a6ff0
         <segue reference="fve-b1-ZlO"/>
     </inferredMetricsTieBreakers>
 </document>
