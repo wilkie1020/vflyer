@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B4FEBD61E86F9240070B490 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4FEBD51E86F9240070B490 /* LocationController.swift */; };
 		1B7EB7061E6C735A0069D549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EB7051E6C735A0069D549 /* AppDelegate.swift */; };
 		1B7EB7081E6C735B0069D549 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EB7071E6C735A0069D549 /* LoginViewController.swift */; };
 		1B7EB70D1E6C735B0069D549 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7EB70C1E6C735B0069D549 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		10BB6DF4EE6E2E0A63A4A953 /* Pods-VFlyerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFlyerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VFlyerTests/Pods-VFlyerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1B4FEBD51E86F9240070B490 /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		1B7EB7021E6C735A0069D549 /* VFlyer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VFlyer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7EB7051E6C735A0069D549 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B7EB7071E6C735A0069D549 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				8E4DBCCD1E86F4C0002BADBB /* FlyerTableViewCell.swift */,
 				1BDD80961E779CAC00D74B97 /* SnapSlider.swift */,
 				1BAD2E141E78C9F900126F7D /* DiscoverViewController.swift */,
+				1B4FEBD51E86F9240070B490 /* LocationController.swift */,
 				8E3C70351E76029900EBC3EC /* User.swift */,
 				1BDD80921E779C8600D74B97 /* Main.storyboard */,
 				1B7EB70C1E6C735B0069D549 /* Assets.xcassets */,
@@ -368,6 +371,7 @@
 				1BAD2E151E78C9F900126F7D /* DiscoverViewController.swift in Sources */,
 				1BDD80951E779CA500D74B97 /* SettingsViewController.swift in Sources */,
 				1B7EB7061E6C735A0069D549 /* AppDelegate.swift in Sources */,
+				1B4FEBD61E86F9240070B490 /* LocationController.swift in Sources */,
 				8E4DBCCE1E86F4C0002BADBB /* FlyerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -99,9 +99,6 @@
                                         <rect key="frame" x="291" y="333" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Check"/>
-                                        <connections>
-                                            <action selector="checkButtonPressed:" destination="boH-VT-flP" eventType="touchUpInside" id="uJ3-ge-SP9"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </scrollView>
@@ -135,17 +132,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="checkButton" destination="rE2-5R-V7M" id="A6a-Dv-Ymv"/>
-                        <outlet property="dateTime" destination="foj-pX-DNK" id="QEH-rM-VAC"/>
-                        <outlet property="description" destination="szL-FO-uJ8" id="nNb-FO-lNj"/>
-                        <outlet property="descriptionText" destination="szL-FO-uJ8" id="mD3-tQ-MjD"/>
-                        <outlet property="flyerName" destination="9o6-t5-bbr" id="gd5-Nv-hL7"/>
-                        <outlet property="flyerPhoto" destination="Z3w-wb-DMM" id="Ikt-4G-8C3"/>
-                        <outlet property="locationLabel" destination="5Og-ph-kG3" id="Pn2-2G-I3I"/>
-                        <outlet property="noButton" destination="8f4-J3-9vy" id="5n1-rd-E8V"/>
-                        <outlet property="yesButton" destination="7wX-k6-tRu" id="XL8-T6-Irw"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zH-z6-AFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -556,7 +542,7 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZVE-8V-UHZ"/>
+        <segue reference="jQl-U2-E5l"/>
         <segue reference="fve-b1-ZlO"/>
     </inferredMetricsTieBreakers>
 </document>
