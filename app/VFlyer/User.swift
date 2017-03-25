@@ -11,10 +11,10 @@ import os.log
 
 class User {
     //MARK: Properties
-    var id: Int
+    var id: String
     
     //MARK: Initialization
-    init?(id: Int) {
+    init?(id: String) {
         self.id = id
     }
 }
