@@ -7,14 +7,11 @@
 //
 //  Description: A view controller for the login view.
 
-import UIKit
+import Foundation
 import FacebookLogin
 import FacebookCore
 
 class LoginViewController: UIViewController, LoginButtonDelegate {
-
-    //MARK: Properties
-    @IBOutlet weak var userIdLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +20,9 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         //if the user is already logged in then no need to create loggin button.
-        if let accessToken = AccessToken.current {
+        if AccessToken.current != nil {
             //segue to the discover page.
             performSegue(withIdentifier: "loginSegue", sender: nil)
-            print(accessToken.userId!);
-            userIdLabel.text = accessToken.userId
         } else {
             //Creates Facebook login button at center of the screen.
             let loginButton = LoginButton(readPermissions: [ .publicProfile ])
@@ -39,9 +34,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
         switch result {
-        case .success(_, _, let accessToken):
-            print(accessToken.userId!);
-            userIdLabel.text = accessToken.userId
+        case .success(_, _, _):
             performSegue(withIdentifier: "loginSegue", sender: nil)
         case .failed(let errors):
             print("failed because: " + errors.localizedDescription)
@@ -58,11 +51,40 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let discoverViewController = segue.destination as? DiscoverViewController {
             if let accessToken = AccessToken.current {
-                discoverViewController.user?.id = accessToken.userId!
+                //Unwraps the userId. If there is not user ID something is wrong. Otherwise, query the API for the user associated with that userId.
+                if let userId = accessToken.userId {
+                    let endpoint = "http://159.203.7.42:8000/api/users/login/" + userId
+                    let url = URL(string: endpoint)!
+                    let request = URLRequest(url: url)
+                
+                    let config = URLSessionConfiguration.default
+                    let session = URLSession(configuration: config)
+                
+                    let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+                    
+                        if let error = error {
+                            // The error should bhe extracted from it's JSON dictionary and presented to the user.
+                            print ("Problems upstream. Following errors occured: " + error.localizedDescription)
+                        
+                        } else if let data = data {
+                            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                            if let response = json as? [String: Any] {
+                                if let user = User(json: response) {
+                                    //Sets the user on the discover page to the response object user before segueing.
+                                    discoverViewController.user?._id = user._id
+                                    discoverViewController.user?.userId = user.userId
+                                    discoverViewController.user?.radius = user.radius
+                                }
+                            }
+                        }
+                    })
+                    task.resume()
+                } else {
+                    print("Error acessToken has no userId")
+                }
             }
         }
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
