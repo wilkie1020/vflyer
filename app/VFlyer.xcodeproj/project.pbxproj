@@ -121,24 +121,16 @@
 		1B7EB7041E6C735A0069D549 /* VFlyer */ = {
 			isa = PBXGroup;
 			children = (
+				61C210991E874E0900E1E84D /* Extensions */,
+				61C210981E874E0300E1E84D /* Controllers */,
+				61C210971E874DFB00E1E84D /* Models */,
+				61C2109A1E874E3000E1E84D /* Views */,
 				8E4DBCCC1E86DC35002BADBB /* VFlyer.entitlements */,
 				1B7EB7051E6C735A0069D549 /* AppDelegate.swift */,
-				1B7EB7071E6C735A0069D549 /* LoginViewController.swift */,
-				8EA7C1961E71EB850051C277 /* Event.swift */,
-				1BDD80941E779CA500D74B97 /* SettingsViewController.swift */,
-				1BAD2E121E78C88500126F7D /* MyFlyersTableViewController.swift */,
-				8E4DBCCD1E86F4C0002BADBB /* FlyerTableViewCell.swift */,
-				1BDD80961E779CAC00D74B97 /* SnapSlider.swift */,
-				1BAD2E141E78C9F900126F7D /* DiscoverViewController.swift */,
-				1B4FEBD51E86F9240070B490 /* LocationController.swift */,
-				8E3C70351E76029900EBC3EC /* User.swift */,
 				1BDD80921E779C8600D74B97 /* Main.storyboard */,
-				8E4DBCCF1E86FF3D002BADBB /* FlyerViewController.swift */,
 				1B7EB70C1E6C735B0069D549 /* Assets.xcassets */,
 				1B7EB70E1E6C735B0069D549 /* LaunchScreen.storyboard */,
 				1B7EB7111E6C735B0069D549 /* Info.plist */,
-				61C210931E870E2500E1E84D /* Promise.swift */,
-				61C210951E87151000E1E84D /* Date.swift */,
 			);
 			path = VFlyer;
 			sourceTree = "<group>";
@@ -150,6 +142,46 @@
 				1B7EB71C1E6C735B0069D549 /* Info.plist */,
 			);
 			path = VFlyerTests;
+			sourceTree = "<group>";
+		};
+		61C210971E874DFB00E1E84D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8EA7C1961E71EB850051C277 /* Event.swift */,
+				8E3C70351E76029900EBC3EC /* User.swift */,
+				61C210931E870E2500E1E84D /* Promise.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		61C210981E874E0300E1E84D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B7EB7071E6C735A0069D549 /* LoginViewController.swift */,
+				1BDD80941E779CA500D74B97 /* SettingsViewController.swift */,
+				1BAD2E121E78C88500126F7D /* MyFlyersTableViewController.swift */,
+				1BAD2E141E78C9F900126F7D /* DiscoverViewController.swift */,
+				1B4FEBD51E86F9240070B490 /* LocationController.swift */,
+				8E4DBCCF1E86FF3D002BADBB /* FlyerViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		61C210991E874E0900E1E84D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				61C210951E87151000E1E84D /* Date.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		61C2109A1E874E3000E1E84D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E4DBCCD1E86F4C0002BADBB /* FlyerTableViewCell.swift */,
+				1BDD80961E779CAC00D74B97 /* SnapSlider.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		EBDCDB865FD5B5DB39DE5AC0 /* Pods */ = {
