@@ -53,15 +53,34 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
+        //since Discover only segues to nav controllers, if this doesn't work an error occured.
+        guard let navVC = segue.destination as? UINavigationController else {
+            fatalError("Unexpected destination: \(segue.destination)");
+        }
+        
+        switch(segue.identifier ?? "") {
+        case "discoverToList":
+            //Sets discoverVC to be the first viewController on the navigation stack. This should be the Disocver view.
+            //If unable to set this a fatal error occured.
+            guard let discoverVC = navVC.viewControllers.first as? MyFlyersTableViewController else {
+                fatalError("Unexpected destination: \(navVC.viewControllers.first)");
+            }
+            //sets the user at the discover page before seguingfatalError("Unexpected destination: \(navVC.viewControllers.first)");
+            discoverVC.user = self.user
+        case "discoverToSettings":
+            print("segue to settings")
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)");
+        }
+
     }
-    */
+    
     
     
     //MARK: Functions
@@ -116,10 +135,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     //MARK: Actions
     
     @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
-        print("\n\n listButtonPressed function called")
-        print(user?.userId)
         user?.loadLikedEvents().then({_ in
-            print("\n\n events loaded \n\n")
             self.performSegue(withIdentifier: "discoverToList", sender: nil)
         })
     }

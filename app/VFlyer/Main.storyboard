@@ -25,7 +25,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <segue destination="rKE-9q-ST7" kind="show" identifier="loginSegue" id="7pr-Di-usn"/>
+                        <segue destination="zME-1h-iyy" kind="show" identifier="loginSegue" id="Pw1-Ea-rBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,8 +120,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="date" destination="foj-pX-DNK" id="b2h-ft-slw"/>
-                        <outlet property="dateTiime" destination="foj-pX-DNK" id="YQu-9T-A20"/>
-                        <outlet property="description" destination="szL-FO-uJ8" id="Rad-aa-lby"/>
                         <outlet property="descriptionTextView" destination="szL-FO-uJ8" id="a0i-eO-pKS"/>
                         <outlet property="location" destination="5Og-ph-kG3" id="JKd-r0-0kn"/>
                         <outlet property="name" destination="9o6-t5-bbr" id="dfF-Uj-01K"/>
@@ -129,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zH-z6-AFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3455.1999999999998" y="-710.19490254872574"/>
+            <point key="canvasLocation" x="6159.1999999999998" y="-1540.4797601199402"/>
         </scene>
         <!--Discover-->
         <scene sceneID="WeR-qH-t8v">
@@ -202,7 +200,7 @@
                     <navigationItem key="navigationItem" title="Discover" id="PKO-kG-LRK">
                         <barButtonItem key="leftBarButtonItem" image="settingsIcon" id="swA-QF-Hiw">
                             <connections>
-                                <segue destination="xgI-bT-fre" kind="show" id="jQl-U2-E5l"/>
+                                <segue destination="odp-H3-WYg" kind="show" identifier="discoverToSetting" id="AcR-q6-zYx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="listViewIcon" id="vES-kx-UWW">
@@ -218,7 +216,7 @@
                         <outlet property="nameLabel" destination="bcI-pE-80V" id="arT-1d-jUm"/>
                         <outlet property="noButton" destination="5Xl-EU-qNk" id="j6n-wU-clb"/>
                         <outlet property="yesButton" destination="lMj-5o-Y0t" id="wx0-YN-4iP"/>
-                        <segue destination="6cH-lV-j0j" kind="show" identifier="discoverToList" id="MHg-DH-sLf"/>
+                        <segue destination="567-Sk-mIh" kind="show" identifier="discoverToList" id="LlY-81-xPV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -228,7 +226,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4279.1999999999998" y="-1540.4797601199402"/>
+            <point key="canvasLocation" x="1380" y="-1540"/>
         </scene>
         <!--Settings-->
         <scene sceneID="cGq-Dy-0HI">
@@ -243,7 +241,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="LcH-D0-p1n">
-                                <rect key="frame" x="37" y="28" width="305" height="89"/>
+                                <rect key="frame" x="37" y="72" width="305" height="89"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range (km)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xm4-i6-st4">
                                         <rect key="frame" x="0.0" y="0.0" width="305" height="20.5"/>
@@ -341,31 +339,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSM-QA-eNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1671" y="249"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Eh0-Mf-r17">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Th-V5-reC" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sg8-vD-yhG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="xgI-bT-fre" kind="relationship" relationship="rootViewController" id="RDZ-yp-bDj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PWz-nH-zcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="841" y="249"/>
+            <point key="canvasLocation" x="3550" y="-457"/>
         </scene>
         <!--My Flyers-->
         <scene sceneID="6ig-8C-IE5">
             <objects>
                 <tableViewController id="6cH-lV-j0j" customClass="MyFlyersTableViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vVg-Ue-ZC6">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="144" sectionHeaderHeight="28" sectionFooterHeight="28" id="vVg-Ue-ZC6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -378,7 +358,7 @@
                             </connections>
                         </searchBar>
                         <stackView key="tableFooterView" opaque="NO" contentMode="scaleToFill" axis="vertical" id="rOV-LY-7jw">
-                            <rect key="frame" x="0.0" y="667" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="603" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover More Flyers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfh-U2-odQ">
@@ -456,7 +436,7 @@
                                     <outlet property="label" destination="rxG-Y0-9bh" id="8R9-JF-YTn"/>
                                     <outlet property="location" destination="6hu-cN-Jmn" id="Vfj-LP-vus"/>
                                     <outlet property="picture" destination="7kX-zN-x2f" id="Aad-pd-3dQ"/>
-                                    <segue destination="3hR-rX-cA7" kind="show" identifier="listToView" id="pbm-p5-DH7"/>
+                                    <segue destination="GZM-K8-3rf" kind="show" identifier="listToView" id="Bmp-7x-DrC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -468,12 +448,12 @@
                     <navigationItem key="navigationItem" title="My Flyers" id="yaL-hx-J7D">
                         <barButtonItem key="leftBarButtonItem" image="settingsIcon" id="U3j-zR-Uhk">
                             <connections>
-                                <segue destination="xgI-bT-fre" kind="show" identifier="listToSettings" id="Fv5-UU-fbZ"/>
+                                <segue destination="odp-H3-WYg" kind="show" identifier="listToSettings" id="leH-Qp-QIs"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="discoverIcon" id="349-8C-cPG">
                             <connections>
-                                <segue destination="LCW-C1-1rV" kind="show" id="g0f-3c-rtu"/>
+                                <segue destination="zME-1h-iyy" kind="show" identifier="listToDiscover" id="rG7-m5-KYY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -492,99 +472,79 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-250.40000000000001" y="-710.19490254872574"/>
+            <point key="canvasLocation" x="3550" y="-2667"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="sKB-Lw-wNP">
+        <scene sceneID="wjo-pb-eBB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c8w-jS-Yuc" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zME-1h-iyy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="laK-HA-yNY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qru-VC-eDs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="6cH-lV-j0j" kind="relationship" relationship="rootViewController" id="Wq6-5E-QvG"/>
+                        <segue destination="o99-GD-pBG" kind="relationship" relationship="rootViewController" id="N1v-Um-CHt"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="chQ-uW-fpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIf-87-CFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1201" y="-710"/>
+            <point key="canvasLocation" x="226" y="-1540"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="E1I-As-Wje">
+        <scene sceneID="fEu-jD-qTE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cFc-CL-VHO" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="odp-H3-WYg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E3f-nl-J3q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zcl-DJ-fJr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="3hR-rX-cA7" kind="relationship" relationship="rootViewController" id="RYU-Db-lac"/>
+                        <segue destination="xgI-bT-fre" kind="relationship" relationship="rootViewController" id="TaQ-zm-Usf"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YJJ-RQ-tc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jS6-Vz-bB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5333.6000000000004" y="-1504.4977511244379"/>
+            <point key="canvasLocation" x="2326" y="-456"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="BDm-qw-sbV">
+        <scene sceneID="LI1-dA-LuH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3hR-rX-cA7" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="567-Sk-mIh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="giC-E6-zq2"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eN5-Lc-hMW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V7d-J1-6dt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="boH-VT-flP" kind="relationship" relationship="rootViewController" id="f62-lx-pU1"/>
+                        <segue destination="6cH-lV-j0j" kind="relationship" relationship="rootViewController" id="ic6-4l-Ben"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="791-cH-Lky" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ofs-Os-Ced" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2575" y="-710"/>
+            <point key="canvasLocation" x="2326" y="-2667"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="hW7-Y7-JAh">
+        <scene sceneID="mSY-Iy-NRz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LCW-C1-1rV" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GZM-K8-3rf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QMf-VU-7dF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="90i-Jn-gQe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="rKE-9q-ST7" kind="relationship" relationship="rootViewController" id="D9u-KY-urz"/>
+                        <segue destination="boH-VT-flP" kind="relationship" relationship="rootViewController" id="ufO-G1-Ubg"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U7g-LS-csa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n3w-x6-126" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2002" y="-1980"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="yLp-lZ-Qgq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rKE-9q-ST7" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="jwL-Z2-Lj8"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bbE-zF-Trc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="o99-GD-pBG" kind="relationship" relationship="rootViewController" id="xKL-cB-8MR"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jzH-4J-pH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3340" y="-1540.4797601199402"/>
+            <point key="canvasLocation" x="5220" y="-1540.4797601199402"/>
         </scene>
     </scenes>
     <resources>
@@ -594,9 +554,7 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7pr-Di-usn"/>
-        <segue reference="MHg-DH-sLf"/>
-        <segue reference="jQl-U2-E5l"/>
-        <segue reference="pbm-p5-DH7"/>
+        <segue reference="rG7-m5-KYY"/>
+        <segue reference="leH-Qp-QIs"/>
     </inferredMetricsTieBreakers>
 </document>

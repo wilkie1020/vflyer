@@ -49,26 +49,30 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let discoverViewController = segue.destination as? DiscoverViewController else {
+        
+        //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
+        //if for some reason this didn't work then an error has occured.
+        guard let navVC = segue.destination as? UINavigationController else {
             fatalError("Unexpected destination: \(segue.destination)");
         }
-        if let accessToken = AccessToken.current {
-            //Unwraps the userId. If there is not user ID something is wrong. Otherwise, query the API for the user associated with that userId.
-            print("\n\n accessToken set \n\n")
-            if let userId = accessToken.userId {
-                print("\n\n userId set \n\n")
-                print(userId)
-                let user = User(userId: userId)
-                print("\n\n user init done \n\n")
-                print(user.userId)
-                user.login().then({
-                    discoverViewController.user = user
-                })
-            } else {
-                print("\n\n Error userId not set \n\n")
-            }
+        //Sets discoverVC to be the first viewController on the navigation stack. This should be the Disocver view.
+        //If unable to set this a fatal error occured.
+        guard let discoverVC = navVC.viewControllers.first as? DiscoverViewController else {
+            fatalError("Unexpected destination: \(navVC.viewControllers.first)");
+        }
+        
+        //Unwraps the userId. If there is not user ID something is wrong. Otherwise, query the API for the user associated with that userId.
+        guard let accessToken = AccessToken.current else {
+            fatalError("AccessToken is not set");
+        }
+
+        if let userId = accessToken.userId {
+            let user = User(userId: userId)
+            user.login().then({
+                discoverVC.user = user
+            })
         } else {
-            print("\n\n Error setting accessToken \n\n")
+            print("\n\n Error userId not set \n\n")
         }
     }
 
@@ -76,8 +80,5 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-
 }
 
