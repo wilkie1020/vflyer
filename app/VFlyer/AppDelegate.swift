@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Send To Discover Page")
 
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "DiscoverViewController")
+            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "DiscoverNavigationController")
         } else {
             print("Send to Login Page")
             

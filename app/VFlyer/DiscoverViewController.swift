@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import os.log
 import CoreLocation
 import FacebookCore
 
@@ -24,21 +23,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var yesButton: UIButton!
 
-    
-    //Text/Labels
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var dateTimeLabel: UILabel!
- 
-    
-    //Photo
-    @IBOutlet weak var eventPhoto: UIImageView!
-    //Tap Gesture
-    
-    @IBOutlet weak var testLabel: UILabel!
-    
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         let icon: UIImage = #imageLiteral(resourceName: "discoverIcon")
@@ -59,6 +44,11 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
                 self.getFlyers()
             })
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        noButton.layer.cornerRadius = 40
+        yesButton.layer.cornerRadius = 40
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,55 +97,42 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     
     //University lat 50.418034, long -104.590338
     //MARK: Functions
-    func getFlyers()
-    {
-        if(locationController.service())
-        {
-        
-            user?.discoverEvents(coordinates: coord).then(
-                { events in
+    func getFlyers() {
+        if(locationController.service()) {
+            user?.discoverEvents(coordinates: coord).then({ events in
                 print("Discovered events for user: \(events.count)")
-                for event in events {
-                    print("Name: \(event.name)")
-                    
-                }
+                self.events = events
             })
-            
-            events = user?.discoverEvents(coordinates: coord).value
-
-            
-        }
-        else
-        {
+        } else {
             //pop up option to enable gps
-            locationLabel.text = "Nothing"
-            
             let alert = UIAlertController(title: "GPS Unavailable", message: "GPS Unavailable, enable GPS?", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Settings", style: .default)
-            { action in
-                
+            alert.addAction(UIAlertAction(title: "Settings", style: .default) { action in
                 if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
                     UIApplication.shared.openURL(settingsURL as URL)
-                    
-               }
+                }
                 self.dismiss(animated: true, completion: nil)
-                
             })
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default)
-            { action in
-                
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default) { action in
                 self.dismiss(animated: true, completion: nil)
-                
             })
             self.present(alert, animated: true)
-            
         }
         
     }
     
-    
-
     //MARK: Actions
+    
+    @IBAction func noButtonTriggered(_ sender: UIButton) {
+        print("No")
+        events?.removeFirst()
+        print("Events count: \(events!.count)")
+    }
+    
+    @IBAction func yesButtonTriggered(_ sender: UIButton) {
+        print("Yes")
+        events?.removeFirst()
+        print("Events count: \(events!.count)")
+    }
     
     @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
         user?.loadLikedEvents().then({_ in
@@ -163,24 +140,15 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         })
     }
     
-    
-
-    
-    func locationDidUpdate(location: CLLocation?)
-    {
-        if(location != nil)
-        {
+    func locationDidUpdate(location: CLLocation?) {
+        if(location != nil) {
             coord = (location?.coordinate)!
-        }
-        else
-        {
+        } else {
             coord = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
         }
     }
 
-    
-    @IBAction func tapped(_ sender: Any)
-    {
+    @IBAction func tapped(_ sender: Any) {
         
     }
     
