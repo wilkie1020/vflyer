@@ -10,12 +10,11 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    //User
     
     //MARK: Properties
     let kmFactor = 1000
     var sliderActual: Int = 5000
-    
+    var user: User?
     //Outlets
     @IBOutlet weak var snapSlider: SnapSlider!
     @IBOutlet weak var testLabel: UILabel!

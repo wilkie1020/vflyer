@@ -106,15 +106,28 @@ class MyFlyersTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
+        //since Discover only segues to nav controllers, if this doesn't work an error occured.
+        guard let navVC = segue.destination as? UINavigationController else {
+            fatalError("Unexpected destination: \(segue.destination)");
+        }
+        
         switch(segue.identifier ?? "") {
         case "listToView":
-            print("segue to view")
+            guard let viewVC = navVC.viewControllers.first as? FlyerViewController else {
+                fatalError("Unexpected destination: \(navVC.viewControllers.first)");
+            }
+            viewVC.user = self.user
         case "listToSettings":
-            print("segue to settings")
+            guard let settingsVC = navVC.viewControllers.first as? SettingsViewController else {
+                fatalError("Unexpected destination: \(navVC.viewControllers.first)");
+            }
+            settingsVC.user = self.user
         case "listToDiscover":
-            print("segue to Discover")
+            guard let discoverVC = navVC.viewControllers.first as? DiscoverViewController else {
+                fatalError("Unexpected destination: \(navVC.viewControllers.first)");
+            }
+            discoverVC.user = self.user
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)");
         }

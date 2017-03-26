@@ -10,10 +10,13 @@ import UIKit
 
 class FlyerViewController: UIViewController {
     
+    //MARK: Properties
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
