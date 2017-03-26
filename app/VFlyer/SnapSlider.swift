@@ -25,13 +25,15 @@ class SnapSlider: UISlider {
     
     func snap() -> Float
     {
+        
        return round(value: self.value)
+        
     }
     
     func round(value: Float) -> Float
     {
         
-        if((value > 1) && (value <= 5))
+        if((value > 1) && (value <= 16.5))
         {
             if( value == 1)
             {
@@ -40,7 +42,7 @@ class SnapSlider: UISlider {
             else
             {
                 
-                let mid: Float = 3
+                let mid: Float = (1 + 16.5)/2
                 
                 if(value < mid)
                 {
@@ -48,78 +50,100 @@ class SnapSlider: UISlider {
                 }
                 else
                 {
-                    return 5
+                    return 16.5
                 }
                 
             }
         }
-        else if((value > 5) && (value <= 10))
+        else if((value > 16.5) && (value <= 33))
         {
-            if( value == 10)
+            if( value == 33)
             {
-                return 10
+                return 33
             }
             else
             {
                 
-                let mid: Float = 15/2
+                let mid: Float = (16.5 + 33)/2
                 
                 if(value < mid)
                 {
-                    return 5
+                    return 16.5
                 }
                 else
                 {
-                    return 10
+                    return 33
                 }
                 
             }
         }
-        else if((value > 10) && (value <= 25))
+        else if((value > 33) && (value <= 49.5))
         {
-            if( value == 25)
+            if( value == 49.5)
             {
-                return 25
+                return 49.5
             }
             else
             {
                 
-                let mid: Float = 35/2
+                let mid: Float = (33 + 49.5)/2
                 
                 if(value < mid)
                 {
-                    return 10
+                    return 33
                 }
                 else
                 {
-                    return 25
+                    return 49.5
                 }
                 
             }
         }
-        else if((value > 25) && (value <= 50))
+        else if((value > 49.5) && (value <= 66))
         {
-            if( value == 50)
+            if( value == 66)
             {
-                return 50
+                return 66
             }
             else
             {
                 
-                let mid: Float = 75/2
+                let mid: Float = (49.5 + 66)/2
                 
                 if(value < mid)
                 {
-                    return 25
+                    return 49.5
                 }
                 else
                 {
-                    return 50
+                    return 66
                 }
                 
             }
         }
-        else if((value > 50) && (value <= 100))
+        else if((value > 66) && (value <= 82.5))
+        {
+            if( value == 82.5)
+            {
+                return 82.5
+            }
+            else
+            {
+                
+                let mid: Float = (66 + 82.5)/2
+                
+                if(value < mid)
+                {
+                    return 66
+                }
+                else
+                {
+                    return 82.5
+                }
+                
+            }
+        }
+        else if((value > 82.5) && (value <= 100))
         {
             if( value == 100)
             {
@@ -128,11 +152,11 @@ class SnapSlider: UISlider {
             else
             {
                 
-                let mid: Float = 75
+                let mid: Float = (100 + 82.5)/2
                 
                 if(value < mid)
                 {
-                    return 50
+                    return 82.5
                 }
                 else
                 {
