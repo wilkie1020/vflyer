@@ -21,12 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Regina" translatesAutoresizingMaskIntoConstraints="NO" id="h9C-9E-fLM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Regina" translatesAutoresizingMaskIntoConstraints="NO" id="h9C-9E-fLM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="h9C-9E-fLM" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="U7r-E3-c6G"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="h9C-9E-fLM" secondAttribute="bottom" id="bbL-wF-XhE"/>
+                            <constraint firstAttribute="trailing" secondItem="h9C-9E-fLM" secondAttribute="trailing" id="tti-Xg-XUZ"/>
+                            <constraint firstItem="h9C-9E-fLM" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="txd-EL-Mek"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
