@@ -134,8 +134,6 @@
         <!--Discover-->
         <scene sceneID="WeR-qH-t8v">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Jm1-xz-bsN"/>
                 <viewController id="o99-GD-pBG" customClass="DiscoverViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vKY-tP-fi6"/>
@@ -149,7 +147,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="526"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="cnJ-gB-6LT">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="cnJ-gB-6LT">
                                         <rect key="frame" x="8" y="0.0" width="359" height="378"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -214,10 +212,21 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateTimeLabel" destination="Z3c-Wk-wN2" id="vBd-kF-r9L"/>
+                        <outlet property="eventPhoto" destination="cnJ-gB-6LT" id="Cqp-xw-jhx"/>
                         <outlet property="locationLabel" destination="1vT-gB-syL" id="inO-uf-Bg9"/>
+                        <outlet property="nameLabel" destination="bcI-pE-80V" id="arT-1d-jUm"/>
+                        <outlet property="noButton" destination="5Xl-EU-qNk" id="j6n-wU-clb"/>
+                        <outlet property="yesButton" destination="lMj-5o-Y0t" id="wx0-YN-4iP"/>
                         <segue destination="6cH-lV-j0j" kind="show" identifier="discoverToList" id="MHg-DH-sLf"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Jm1-xz-bsN">
+                    <connections>
+                        <action selector="tapped:" destination="o99-GD-pBG" id="56K-zd-QeP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4279.1999999999998" y="-1540.4797601199402"/>
         </scene>
@@ -234,7 +243,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="LcH-D0-p1n">
-                                <rect key="frame" x="37" y="72" width="305" height="89"/>
+                                <rect key="frame" x="37" y="28" width="305" height="89"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range (km)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xm4-i6-st4">
                                         <rect key="frame" x="0.0" y="0.0" width="305" height="20.5"/>
@@ -369,7 +378,7 @@
                             </connections>
                         </searchBar>
                         <stackView key="tableFooterView" opaque="NO" contentMode="scaleToFill" axis="vertical" id="rOV-LY-7jw">
-                            <rect key="frame" x="0.0" y="603" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="667" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover More Flyers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfh-U2-odQ">

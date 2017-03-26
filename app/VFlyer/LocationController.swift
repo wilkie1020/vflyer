@@ -55,18 +55,6 @@ class LocationController: NSObject, CLLocationManagerDelegate{
         
     }
     
- 
-    func returnLocation() -> CLLocationCoordinate2D
-    {
-        if(location != nil)
-        {
-            return self.location!
-        }
-        else
-        {
-            return CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
-        }
-        
-    }
+
     
 }
