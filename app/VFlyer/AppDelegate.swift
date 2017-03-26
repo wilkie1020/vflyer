@@ -20,20 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //For facebook login to work
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        print(AccessToken.current?.userId ?? "Access token not set")
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         if (AccessToken.current != nil) {
             print("Send To Discover Page")
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            
+
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "DiscoverViewController")
-            
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
+            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "DiscoverViewController")
         } else {
             print("Send to Login Page")
+            
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         }
+        self.window?.makeKeyAndVisible()
         
         return true
     }

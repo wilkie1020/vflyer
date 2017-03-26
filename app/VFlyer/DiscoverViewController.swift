@@ -9,6 +9,7 @@
 import UIKit
 import os.log
 import CoreLocation
+import FacebookCore
 
 class DiscoverViewController: UIViewController, LocationControllerDelegate {
 
@@ -36,7 +37,6 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     
     @IBOutlet weak var testLabel: UILabel!
     
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -47,10 +47,18 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         
         locationController.delegate = self
         
-        let test = "_id: \(user?._id)\nuserId: \(user?.userId)\nradius: \(user?.radius)\n"
-        testLabel.text = test
-        
-        getFlyers()
+        guard let accessToken = AccessToken.current else {
+            fatalError("AccessToken is not set");
+        }
+
+        if let userId = accessToken.userId {
+            user = User(userId: userId)
+            user?.login().then({
+                let test = "_id: \(self.user?._id)\nuserId: \(self.user?.userId)\nradius: \(self.user?.radius)\n"
+                self.testLabel.text = test
+                self.getFlyers()
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {

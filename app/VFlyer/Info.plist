@@ -63,7 +63,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>To get location for discovery of events</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To find events nearby</string>
 </dict>
 </plist>

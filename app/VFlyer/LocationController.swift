@@ -26,7 +26,7 @@ class LocationController: NSObject, CLLocationManagerDelegate{
         super.init()
         self.location = nil
         self.locationManager.delegate = self
-        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         
     }
