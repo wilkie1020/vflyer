@@ -57,8 +57,6 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
                 let test = "_id: \(self.user?._id)\nuserId: \(self.user?.userId)\nradius: \(self.user?.radius)\n"
                 print(test)
                 self.getFlyers()
-                
-                self.user?.save()
             })
         }
     }

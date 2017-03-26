@@ -48,31 +48,32 @@ class User {
     
     // MARK: Methods
     
-    public func save() {
-        if let reqBody = try? JSONSerialization.data(withJSONObject: self.json, options: [.prettyPrinted]) {
-            let url = URL(string: "users/\(_id!)", relativeTo: BASE_URL)!
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.httpBody = reqBody
-            
-            print("PUT \(url.absoluteURL)")
-            
-            let config = URLSessionConfiguration.default
-            let session = URLSession(configuration: config)
-            
-            session.dataTask(with: request, completionHandler: { data, response, error in
+    public func save() -> Promise<Bool> {
+        guard let reqBody = try? JSONSerialization.data(withJSONObject: self.json, options: []) else {
+            fatalError("Something has gone horribly wrong.")
+        }
+        
+        let url = URL(string: "users/\(_id!)", relativeTo: BASE_URL)!
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "PUT"
+        
+        print("PUT \(url.absoluteURL)")
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        return Promise<Bool>(work: { fulfill, reject in
+            session.uploadTask(with: request, from: reqBody, completionHandler: { data, response, error in
                 if let error = error {
-                    print(error.localizedDescription)
-                } else if let data = data, let response = response as? HTTPURLResponse {
-                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                        print(json)
-                    }
-                    print(response.statusCode == 200)
+                    reject(error)
+                } else if let _ = data, let response = response as? HTTPURLResponse {
+                    fulfill(response.statusCode == 200)
                 } else {
                     fatalError("Something has gone horribly wrong.")
                 }
             }).resume()
-        }
+        })
     }
     
     public func login() -> Promise<Void> {
