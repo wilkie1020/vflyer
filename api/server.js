@@ -21,6 +21,9 @@ mongoose.connect('mongodb://localhost:27017/vflyer');
 
 app.use(function(req, res, next) {
     console.log(req.method + " " + req.originalUrl);
+    if (req.method == "PUT" || req.method == "POST") {
+        console.log(req.body)
+    }
     next();
 });
 
