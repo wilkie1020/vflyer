@@ -49,18 +49,26 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let discoverViewController = segue.destination as? DiscoverViewController {
-            if let accessToken = AccessToken.current {
-                //Unwraps the userId. If there is not user ID something is wrong. Otherwise, query the API for the user associated with that userId.
-                if let userId = accessToken.userId {
-                    let user = User(userId: userId)
-                    user.login().then({
-                        discoverViewController.user = user
-                    })
-                } else {
-                    print("Error acessToken has no userId")
-                }
+        guard let discoverViewController = segue.destination as? DiscoverViewController else {
+            fatalError("Unexpected destination: \(segue.destination)");
+        }
+        if let accessToken = AccessToken.current {
+            //Unwraps the userId. If there is not user ID something is wrong. Otherwise, query the API for the user associated with that userId.
+            print("\n\n accessToken set \n\n")
+            if let userId = accessToken.userId {
+                print("\n\n userId set \n\n")
+                print(userId)
+                let user = User(userId: userId)
+                print("\n\n user init done \n\n")
+                print(user.userId)
+                user.login().then({
+                    discoverViewController.user = user
+                })
+            } else {
+                print("\n\n Error userId not set \n\n")
             }
+        } else {
+            print("\n\n Error setting accessToken \n\n")
         }
     }
 

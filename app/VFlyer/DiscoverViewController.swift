@@ -98,8 +98,9 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     //MARK: Actions
     
     @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
-        print("\n\n listButtonPressed function called \n\n")
-        user?.loadLikedEvents().then(success: {
+        print("\n\n listButtonPressed function called")
+        print(user?.userId)
+        user?.loadLikedEvents().then({_ in 
             print("\n\n events loaded \n\n")
             self.performSegue(withIdentifier: "discoverToList", sender: nil)
         })
