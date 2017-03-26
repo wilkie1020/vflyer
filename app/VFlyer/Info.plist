@@ -61,6 +61,8 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>To get location for discovery of events</string>
 </dict>

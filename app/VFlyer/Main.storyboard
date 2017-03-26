@@ -22,15 +22,47 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Regina" translatesAutoresizingMaskIntoConstraints="NO" id="wWd-nV-UxE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdh-Ad-etd">
+                                <rect key="frame" x="62" y="549" width="250" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Log In with Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonTriggered:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="qwu-8Z-9Pg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We don't post anything to Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JS-n7-1Jh">
+                                <rect key="frame" x="62" y="602" width="250" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wWd-nV-UxE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="EX7-Bv-W02"/>
+                            <constraint firstItem="wWd-nV-UxE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Mnq-dZ-vMH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wWd-nV-UxE" secondAttribute="bottom" id="QnQ-dG-SRo"/>
+                            <constraint firstAttribute="trailing" secondItem="wWd-nV-UxE" secondAttribute="trailing" id="SNa-Dc-EXr"/>
+                            <constraint firstItem="wWd-nV-UxE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="o0m-9y-PsA"/>
+                            <constraint firstAttribute="trailing" secondItem="wWd-nV-UxE" secondAttribute="trailing" id="q4g-il-GF1"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="Tdh-Ad-etd" id="dIX-DK-6z2"/>
                         <segue destination="zME-1h-iyy" kind="show" identifier="loginSegue" id="Pw1-Ea-rBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-914" y="-1539"/>
+            <point key="canvasLocation" x="-914.39999999999998" y="-1539.5802098950526"/>
         </scene>
         <!--Flyer View Controller-->
         <scene sceneID="EQE-d6-wP9">
@@ -533,13 +565,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Regina" width="1296" height="968"/>
         <image name="defaultPhoto" width="320" height="320"/>
         <image name="discoverIcon" width="25" height="25"/>
         <image name="listViewIcon" width="25" height="27"/>
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rG7-m5-KYY"/>
         <segue reference="AcR-q6-zYx"/>
+        <segue reference="Pw1-Ea-rBh"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,40 +11,33 @@ import Foundation
 import FacebookLogin
 import FacebookCore
 
-class LoginViewController: UIViewController, LoginButtonDelegate {
+class LoginViewController: UIViewController {
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (AccessToken.current != nil) {
+            performSegue(withIdentifier: "loginSegue", sender: nil)
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        loginButton.layer.cornerRadius = 5
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
     
     override func viewDidAppear(_ animated: Bool) {
         //if the user is already logged in then no need to create loggin button.
-        if AccessToken.current != nil {
-            //segue to the discover page.
-            performSegue(withIdentifier: "loginSegue", sender: nil)
-        } else {
-            //Creates Facebook login button at center of the screen.
-            let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-            loginButton.center = view.center
-            
-            view.addSubview(loginButton)
-        }
-    }
-    
-    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
-        switch result {
-        case .success(_, _, _):
-            performSegue(withIdentifier: "loginSegue", sender: nil)
-        case .failed(let errors):
-            print("failed because: " + errors.localizedDescription)
-        default:
-            print("cancelled")
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: LoginButton) {
-        print("logged out")
+        
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -80,5 +73,20 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func loginButtonTriggered(_ sender: UIButton) {
+        let loginManager = LoginManager()
+        loginManager.logIn([.publicProfile], viewController: self) { loginResult in
+            switch loginResult {
+            case .success(_, _, _):
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            case .failed(let errors):
+                print("failed because: " + errors.localizedDescription)
+            default:
+                print("cancelled")
+            }
+        }
+    }
+    
 }
 
