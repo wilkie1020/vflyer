@@ -55,8 +55,10 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
             user = User(userId: userId)
             user?.login().then({
                 let test = "_id: \(self.user?._id)\nuserId: \(self.user?.userId)\nradius: \(self.user?.radius)\n"
-                self.testLabel.text = test
+                print(test)
                 self.getFlyers()
+                
+                self.user?.save()
             })
         }
     }

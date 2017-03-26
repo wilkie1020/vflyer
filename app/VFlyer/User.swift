@@ -17,6 +17,14 @@ class User {
     var radius: Int?
     var likedEvents = [Event]()
     
+    var json: [String: Any] {
+        return [
+            "_id": self._id!,
+            "userId": self.userId,
+            "radius": self.radius!
+        ]
+    }
+    
     //MARK: Initialization
     init(userId: String) {
         self.userId = userId
@@ -39,6 +47,33 @@ class User {
     let BASE_URL = URL(string: "http://159.203.7.42:8000/api/")
     
     // MARK: Methods
+    
+    public func save() {
+        if let reqBody = try? JSONSerialization.data(withJSONObject: self.json, options: [.prettyPrinted]) {
+            let url = URL(string: "users/\(_id!)", relativeTo: BASE_URL)!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = reqBody
+            
+            print("PUT \(url.absoluteURL)")
+            
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            
+            session.dataTask(with: request, completionHandler: { data, response, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let data = data, let response = response as? HTTPURLResponse {
+                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+                        print(json)
+                    }
+                    print(response.statusCode == 200)
+                } else {
+                    fatalError("Something has gone horribly wrong.")
+                }
+            }).resume()
+        }
+    }
     
     public func login() -> Promise<Void> {
         let url = URL(string: "users/login?fbUserId=\(userId)", relativeTo: BASE_URL)!
