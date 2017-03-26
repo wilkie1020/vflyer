@@ -52,49 +52,49 @@ class Event {
     
     // MARK: Methods
     
-    public func likeEvent(forUser user:User) -> Promise {
-        let p = Promise.defer()
-        
-        let url = URL(string: "users/\(user._id!)/liked?eventId=\(_id)", relativeTo: BASE_URL)!
-        print("POST \(url.absoluteURL)")
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            let httpResponse = response as! HTTPURLResponse
-            if httpResponse.statusCode == 200 {
-                p.resolve()()
-            } else {
-                p.fail()
-            }
-        })
-        task.resume()
-        return p
-    }
-    
-    public func unlikeEvent(forUser user:User) -> Promise {
-        let p = Promise.defer()
-        
-        let url = URL(string: "users/\(user._id!)/liked?eventId=\(_id)", relativeTo: BASE_URL)!
-        print("DELETE \(url.absoluteURL)")
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            let httpResponse = response as! HTTPURLResponse
-            if httpResponse.statusCode == 200 {
-                p.resolve()()
-            } else {
-                p.fail()
-            }
-        })
-        task.resume()
-        return p
-    }
+//    public func likeEvent(forUser user:User) -> Promise {
+//        let p = Promise.defer()
+//        
+//        let url = URL(string: "users/\(user._id!)/liked?eventId=\(_id)", relativeTo: BASE_URL)!
+//        print("POST \(url.absoluteURL)")
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        
+//        let config = URLSessionConfiguration.default
+//        let session = URLSession(configuration: config)
+//        
+//        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+//            let httpResponse = response as! HTTPURLResponse
+//            if httpResponse.statusCode == 200 {
+//                p.resolve()()
+//            } else {
+//                p.fail()
+//            }
+//        })
+//        task.resume()
+//        return p
+//    }
+//    
+//    public func unlikeEvent(forUser user:User) -> Promise {
+//        let p = Promise.defer()
+//        
+//        let url = URL(string: "users/\(user._id!)/liked?eventId=\(_id)", relativeTo: BASE_URL)!
+//        print("DELETE \(url.absoluteURL)")
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "DELETE"
+//        
+//        let config = URLSessionConfiguration.default
+//        let session = URLSession(configuration: config)
+//        
+//        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+//            let httpResponse = response as! HTTPURLResponse
+//            if httpResponse.statusCode == 200 {
+//                p.resolve()()
+//            } else {
+//                p.fail()
+//            }
+//        })
+//        task.resume()
+//        return p
+//    }
 }

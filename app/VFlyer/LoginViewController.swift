@@ -54,10 +54,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                 //Unwraps the userId. If there is not user ID something is wrong. Otherwise, query the API for the user associated with that userId.
                 if let userId = accessToken.userId {
                     let user = User(userId: userId)
-                    user.login().then(success: {
-                        discoverViewController.user?._id = user._id
-                        discoverViewController.user?.userId = user.userId
-                        discoverViewController.user?.radius = user.radius
+                    user.login().then({
+                        discoverViewController.user = user
                     })
                 } else {
                     print("Error acessToken has no userId")
