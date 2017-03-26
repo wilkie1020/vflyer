@@ -39,7 +39,7 @@ class MyFlyersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let rowAmount = self.user?.events.count {
+        if let rowAmount = self.user?.likedEvents.count {
             return rowAmount
         }
         return 0
@@ -55,7 +55,7 @@ class MyFlyersTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of FlyerTableViewCell.")
         }
         
-        let event = self.user?.events[indexPath.row]
+        let event = self.user?.likedEvents[indexPath.row]
         
         // Configuring cell
         cell.label.text = event?.name

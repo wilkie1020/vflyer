@@ -14,16 +14,24 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     //MARK: Properties
     var user: User?
     var locationController = LocationController()
+    var coord = CLLocationCoordinate2D()
+    var eventsIndex = 0
     
     //Buttons
+    @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var yesButton: UIButton!
 
     
     //Text/Labels
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateTimeLabel: UILabel!
  
     
     //Photo
-
+    @IBOutlet weak var eventPhoto: UIImageView!
+    //Tap Gesture
+    
     
     
     override func viewDidLoad()
@@ -62,7 +70,17 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         if(locationController.service())
         {
         
-            //user.discoverEvents
+            user?.discoverEvents(coordinates: coord).then({ events in
+                print("Discovered events for user: \(events.count)")
+                for event in events {
+                    print("Name: \(event.name)")
+                    
+                }
+            })
+            
+            nameLabel.text = user?.likedEvents[0].name
+            //locationLabel.text = user?.likedEvents[0].
+            //dateTimeLabel.text = String(format: "DD/MM/YY", user?.likedEvents[0].startDate)
             
         }
         else
@@ -97,42 +115,33 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
 
     //MARK: Actions
     
-    @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
+ /*   @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
         print("\n\n listButtonPressed function called \n\n")
         user?.loadLikedEvents().then(success: {
             print("\n\n events loaded \n\n")
             self.performSegue(withIdentifier: "discoverToList", sender: nil)
         })
-    }
-    
-    
-    //location testing
-    /*
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-        
-        if(locations.last != nil)
-        {
-            locationLabel.text = String(format: "location: (%0.6f, %0.6f)", (locations.last?.coordinate.latitude)!, (locations.last?.coordinate.longitude)!)
-        }
-        else
-        {
-            locationLabel.text = "0, 0"
-        }
-        
     }*/
+    
+    
+
     
     func locationDidUpdate(location: CLLocation?)
     {
         if(location != nil)
         {
-            locationLabel.text = String(format: "location: (%0.6f, %0.6f)", (location!.coordinate.latitude), (location!.coordinate.longitude))
+            coord = (location?.coordinate)!
         }
         else
         {
-            locationLabel.text = "0, 0"
+            coord = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
         }
     }
 
+    
+    @IBAction func tapped(_ sender: Any)
+    {
+        
+    }
     
 }
