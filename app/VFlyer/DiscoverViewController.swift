@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import os.log
 import CoreLocation
 
 class DiscoverViewController: UIViewController, LocationControllerDelegate {
 
     //MARK: Properties
     var user: User?
+    var events: [Event]?
     var locationController = LocationController()
     var coord = CLLocationCoordinate2D()
     var eventsIndex = 0
@@ -74,7 +76,14 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
             //sets the user at the discover page before seguingfatalError("Unexpected destination: \(navVC.viewControllers.first)");
             discoverVC.user = self.user
         case "discoverToSettings":
-            print("segue to settings")
+            //print("segue to settings")
+            guard let settingsVC = navVC.viewControllers.first as? SettingsViewController else {
+                fatalError("Unexpected destination: \(navVC.viewControllers.first)");
+            }
+            let icon: UIImage = #imageLiteral(resourceName: "discoverIcon")
+            settingsVC.backButton.image = icon
+        case "settingsToDiscover":
+            print("settingstodiscover segue")
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)");
         }
@@ -82,14 +91,15 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     }
     
     
-    
+    //University lat 50.418034, long -104.590338
     //MARK: Functions
     func getFlyers()
     {
         if(locationController.service())
         {
         
-            user?.discoverEvents(coordinates: coord).then({ events in
+            user?.discoverEvents(coordinates: coord).then(
+                { events in
                 print("Discovered events for user: \(events.count)")
                 for event in events {
                     print("Name: \(event.name)")
@@ -97,9 +107,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
                 }
             })
             
-            nameLabel.text = user?.likedEvents[0].name
-            //locationLabel.text = user?.likedEvents[0].
-            //dateTimeLabel.text = String(format: "DD/MM/YY", user?.likedEvents[0].startDate)
+            events = user?.discoverEvents(coordinates: coord).value
+
             
         }
         else

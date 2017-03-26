@@ -33,7 +33,7 @@ class SnapSlider: UISlider {
     func round(value: Float) -> Float
     {
         
-        if((value > 1) && (value <= 16.5))
+        if((value > 1) && (value <= 20))
         {
             if( value == 1)
             {
@@ -42,7 +42,7 @@ class SnapSlider: UISlider {
             else
             {
                 
-                let mid: Float = (1 + 16.5)/2
+                let mid: Float = (1 + 20)/2
                 
                 if(value < mid)
                 {
@@ -50,56 +50,56 @@ class SnapSlider: UISlider {
                 }
                 else
                 {
-                    return 16.5
+                    return 20
                 }
                 
             }
         }
-        else if((value > 16.5) && (value <= 33))
+        else if((value > 20) && (value <= 40))
         {
-            if( value == 33)
+            if( value == 40)
             {
-                return 33
+                return 40
             }
             else
             {
                 
-                let mid: Float = (16.5 + 33)/2
+                let mid: Float = (60)/2
                 
                 if(value < mid)
                 {
-                    return 16.5
+                    return 20
                 }
                 else
                 {
-                    return 33
+                    return 40
                 }
                 
             }
         }
-        else if((value > 33) && (value <= 49.5))
+        else if((value > 40) && (value <= 60))
         {
-            if( value == 49.5)
+            if( value == 60)
             {
-                return 49.5
+                return 60
             }
             else
             {
                 
-                let mid: Float = (33 + 49.5)/2
+                let mid: Float = (60 + 40)/2
                 
                 if(value < mid)
                 {
-                    return 33
+                    return 40
                 }
                 else
                 {
-                    return 49.5
+                    return 60
                 }
                 
             }
         }
-        else if((value > 49.5) && (value <= 66))
+        else if((value > 60) && (value <= 80))
         {
             if( value == 66)
             {
@@ -108,42 +108,20 @@ class SnapSlider: UISlider {
             else
             {
                 
-                let mid: Float = (49.5 + 66)/2
+                let mid: Float = (60 + 80)/2
                 
                 if(value < mid)
                 {
-                    return 49.5
+                    return 60
                 }
                 else
                 {
-                    return 66
+                    return 80
                 }
                 
             }
         }
-        else if((value > 66) && (value <= 82.5))
-        {
-            if( value == 82.5)
-            {
-                return 82.5
-            }
-            else
-            {
-                
-                let mid: Float = (66 + 82.5)/2
-                
-                if(value < mid)
-                {
-                    return 66
-                }
-                else
-                {
-                    return 82.5
-                }
-                
-            }
-        }
-        else if((value > 82.5) && (value <= 100))
+        else if((value > 80) && (value <= 100))
         {
             if( value == 100)
             {
@@ -152,11 +130,11 @@ class SnapSlider: UISlider {
             else
             {
                 
-                let mid: Float = (100 + 82.5)/2
+                let mid: Float = (80 + 100)/2
                 
                 if(value < mid)
                 {
-                    return 82.5
+                    return 80
                 }
                 else
                 {
@@ -165,7 +143,8 @@ class SnapSlider: UISlider {
                 
             }
         }
-        else //simple a fail safe. Logic should be fine.
+            //simple a fail safe. Logic should be fine.
+        else
         {
             return 1
         }
