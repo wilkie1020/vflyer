@@ -48,9 +48,9 @@ class MyFlyersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "FlyerTableViewCell"
+        let cellIdentifier = "myFlyersCell"
         
-        //unwrap the returned optional using the guard. If it doesn't return something that can be unwrapped to a MealTableViewCell then a fatal error has occured.
+        //unwrap the returned optional using the guard. If it doesn't return something that can be unwrapped to a FlyerTableViewCell then a fatal error has occured.
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? FlyerTableViewCell else {
             fatalError("The dequeued cell is not an instance of FlyerTableViewCell.")
         }
