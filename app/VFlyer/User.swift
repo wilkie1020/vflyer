@@ -45,6 +45,8 @@ class User {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
+        print("POST \(url.absoluteURL)")
+        
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         
@@ -71,6 +73,8 @@ class User {
         let url = URL(string: "users/\(_id!)/liked", relativeTo: BASE_URL)!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        
+        print("GET \(url.absoluteURL)")
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
@@ -106,6 +110,8 @@ class User {
         let url = URL(string: "events?lat=\(lat)&lon=\(lon)&userId=\(_id!)", relativeTo: BASE_URL)!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        
+        print("GET \(url.absoluteURL)")
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)

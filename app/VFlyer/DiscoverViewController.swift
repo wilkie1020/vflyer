@@ -34,6 +34,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     @IBOutlet weak var eventPhoto: UIImageView!
     //Tap Gesture
     
+    @IBOutlet weak var testLabel: UILabel!
     
     
     override func viewDidLoad()
@@ -45,6 +46,9 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         self.navigationItem.titleView = iconImage
         
         locationController.delegate = self
+        
+        let test = "_id: \(user?._id)\nuserId: \(user?.userId)\nradius: \(user?.radius)\n"
+        testLabel.text = test
         
         getFlyers()
     }

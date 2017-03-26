@@ -17,10 +17,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (AccessToken.current != nil) {
-            performSegue(withIdentifier: "loginSegue", sender: nil)
-        }
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -36,9 +32,13 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //if the user is already logged in then no need to create loggin button.
-        
+        print(AccessToken.current?.userId ?? "Access token not set")
+        if (AccessToken.current != nil) {
+            print("Here")
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }
     }
+    
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,7 +62,10 @@ class LoginViewController: UIViewController {
         if let userId = accessToken.userId {
             let user = User(userId: userId)
             user.login().then({
+                print("Logged In")
                 discoverVC.user = user
+                let test = "_id: \(user._id)\nuserId: \(user.userId)\nradius: \(user.radius)\n"
+                print(test)
             })
         } else {
             print("\n\n Error userId not set \n\n")

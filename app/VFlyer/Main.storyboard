@@ -164,7 +164,7 @@
         <!--Discover-->
         <scene sceneID="WeR-qH-t8v">
             <objects>
-                <viewController id="o99-GD-pBG" customClass="DiscoverViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverViewController" id="o99-GD-pBG" customClass="DiscoverViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vKY-tP-fi6"/>
                         <viewControllerLayoutGuide type="bottom" id="U17-yB-Kbq"/>
@@ -198,6 +198,14 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date/Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3c-Wk-wN2">
                                         <rect key="frame" x="8" y="458" width="359" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bk1-V9-1GJ">
+                                        <rect key="frame" x="21" y="105" width="333" height="168"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -248,6 +256,7 @@
                         <outlet property="locationLabel" destination="1vT-gB-syL" id="inO-uf-Bg9"/>
                         <outlet property="nameLabel" destination="bcI-pE-80V" id="arT-1d-jUm"/>
                         <outlet property="noButton" destination="5Xl-EU-qNk" id="j6n-wU-clb"/>
+                        <outlet property="testLabel" destination="bk1-V9-1GJ" id="JZ5-mv-OPU"/>
                         <outlet property="yesButton" destination="lMj-5o-Y0t" id="wx0-YN-4iP"/>
                     </connections>
                 </viewController>
@@ -258,7 +267,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1380" y="-1540"/>
+            <point key="canvasLocation" x="1380" y="-1540.4797601199402"/>
         </scene>
         <!--Settings-->
         <scene sceneID="cGq-Dy-0HI">

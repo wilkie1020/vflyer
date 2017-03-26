@@ -57,6 +57,8 @@ class Event {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
+        print("POST \(url.absoluteURL)")
+        
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         
@@ -77,6 +79,8 @@ class Event {
         let url = URL(string: "users/\(user._id!)/liked?eventId=\(_id)", relativeTo: BASE_URL)!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
+        
+        print("DELETE \(url.absoluteURL)")
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
