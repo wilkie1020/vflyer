@@ -86,6 +86,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
             }
             let icon: UIImage = #imageLiteral(resourceName: "discoverIcon")
             settingsVC.backButton.image = icon
+            settingsVC.user = self.user
+            
         case "settingsToDiscover":
             print("settingstodiscover segue")
         default:
