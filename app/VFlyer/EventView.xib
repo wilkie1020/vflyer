@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventView" customModule="VFlyer" customModuleProvider="target">
+            <connections>
+                <outlet property="dateLabel" destination="XJJ-YQ-Cqe" id="PT7-y0-0OU"/>
+                <outlet property="imageView" destination="rQs-a5-wdf" id="fve-yk-YfS"/>
+                <outlet property="nameLabel" destination="Qy9-4J-zMs" id="lkf-3w-4C0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="475"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="rQs-a5-wdf">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="rQs-a5-wdf" secondAttribute="height" multiplier="1:1" id="H9F-gj-yji"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qy9-4J-zMs">
+                    <rect key="frame" x="10" y="383" width="355" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VG9-Ub-wfe">
+                    <rect key="frame" x="10" y="409" width="355" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="G8P-gp-MG2"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Start - Event End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJJ-YQ-Cqe">
+                    <rect key="frame" x="10" y="418" width="355" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="VG9-Ub-wfe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="27U-3j-V1G"/>
+                <constraint firstItem="rQs-a5-wdf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6K0-Ep-x8V"/>
+                <constraint firstItem="XJJ-YQ-Cqe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="7px-gE-Lp8"/>
+                <constraint firstAttribute="trailing" secondItem="rQs-a5-wdf" secondAttribute="trailing" id="EWi-UA-E2T"/>
+                <constraint firstItem="XJJ-YQ-Cqe" firstAttribute="top" secondItem="VG9-Ub-wfe" secondAttribute="bottom" constant="8" id="FBR-z6-EeE"/>
+                <constraint firstItem="rQs-a5-wdf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NjG-fH-1I0"/>
+                <constraint firstItem="Qy9-4J-zMs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="SHu-tV-xUU"/>
+                <constraint firstItem="VG9-Ub-wfe" firstAttribute="top" secondItem="Qy9-4J-zMs" secondAttribute="bottom" constant="2" id="Vpz-k2-jOV"/>
+                <constraint firstAttribute="trailing" secondItem="XJJ-YQ-Cqe" secondAttribute="trailing" constant="10" id="kTl-wZ-0mY"/>
+                <constraint firstAttribute="trailing" secondItem="Qy9-4J-zMs" secondAttribute="trailing" constant="10" id="m8M-nx-kY1"/>
+                <constraint firstAttribute="trailing" secondItem="VG9-Ub-wfe" secondAttribute="trailing" constant="10" id="mGf-1O-I0C"/>
+                <constraint firstItem="Qy9-4J-zMs" firstAttribute="top" secondItem="rQs-a5-wdf" secondAttribute="bottom" constant="8" id="z6D-qs-a7N"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="37" y="-58"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="defaultPhoto" width="320" height="320"/>
+    </resources>
+</document>

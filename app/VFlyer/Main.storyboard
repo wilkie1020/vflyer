@@ -160,11 +160,18 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OjN-qo-CXE" customClass="EventView" customModule="VFlyer" customModuleProvider="target">
+                                <rect key="frame" x="8" y="84" width="359" height="452"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="haG-lw-SWI" secondAttribute="trailing" constant="25" id="0AJ-va-Lyb"/>
+                            <constraint firstAttribute="trailing" secondItem="OjN-qo-CXE" secondAttribute="trailing" constant="8" id="UNZ-kI-LqU"/>
+                            <constraint firstItem="OjN-qo-CXE" firstAttribute="leading" secondItem="lOB-iD-ugD" secondAttribute="leading" constant="8" id="hBr-es-3F7"/>
                             <constraint firstItem="U17-yB-Kbq" firstAttribute="top" secondItem="haG-lw-SWI" secondAttribute="bottom" constant="25" id="hDV-mJ-aAn"/>
+                            <constraint firstItem="OjN-qo-CXE" firstAttribute="top" secondItem="vKY-tP-fi6" secondAttribute="bottom" constant="20" id="qZP-I7-vHV"/>
                             <constraint firstItem="haG-lw-SWI" firstAttribute="leading" secondItem="lOB-iD-ugD" secondAttribute="leadingMargin" constant="25" id="tkN-BW-rrT"/>
                         </constraints>
                     </view>
@@ -182,6 +189,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventView" destination="OjN-qo-CXE" id="Pe8-Ns-u8O"/>
                         <outlet property="noButton" destination="8He-Wx-Wcl" id="BZF-B6-zsV"/>
                         <outlet property="yesButton" destination="1UF-ZE-d2a" id="MpM-pl-2oX"/>
                     </connections>

@@ -18,6 +18,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     var locationController = LocationController()
     var coord = CLLocationCoordinate2D()
     var eventsIndex = 0
+
+    @IBOutlet weak var eventView: EventView!
     
     //Buttons
     @IBOutlet weak var noButton: UIButton!
@@ -98,7 +100,16 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         if(locationController.service()) {
             user?.discoverEvents(coordinates: coord).then({ events in
                 print("Discovered events for user: \(events.count)")
-                self.events = events
+                if (events.count > 0) {
+                    self.events = events
+                    self.eventView.event = events[0]
+                    
+                    noButton.isHidden = false
+                    yesButton.isHidden = false
+                } else {
+                    noButton.isHidden = true
+                    yesButton.isHidden = true
+                }
             })
         } else {
             //pop up option to enable gps
@@ -129,14 +140,38 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     
     @IBAction func noButtonTriggered(_ sender: UIButton) {
         print("No")
-        events?.removeFirst()
-        print("Events count: \(events!.count)")
+        events?[0].unlikeEvent(forUser: user!).then { (result) in
+            if (result) {
+                if (events.count > 0) {
+                    self.events?.removeFirst()
+                    self.eventView.event = self.events?[0]
+                } else {
+                    noButton.isHidden = true
+                    yesButton.isHidden = true
+                }
+                print("Events count: \(self.events!.count)")
+            } else {
+                print("Error")
+            }
+        }
     }
     
     @IBAction func yesButtonTriggered(_ sender: UIButton) {
         print("Yes")
-        events?.removeFirst()
-        print("Events count: \(events!.count)")
+        events?[0].likeEvent(forUser: user!).then { (result) in
+            if (result) {
+                if (events.count > 0) {
+                    self.events?.removeFirst()
+                    self.eventView.event = self.events?[0]
+                } else {
+                    noButton.isHidden = true
+                    yesButton.isHidden = true
+                }
+                print("Events count: \(self.events!.count)")
+            } else {
+                print("Error")
+            }
+        }
     }
     
     @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
