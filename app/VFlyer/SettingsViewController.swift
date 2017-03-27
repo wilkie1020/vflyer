@@ -18,10 +18,7 @@ class SettingsViewController: UIViewController {
     //Outlets
     @IBOutlet weak var snapSlider: SnapSlider!
     @IBOutlet weak var testLabel: UILabel!
-    
-    //Bar button
     @IBOutlet weak var backButton: UIBarButtonItem!
-    
     
 
     override func viewDidLoad()
@@ -76,6 +73,12 @@ class SettingsViewController: UIViewController {
         //user?.radius = sliderActual
         
     }
+    
+    //MARK: Actions
+    @IBAction func backPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+
 
     /*
     // MARK: - Navigation

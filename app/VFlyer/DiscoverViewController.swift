@@ -80,8 +80,6 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
             guard let settingsViewController = segue.destination as? SettingsViewController else {
                 fatalError("Unexpected destination: \(segue.destination)");
             }
-            let icon: UIImage = #imageLiteral(resourceName: "discoverIcon")
-            settingsViewController.backButton.image = icon
             settingsViewController.user = self.user
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)");

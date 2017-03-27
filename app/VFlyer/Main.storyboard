@@ -96,8 +96,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="dra-aL-7y7">
                         <barButtonItem key="backBarButtonItem" title="Back" id="rIW-7y-PbE"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="TH4-v4-ibc">
+                            <connections>
+                                <action selector="backPressed:" destination="boH-VT-flP" id="h9q-RC-q8Q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="TH4-v4-ibc" id="i06-Rd-ngF"/>
                         <outlet property="date" destination="foj-pX-DNK" id="b2h-ft-slw"/>
                         <outlet property="descriptionTextView" destination="szL-FO-uJ8" id="a0i-eO-pKS"/>
                         <outlet property="location" destination="5Og-ph-kG3" id="JKd-r0-0kn"/>
@@ -105,6 +111,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zH-z6-AFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7AI-g4-fxm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5996" y="-1540"/>
         </scene>
@@ -177,6 +184,7 @@
                     <connections>
                         <outlet property="noButton" destination="8He-Wx-Wcl" id="BZF-B6-zsV"/>
                         <outlet property="yesButton" destination="1UF-ZE-d2a" id="MpM-pl-2oX"/>
+                        <segue destination="3vt-UL-IpV" kind="unwind" identifier="settingsToDiscover" unwindAction="unwindToDiscoverWithSender:" id="48x-Ig-6AG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -274,15 +282,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="Yyn-KS-4rR">
-                        <barButtonItem key="leftBarButtonItem" title=" " id="mLP-SW-pXW"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="J4w-vQ-z66">
+                            <connections>
+                                <action selector="backPressed:" destination="xgI-bT-fre" id="C1b-kb-gOf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="mLP-SW-pXW" id="kxY-XX-9sm"/>
                         <outlet property="snapSlider" destination="9K0-12-bO0" id="aIJ-VQ-Dte"/>
                         <outlet property="testLabel" destination="Vm8-dg-var" id="JHF-a6-JsV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSM-QA-eNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3vt-UL-IpV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3846" y="-457"/>
         </scene>
@@ -404,6 +416,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="1tK-eV-6wf" id="OOT-9i-yhA"/>
+                        <segue destination="3vt-UL-IpV" kind="unwind" identifier="settingsToList" unwindAction="unwindToListWithSender:" id="3jd-Zl-6H4"/>
+                        <segue destination="7AI-g4-fxm" kind="unwind" identifier="viewToList" unwindAction="unwindToListWithSender:" id="RTh-MA-8U4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhd-Fc-BUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
