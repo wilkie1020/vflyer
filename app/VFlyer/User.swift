@@ -75,6 +75,30 @@ class User {
         })
     }
     
+    public func delete() -> Promise<Bool> {
+
+        let url = URL(string: "users/\(_id!)", relativeTo: BASE_URL)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        print("DELETE \(url.absoluteURL)")
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        return Promise<Bool>(work: { fulfill, reject in
+            session.dataTask(with: request, completionHandler: { data, response, error in
+                if let error = error {
+                    reject(error)
+                } else if let _ = data, let response = response as? HTTPURLResponse {
+                    fulfill(response.statusCode == 200)
+                } else {
+                    fatalError("Something has gone horribly wrong.")
+                }
+            }).resume()
+        })
+    }
+    
     public func login() -> Promise<Void> {
         // Check if user already logged in
         if _id == nil {
