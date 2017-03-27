@@ -76,32 +76,39 @@ class User {
     }
     
     public func login() -> Promise<Void> {
-        let url = URL(string: "users/login?fbUserId=\(userId)", relativeTo: BASE_URL)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        print("POST \(url.absoluteURL)")
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        return Promise<Void>(work: { fulfill, reject in
-            session.dataTask(with: request, completionHandler: { data, response, error in
-                if let error = error {
-                    reject(error)
-                } else if let data = data, let _ = response as? HTTPURLResponse {
-                    let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                    if let response = json as? [String: Any] {
-                        self._id = response["_id"] as! String
-                        self.userId = response["userId"] as! String
-                        self.radius = response["radius"] as! Int
+        // Check if user already logged in
+        if _id == nil {
+            let url = URL(string: "users/login?fbUserId=\(userId)", relativeTo: BASE_URL)!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            
+            print("POST \(url.absoluteURL)")
+            
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            
+            return Promise<Void>(work: { fulfill, reject in
+                session.dataTask(with: request, completionHandler: { data, response, error in
+                    if let error = error {
+                        reject(error)
+                    } else if let data = data, let _ = response as? HTTPURLResponse {
+                        let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                        if let response = json as? [String: Any] {
+                            self._id = response["_id"] as! String
+                            self.userId = response["userId"] as! String
+                            self.radius = response["radius"] as! Int
+                        }
+                        fulfill()
+                    } else {
+                        fatalError("Something has gone horribly wrong.")
                     }
-                    fulfill()
-                } else {
-                    fatalError("Something has gone horribly wrong.")
-                }
-            }).resume()
-        })
+                }).resume()
+            })
+        } else {
+            return Promise<Void>(work: {fulfill, _ in
+                fulfill()
+            })
+        }
     }
     
     public func loadLikedEvents() -> Promise<[Event]> {

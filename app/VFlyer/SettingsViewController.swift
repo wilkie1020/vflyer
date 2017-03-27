@@ -8,22 +8,21 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
     
     
     //MARK: Properties
     let kmFactor = 1000
     var sliderActual: Int = 5000
     var user: User?
+    
     //Outlets
     @IBOutlet weak var snapSlider: SnapSlider!
-    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     //Bar button
     @IBOutlet weak var backButton: UIBarButtonItem!
     
-    
-
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -31,9 +30,8 @@ class SettingsViewController: UIViewController {
         let icon: UIImage = #imageLiteral(resourceName: "settingsIcon")
         let iconImage = UIImageView(image:icon)
         self.navigationItem.titleView = iconImage
+        
         snapSlider.value = 20
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,8 +70,7 @@ class SettingsViewController: UIViewController {
             sliderActual = 100 * kmFactor
         }
         
-        testLabel.text = String(sliderActual) + " meters"
-        //user?.radius = sliderActual
+        distanceLabel.text = "\(sliderActual)km."
         
     }
 

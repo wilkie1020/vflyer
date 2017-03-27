@@ -191,7 +191,7 @@
         <!--Settings-->
         <scene sceneID="cGq-Dy-0HI">
             <objects>
-                <viewController id="xgI-bT-fre" customClass="SettingsViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xgI-bT-fre" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ogT-iW-mZw"/>
                         <viewControllerLayoutGuide type="bottom" id="A1h-8x-PGN"/>
@@ -201,7 +201,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="LcH-D0-p1n">
-                                <rect key="frame" x="37" y="72" width="305" height="85.5"/>
+                                <rect key="frame" x="37" y="28" width="305" height="85.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range (km)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xm4-i6-st4">
                                         <rect key="frame" x="0.0" y="0.0" width="305" height="20.5"/>
@@ -284,7 +284,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSM-QA-eNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3846" y="-457"/>
+            <point key="canvasLocation" x="4708" y="-457"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="NsA-Pl-chC">
+            <objects>
+                <tableViewController id="yGc-Om-X11" customClass="SettingsViewController" customModule="VFlyer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SLK-rx-r9S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection headerTitle="Discovery Settings" id="miT-a1-Otn">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="s4h-K7-JHg">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s4h-K7-JHg" id="QMr-wQ-MV1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhk-VD-Z6p">
+                                                    <rect key="frame" x="16" y="8" width="145.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="####" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kM6-bQ-y1j">
+                                                    <rect key="frame" x="317.5" y="8" width="41.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vmf-cQ-4yl" customClass="SnapSlider" customModule="VFlyer" customModuleProvider="target">
+                                                    <rect key="frame" x="26" y="36" width="323" height="31"/>
+                                                </slider>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Yhk-VD-Z6p" firstAttribute="top" secondItem="QMr-wQ-MV1" secondAttribute="topMargin" id="859-Lw-8pV"/>
+                                                <constraint firstItem="Yhk-VD-Z6p" firstAttribute="leading" secondItem="QMr-wQ-MV1" secondAttribute="leadingMargin" constant="8" id="DQH-Oy-bhs"/>
+                                                <constraint firstItem="Vmf-cQ-4yl" firstAttribute="leading" secondItem="QMr-wQ-MV1" secondAttribute="leadingMargin" constant="20" id="JnU-Lf-oHN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kM6-bQ-y1j" secondAttribute="trailing" constant="8" id="gqg-ay-pXz"/>
+                                                <constraint firstItem="Vmf-cQ-4yl" firstAttribute="bottom" secondItem="QMr-wQ-MV1" secondAttribute="bottomMargin" id="n5m-jL-umY"/>
+                                                <constraint firstItem="kM6-bQ-y1j" firstAttribute="top" secondItem="QMr-wQ-MV1" secondAttribute="topMargin" id="n6d-9A-mpm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Vmf-cQ-4yl" secondAttribute="trailing" constant="20" id="wLW-HI-SWd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="yGc-Om-X11" id="j5Q-Fg-Qia"/>
+                            <outlet property="delegate" destination="yGc-Om-X11" id="Flb-Sa-DGk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="FPb-js-qHd"/>
+                    <connections>
+                        <outlet property="distanceLabel" destination="kM6-bQ-y1j" id="KgZ-99-5tE"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mKj-dz-vDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3821.5999999999999" y="-457.42128935532236"/>
         </scene>
         <!--My Flyers-->
         <scene sceneID="6ig-8C-IE5">
@@ -398,7 +460,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="discoverIcon" id="349-8C-cPG">
                             <connections>
-                                <segue destination="zME-1h-iyy" kind="show" identifier="listToDiscover" id="rG7-m5-KYY"/>
+                                <segue destination="zME-1h-iyy" kind="presentation" identifier="listToDiscover" modalTransitionStyle="flipHorizontal" id="rG7-m5-KYY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -448,7 +510,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xgI-bT-fre" kind="relationship" relationship="rootViewController" id="TaQ-zm-Usf"/>
+                        <segue destination="yGc-Om-X11" kind="relationship" relationship="rootViewController" id="KW5-AB-PpN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jS6-Vz-bB5" userLabel="First Responder" sceneMemberID="firstResponder"/>

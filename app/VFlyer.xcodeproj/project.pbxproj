@@ -254,7 +254,7 @@
 				TargetAttributes = {
 					1B7EB7011E6C735A0069D549 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6X5B26J782;
+						DevelopmentTeam = 9R35ZD245F;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -553,7 +553,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VFlyer/VFlyer.entitlements;
-				DEVELOPMENT_TEAM = 6X5B26J782;
+				DEVELOPMENT_TEAM = 9R35ZD245F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -572,7 +572,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VFlyer/VFlyer.entitlements;
-				DEVELOPMENT_TEAM = 6X5B26J782;
+				DEVELOPMENT_TEAM = 9R35ZD245F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

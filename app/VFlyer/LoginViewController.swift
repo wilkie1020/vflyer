@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
             switch loginResult {
             case .success(_, _, _):
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "DiscoverViewController") as UIViewController
+                let vc = storyboard.instantiateViewController(withIdentifier: "DiscoverNavigationController") as UIViewController
                 self.present(vc, animated: true, completion: nil)
             case .failed(let errors):
                 print("failed because: " + errors.localizedDescription)
