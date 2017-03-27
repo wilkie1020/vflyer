@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FacebookCore
 
 class MyFlyersTableViewController: UITableViewController {
     
@@ -15,6 +16,12 @@ class MyFlyersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if AccessToken.current == nil {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+            self.present(vc, animated: true, completion: nil)
+        }
         
         let icon: UIImage = #imageLiteral(resourceName: "listViewIcon")
         let iconImage = UIImageView(image:icon)

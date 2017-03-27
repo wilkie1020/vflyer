@@ -33,6 +33,12 @@ class SettingsViewController: UITableViewController {
         let iconImage = UIImageView(image:icon)
         self.navigationItem.titleView = iconImage
         
+        if AccessToken.current == nil {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+            self.present(vc, animated: true, completion: nil)
+        }
+
         guard let user = user else {
             fatalError("User not logged in")
         }

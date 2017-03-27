@@ -34,11 +34,13 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         
         locationController.delegate = self
         
-        guard let accessToken = AccessToken.current else {
-            fatalError("AccessToken is not set");
+        if AccessToken.current == nil {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+            self.present(vc, animated: true, completion: nil)
         }
 
-        if let userId = accessToken.userId {
+        if let accessToken = AccessToken.current, let userId = accessToken.userId {
             user = User(userId: userId)
             user?.login().then({
                 let test = "_id: \(self.user?._id)\nuserId: \(self.user?.userId)\nradius: \(self.user?.radius)\n"
@@ -104,11 +106,11 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
                     self.events = events
                     self.eventView.event = events[0]
                     
-                    noButton.isHidden = false
-                    yesButton.isHidden = false
+                    self.noButton.isHidden = false
+                    self.yesButton.isHidden = false
                 } else {
-                    noButton.isHidden = true
-                    yesButton.isHidden = true
+                    self.noButton.isHidden = true
+                    self.yesButton.isHidden = true
                 }
             })
         } else {
@@ -142,12 +144,12 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         print("No")
         events?[0].unlikeEvent(forUser: user!).then { (result) in
             if (result) {
-                if (events.count > 0) {
+                if (self.events!.count > 0) {
                     self.events?.removeFirst()
                     self.eventView.event = self.events?[0]
                 } else {
-                    noButton.isHidden = true
-                    yesButton.isHidden = true
+                    self.noButton.isHidden = true
+                    self.yesButton.isHidden = true
                 }
                 print("Events count: \(self.events!.count)")
             } else {
@@ -160,12 +162,12 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         print("Yes")
         events?[0].likeEvent(forUser: user!).then { (result) in
             if (result) {
-                if (events.count > 0) {
+                if (self.events!.count > 0) {
                     self.events?.removeFirst()
                     self.eventView.event = self.events?[0]
                 } else {
-                    noButton.isHidden = true
-                    yesButton.isHidden = true
+                    self.noButton.isHidden = true
+                    self.yesButton.isHidden = true
                 }
                 print("Events count: \(self.events!.count)")
             } else {
