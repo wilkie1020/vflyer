@@ -100,30 +100,37 @@ class MyFlyersTableViewController: UITableViewController {
         return true
     }
     */
+    
+    //MARK: Actions
+    @IBAction func unwindToList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? SettingsViewController {
+            self.user = sourceViewController.user
+        } else if let sourceViewController = sender.source as? FlyerViewController {
+            self.user = sourceViewController.user
+        }
+    }
 
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
-        //since Discover only segues to nav controllers, if this doesn't work an error occured.
-        guard let navVC = segue.destination as? UINavigationController else {
-            fatalError("Unexpected destination: \(segue.destination)");
-        }
-        
         switch(segue.identifier ?? "") {
         case "listToView":
-            guard let viewVC = navVC.viewControllers.first as? FlyerViewController else {
-                fatalError("Unexpected destination: \(navVC.viewControllers.first)");
+            guard let singleViewController = segue.destination as? FlyerViewController else {
+                fatalError("Unexpected destination: \(segue.destination)");
             }
-            viewVC.user = self.user
+            singleViewController.user = self.user
         case "listToSettings":
-            guard let settingsVC = navVC.viewControllers.first as? SettingsViewController else {
-                fatalError("Unexpected destination: \(navVC.viewControllers.first)");
+            guard let settingsViewController = segue.destination as? SettingsViewController else {
+                fatalError("Unexpected destination: \(segue.destination)");
             }
-            settingsVC.user = self.user
+            settingsViewController.user = self.user
         case "listToDiscover":
+            //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
+            guard let navVC = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)");
+            }
             guard let discoverVC = navVC.viewControllers.first as? DiscoverViewController else {
                 fatalError("Unexpected destination: \(navVC.viewControllers.first)");
             }

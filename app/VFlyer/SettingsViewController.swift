@@ -22,7 +22,7 @@ class SettingsViewController: UITableViewController {
     
     //Bar button
     @IBOutlet weak var backButton: UIBarButtonItem!
-    
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -40,9 +40,7 @@ class SettingsViewController: UITableViewController {
     }
     
     //MARK: Actions
-    
-    @IBAction func snapSliderChanged(_ sender: SnapSlider)
-    {
+    @IBAction func snapSliderChanged(_ sender: SnapSlider) {
         let temp = snapSlider.snap()
         snapSlider.value = snapSlider.snap()
         if(temp == 1)
@@ -73,6 +71,12 @@ class SettingsViewController: UITableViewController {
         distanceLabel.text = "\(sliderActual)km."
         
     }
+    
+    //MARK: Actions
+    @IBAction func backPressed(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+
 
     /*
     // MARK: - Navigation

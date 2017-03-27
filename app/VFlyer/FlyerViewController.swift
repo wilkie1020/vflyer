@@ -15,6 +15,7 @@ class FlyerViewController: UIViewController {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     var user: User?
 
@@ -35,5 +36,11 @@ class FlyerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    }
+    
+    //MARK: Actions
+    
+    @IBAction func backPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }

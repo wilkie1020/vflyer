@@ -96,8 +96,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="dra-aL-7y7">
                         <barButtonItem key="backBarButtonItem" title="Back" id="rIW-7y-PbE"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="TH4-v4-ibc">
+                            <connections>
+                                <action selector="backPressed:" destination="boH-VT-flP" id="h9q-RC-q8Q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="TH4-v4-ibc" id="i06-Rd-ngF"/>
                         <outlet property="date" destination="foj-pX-DNK" id="b2h-ft-slw"/>
                         <outlet property="descriptionTextView" destination="szL-FO-uJ8" id="a0i-eO-pKS"/>
                         <outlet property="location" destination="5Og-ph-kG3" id="JKd-r0-0kn"/>
@@ -105,6 +111,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zH-z6-AFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7AI-g4-fxm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5996" y="-1540"/>
         </scene>
@@ -164,7 +171,7 @@
                     <navigationItem key="navigationItem" title="Discover" id="PKO-kG-LRK">
                         <barButtonItem key="leftBarButtonItem" image="settingsIcon" width="50" id="swA-QF-Hiw">
                             <connections>
-                                <segue destination="odp-H3-WYg" kind="presentation" identifier="discoverToSettings" modalTransitionStyle="flipHorizontal" id="AcR-q6-zYx"/>
+                                <segue destination="xgI-bT-fre" kind="show" identifier="discoverToSettings" id="g3l-iE-Fm7"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="listViewIcon" width="50" id="vES-kx-UWW">
@@ -177,6 +184,7 @@
                     <connections>
                         <outlet property="noButton" destination="8He-Wx-Wcl" id="BZF-B6-zsV"/>
                         <outlet property="yesButton" destination="1UF-ZE-d2a" id="MpM-pl-2oX"/>
+                        <segue destination="3vt-UL-IpV" kind="unwind" identifier="settingsToDiscover" unwindAction="unwindToDiscoverWithSender:" id="48x-Ig-6AG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -201,7 +209,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="LcH-D0-p1n">
-                                <rect key="frame" x="37" y="28" width="305" height="85.5"/>
+                                <rect key="frame" x="37" y="72" width="305" height="85.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range (km)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xm4-i6-st4">
                                         <rect key="frame" x="0.0" y="0.0" width="305" height="20.5"/>
@@ -273,16 +281,14 @@
                             <constraint firstAttribute="trailing" secondItem="LcH-D0-p1n" secondAttribute="trailing" constant="33" id="oaj-yP-S8E"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="Yyn-KS-4rR">
-                        <barButtonItem key="leftBarButtonItem" title=" " id="mLP-SW-pXW"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Settings" id="Yyn-KS-4rR"/>
                     <connections>
-                        <outlet property="backButton" destination="mLP-SW-pXW" id="kxY-XX-9sm"/>
                         <outlet property="snapSlider" destination="9K0-12-bO0" id="aIJ-VQ-Dte"/>
                         <outlet property="testLabel" destination="Vm8-dg-var" id="JHF-a6-JsV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSM-QA-eNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3vt-UL-IpV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4708" y="-457"/>
         </scene>
@@ -318,6 +324,9 @@
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vmf-cQ-4yl" customClass="SnapSlider" customModule="VFlyer" customModuleProvider="target">
                                                     <rect key="frame" x="26" y="36" width="323" height="31"/>
+                                                    <connections>
+                                                        <action selector="snapSliderChanged:" destination="yGc-Om-X11" eventType="valueChanged" id="sdM-Vv-h7E"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -339,9 +348,17 @@
                             <outlet property="delegate" destination="yGc-Om-X11" id="Flb-Sa-DGk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="FPb-js-qHd"/>
+                    <navigationItem key="navigationItem" id="FPb-js-qHd">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="J4w-vQ-z66">
+                            <connections>
+                                <action selector="backPressed:" destination="yGc-Om-X11" id="e2S-5E-22n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="J4w-vQ-z66" id="vBL-YM-ybd"/>
                         <outlet property="distanceLabel" destination="kM6-bQ-y1j" id="KgZ-99-5tE"/>
+                        <outlet property="snapSlider" destination="Vmf-cQ-4yl" id="LX8-PH-r2j"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKj-dz-vDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -443,7 +460,7 @@
                                     <outlet property="label" destination="rxG-Y0-9bh" id="8R9-JF-YTn"/>
                                     <outlet property="location" destination="6hu-cN-Jmn" id="Vfj-LP-vus"/>
                                     <outlet property="picture" destination="7kX-zN-x2f" id="Aad-pd-3dQ"/>
-                                    <segue destination="GZM-K8-3rf" kind="show" identifier="listToView" id="Bmp-7x-DrC"/>
+                                    <segue destination="boH-VT-flP" kind="show" identifier="listToView" id="yDl-3B-6mh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -455,7 +472,7 @@
                     <navigationItem key="navigationItem" title="My Flyers" id="yaL-hx-J7D">
                         <barButtonItem key="leftBarButtonItem" image="settingsIcon" id="U3j-zR-Uhk">
                             <connections>
-                                <segue destination="odp-H3-WYg" kind="show" identifier="listToSettings" id="leH-Qp-QIs"/>
+                                <segue destination="xgI-bT-fre" kind="show" identifier="listToSettings" id="Hul-YN-nYx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="discoverIcon" id="349-8C-cPG">
@@ -466,6 +483,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="1tK-eV-6wf" id="OOT-9i-yhA"/>
+                        <segue destination="3vt-UL-IpV" kind="unwind" identifier="settingsToList" unwindAction="unwindToListWithSender:" id="3jd-Zl-6H4"/>
+                        <segue destination="7AI-g4-fxm" kind="unwind" identifier="viewToList" unwindAction="unwindToListWithSender:" id="RTh-MA-8U4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhd-Fc-BUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -535,24 +554,6 @@
             </objects>
             <point key="canvasLocation" x="2999" y="-1540"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="mSY-Iy-NRz">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GZM-K8-3rf" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="90i-Jn-gQe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="boH-VT-flP" kind="relationship" relationship="rootViewController" id="ufO-G1-Ubg"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n3w-x6-126" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5220" y="-1540.4797601199402"/>
-        </scene>
     </scenes>
     <resources>
         <image name="check" width="22" height="22"/>
@@ -563,6 +564,6 @@
         <image name="settingsIcon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AcR-q6-zYx"/>
+        <segue reference="Hul-YN-nYx"/>
     </inferredMetricsTieBreakers>
 </document>
