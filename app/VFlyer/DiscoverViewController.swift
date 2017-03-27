@@ -62,14 +62,13 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
-        //since Discover only segues to nav controllers, if this doesn't work an error occured.
-        guard let navVC = segue.destination as? UINavigationController else {
-            fatalError("Unexpected destination: \(segue.destination)");
-        }
         
         switch(segue.identifier ?? "") {
         case "discoverToList":
+            //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
+            guard let navVC = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)");
+            }
             //Sets discoverVC to be the first viewController on the navigation stack. This should be the Disocver view.
             //If unable to set this a fatal error occured.
             guard let discoverVC = navVC.viewControllers.first as? MyFlyersTableViewController else {
@@ -78,16 +77,12 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
             //sets the user at the discover page before seguingfatalError("Unexpected destination: \(navVC.viewControllers.first)");
             discoverVC.user = self.user
         case "discoverToSettings":
-            //print("segue to settings")
-            guard let settingsVC = navVC.viewControllers.first as? SettingsViewController else {
-                fatalError("Unexpected destination: \(navVC.viewControllers.first)");
+            guard let settingsViewController = segue.destination as? SettingsViewController else {
+                fatalError("Unexpected destination: \(segue.destination)");
             }
             let icon: UIImage = #imageLiteral(resourceName: "discoverIcon")
-            settingsVC.backButton.image = icon
-            settingsVC.user = self.user
-            
-        case "settingsToDiscover":
-            print("settingstodiscover segue")
+            settingsViewController.backButton.image = icon
+            settingsViewController.user = self.user
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)");
         }
@@ -121,6 +116,14 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     }
     
     //MARK: Actions
+    
+    @IBAction func unwindToDiscover(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? SettingsViewController {
+            self.user = sourceViewController.user
+        } else if let sourceViewController = sender.source as? FlyerViewController {
+            self.user = sourceViewController.user
+        }
+    }
     
     @IBAction func noButtonTriggered(_ sender: UIButton) {
         print("No")
