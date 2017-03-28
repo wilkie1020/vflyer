@@ -23,6 +23,7 @@ import UIKit
         }
         set(event) {
             nameLabel.text = event?.name
+            imageView.image = event?.image
             dateLabel.text = "\(event?.startDate) - \(event?.endDate)"
         }
     }

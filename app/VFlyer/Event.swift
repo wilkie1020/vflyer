@@ -12,16 +12,16 @@ class Event {
     //MARK: Properties
     var _id: String
     var name: String
-    //var picture: UIView
+    var image: UIImage
     var description: String
     var startDate: Date
     var endDate: Date
     
     //MARK: Initialization
-    init?(id: String, name: String, picture: UIView, description: String, startDate: Date, endDate: Date) {
+    init?(id: String, name: String, image: UIImage, description: String, startDate: Date, endDate: Date) {
         self._id = id
         self.name = name
-        //self.picture = picture
+        self.image = image
         self.description = description
         self.startDate = startDate
         self.endDate = endDate
@@ -31,6 +31,7 @@ class Event {
         guard
             let _id = json["_id"] as? String,
             let name = json["name"] as? String,
+            let strBase64 = json["image"] as? String,
             let description = json["description"] as? String,
             let startDateString = json["startDate"] as? String,
             let startDate = Date(iso8601String: startDateString),
@@ -42,6 +43,8 @@ class Event {
         
         self._id = _id
         self.name = name
+        let decodedImage = Data(base64Encoded: strBase64, options: .ignoreUnknownCharacters)!
+        self.image = UIImage(data: decodedImage)!
         self.description = description
         self.startDate = startDate
         self.endDate = endDate
@@ -49,7 +52,8 @@ class Event {
     
     // MARK: Methods
     
-    let BASE_URL = URL(string: "http://159.203.7.42:8000/api/")
+    //let BASE_URL = URL(string: "http://159.203.7.42:8000/api/")
+    let BASE_URL = URL(string: "http://192.168.1.105:8000/api/")
     
     public func likeEvent(forUser user:User) -> Promise<Bool> {
         let url = URL(string: "users/\(user._id!)/liked?eventId=\(_id)", relativeTo: BASE_URL)!

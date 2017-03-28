@@ -42,6 +42,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
 
         if let accessToken = AccessToken.current, let userId = accessToken.userId {
             user = User(userId: userId)
+            print("Here")
             user?.login().then({
                 let test = "_id: \(self.user?._id)\nuserId: \(self.user?.userId)\nradius: \(self.user?.radius)\n"
                 print(test)
@@ -144,8 +145,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         print("No")
         events?[0].unlikeEvent(forUser: user!).then { (result) in
             if (result) {
+                self.events?.removeFirst()
                 if (self.events!.count > 0) {
-                    self.events?.removeFirst()
                     self.eventView.event = self.events?[0]
                 } else {
                     self.noButton.isHidden = true
@@ -162,8 +163,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         print("Yes")
         events?[0].likeEvent(forUser: user!).then { (result) in
             if (result) {
+                self.events?.removeFirst()
                 if (self.events!.count > 0) {
-                    self.events?.removeFirst()
                     self.eventView.event = self.events?[0]
                 } else {
                     self.noButton.isHidden = true
