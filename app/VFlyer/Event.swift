@@ -31,7 +31,6 @@ class Event {
         guard
             let _id = json["_id"] as? String,
             let name = json["name"] as? String,
-            let strBase64 = json["image"] as? String,
             let description = json["description"] as? String,
             let startDateString = json["startDate"] as? String,
             let startDate = Date(iso8601String: startDateString),
@@ -41,10 +40,16 @@ class Event {
             return nil
         }
         
+        if let strBase64 = json["image"] as? String {
+            let decodedImage = Data(base64Encoded: strBase64, options: .ignoreUnknownCharacters)!
+            self.image = UIImage(data: decodedImage)!
+        } else {
+            self.image = #imageLiteral(resourceName: "defaultPhoto")
+        }
+        
         self._id = _id
         self.name = name
-        let decodedImage = Data(base64Encoded: strBase64, options: .ignoreUnknownCharacters)!
-        self.image = UIImage(data: decodedImage)!
+        
         self.description = description
         self.startDate = startDate
         self.endDate = endDate

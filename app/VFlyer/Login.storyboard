@@ -26,11 +26,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iV6-Hl-apB">
-                                <rect key="frame" x="66" y="568.5" width="243" height="48.5"/>
+                                <rect key="frame" x="66" y="548.5" width="243" height="68.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdh-Ad-etd">
-                                        <rect key="frame" x="0.0" y="0.0" width="243" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="243" height="50"/>
                                         <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="cra-MR-nHb"/>
+                                        </constraints>
                                         <state key="normal" title="Log In with Facebook">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -39,7 +42,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We don't post anything to Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JS-n7-1Jh">
-                                        <rect key="frame" x="0.0" y="35" width="243" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="55" width="243" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>

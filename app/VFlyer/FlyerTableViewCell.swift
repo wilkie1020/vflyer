@@ -11,9 +11,7 @@ import UIKit
 class FlyerTableViewCell: UITableViewCell {
     //MARK: Properties
     @IBOutlet weak var picture: UIImageView!
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

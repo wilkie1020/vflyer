@@ -54,6 +54,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         noButton.layer.cornerRadius = 40
         yesButton.layer.cornerRadius = 40
+        
+        eventView.backgroundColor = UIColor.red
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,12 +108,6 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
                 if (events.count > 0) {
                     self.events = events
                     self.eventView.event = events[0]
-                    
-                    self.noButton.isHidden = false
-                    self.yesButton.isHidden = false
-                } else {
-                    self.noButton.isHidden = true
-                    self.yesButton.isHidden = true
                 }
             })
         } else {
@@ -148,9 +144,6 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
                 self.events?.removeFirst()
                 if (self.events!.count > 0) {
                     self.eventView.event = self.events?[0]
-                } else {
-                    self.noButton.isHidden = true
-                    self.yesButton.isHidden = true
                 }
                 print("Events count: \(self.events!.count)")
             } else {
@@ -166,9 +159,6 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
                 self.events?.removeFirst()
                 if (self.events!.count > 0) {
                     self.eventView.event = self.events?[0]
-                } else {
-                    self.noButton.isHidden = true
-                    self.yesButton.isHidden = true
                 }
                 print("Events count: \(self.events!.count)")
             } else {
@@ -191,8 +181,4 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         }
     }
 
-    @IBAction func tapped(_ sender: Any) {
-        
-    }
-    
 }

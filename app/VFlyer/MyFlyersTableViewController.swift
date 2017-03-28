@@ -11,11 +11,22 @@ import FacebookCore
 
 class MyFlyersTableViewController: UITableViewController {
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
     //MARK: Properties
     var user: User?
+    var events = [Event]()
+    var filteredEvents = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
+        tableView.setContentOffset(CGPoint(x: 0, y: 44), animated: true)
         
         if AccessToken.current == nil {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
@@ -23,9 +34,21 @@ class MyFlyersTableViewController: UITableViewController {
             self.present(vc, animated: true, completion: nil)
         }
         
-        let icon: UIImage = #imageLiteral(resourceName: "listViewIcon")
-        let iconImage = UIImageView(image:icon)
-        self.navigationItem.titleView = iconImage
+        if let user = user {
+            user.login().then({
+                let test = "_id: \(self.user?._id)\nuserId: \(self.user?.userId)\nradius: \(self.user?.radius)\n"
+                print(test)
+                user.loadLikedEvents().then({ events in
+                    self.events = events
+                    print("Liked events for user: \(events.count)")
+                    DispatchQueue.main.async{
+                        self.tableView.reloadData()
+                    }
+                })
+            })
+        }
+
+        self.navigationItem.titleView = UIImageView(image:#imageLiteral(resourceName: "listViewIcon"))
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -46,30 +69,25 @@ class MyFlyersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let rowAmount = self.user?.likedEvents.count {
-            return rowAmount
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredEvents.count
         }
-        return 0
+        return events.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "myFlyersCell"
-        
-        //unwrap the returned optional using the guard. If it doesn't return something that can be unwrapped to a FlyerTableViewCell then a fatal error has occured.
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? FlyerTableViewCell else {
-            fatalError("The dequeued cell is not an instance of FlyerTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "myFlyersCell", for: indexPath) as? FlyerTableViewCell else {
+            fatalError("Something broke")
         }
         
-        let event = self.user?.likedEvents[indexPath.row]
-        
-        // Configuring cell
-        cell.label.text = event?.name
-        cell.date.text = event?.endDate.description
-        cell.location.text = "Not set yet"
-        //cell.picture.image =
-
+        let event: Event
+        if searchController.isActive && searchController.searchBar.text != "" {
+            event = filteredEvents[indexPath.row]
+        } else {
+            event = events[indexPath.row]
+        }
+        cell.nameLabel.text = event.name
+        cell.picture.image = event.image
         return cell
     }
 
@@ -108,6 +126,15 @@ class MyFlyersTableViewController: UITableViewController {
     }
     */
     
+    // MARK: Filtering
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredEvents = events.filter { event in
+            return event.name.lowercased().contains(searchText.lowercased())
+        }
+        
+        tableView.reloadData()
+    }
+    
     //MARK: Actions
     @IBAction func unwindToList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? SettingsViewController {
@@ -133,7 +160,18 @@ class MyFlyersTableViewController: UITableViewController {
             guard let singleViewController = segue.destination as? FlyerViewController else {
                 fatalError("Unexpected destination: \(segue.destination)");
             }
-            singleViewController.user = self.user
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let event: Event
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    event = filteredEvents[indexPath.row]
+                } else {
+                    event = filteredEvents[indexPath.row]
+                }
+            }
+//            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+//            controller.event = candy
+//            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+//            controller.navigationItem.leftItemsSupplementBackButton = true
         case "listToSettings":
             guard let settingsVC = navVC.viewControllers.first as? SettingsViewController else {
                 fatalError("Unexpected destination: \(navVC.viewControllers.first)");
@@ -148,5 +186,12 @@ class MyFlyersTableViewController: UITableViewController {
             fatalError("Unexpected Segue Identifier; \(segue.identifier)");
         }
 
+    }
+}
+
+extension MyFlyersTableViewController: UISearchResultsUpdating {
+    @available(iOS 8.0, *)
+    public func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
 }

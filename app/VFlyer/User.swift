@@ -14,7 +14,6 @@ class User {
     var _id: String?
     var userId: String
     var radius: Int?
-    var likedEvents = [Event]()
     
     var json: [String: Any] {
         return [
@@ -159,7 +158,6 @@ class User {
                             }
                         }
                     }
-                    self.likedEvents = events;
                     fulfill(events)
                 } else {
                     fatalError("Something has gone horribly wrong.")
