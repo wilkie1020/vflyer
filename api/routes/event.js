@@ -83,6 +83,7 @@ router.route('/:id')
                 return res.json(404, {"message": "Event Not Found"})
             }
 
+            console.log(data.image)
             res.json(200, data);
         })
     })
@@ -104,6 +105,7 @@ router.route('/:id')
                 }
 
                 event.name = req.body.name;
+                event.image = req.body.image;
                 event.description = req.body.description;
                 event.startDate = req.body.startDate;
                 event.endDate = req.body.endDate;

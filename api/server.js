@@ -7,7 +7,7 @@ var users = require('./routes/user');
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '10mb'}));
 app.use(expressValiator({
     customValidators: {
         isValidGeoJSON: function(value) {

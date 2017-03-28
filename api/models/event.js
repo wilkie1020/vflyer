@@ -10,6 +10,7 @@ var EventSchema = new Schema({
         },
         coordinates: [Number]
     },
+    image: { data: Buffer, contentType: String },
     description: String,
     startDate: Date,
     endDate: Date

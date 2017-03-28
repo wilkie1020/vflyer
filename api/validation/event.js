@@ -9,6 +9,11 @@ var validation = {
             errorMessage: "Invalid GeoJSON object"
         }
     },
+    'image': {
+        notEmpty: {
+            errorMessage: "Must not be left empty"
+        }
+    },
     'description': {
         notEmpty: {
             errorMessage: "Must not be left empty"
