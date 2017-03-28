@@ -43,8 +43,7 @@ class User {
         self.radius = radius;
     }
     
-    //let BASE_URL = URL(string: "http://159.203.7.42:8000/api/")
-    let BASE_URL = URL(string: "http://192.168.1.105:8000/api/")
+    let BASE_URL = URL(string: "http://159.203.7.42:8000/api/")
     
     // MARK: Methods
     
