@@ -150,14 +150,10 @@ class MyFlyersTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
-        guard let navVC = segue.destination as? UINavigationController else {
-            fatalError("Unexpected destination: \(segue.destination)");
-        }
         
         switch(segue.identifier ?? "") {
         case "listToView":
-            guard let singleViewController = segue.destination as? FlyerViewController else {
+            guard segue.destination is FlyerViewController else {
                 fatalError("Unexpected destination: \(segue.destination)");
             }
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -165,7 +161,7 @@ class MyFlyersTableViewController: UITableViewController {
                 if searchController.isActive && searchController.searchBar.text != "" {
                     event = filteredEvents[indexPath.row]
                 } else {
-                    event = filteredEvents[indexPath.row]
+                    event = self.events[indexPath.row]
                 }
             }
 //            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
@@ -173,11 +169,19 @@ class MyFlyersTableViewController: UITableViewController {
 //            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
 //            controller.navigationItem.leftItemsSupplementBackButton = true
         case "listToSettings":
+            //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
+            guard let navVC = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)");
+            }
             guard let settingsVC = navVC.viewControllers.first as? SettingsViewController else {
                 fatalError("Unexpected destination: \(navVC.viewControllers.first)");
             }
             settingsVC.user = self.user
         case "listToDiscover":
+            //Sets navVC to be the destination of the segue which should be the Navigation controller of discover.
+            guard let navVC = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)");
+            }
             guard let discoverVC = navVC.viewControllers.first as? DiscoverViewController else {
                 fatalError("Unexpected destination: \(navVC.viewControllers.first)");
             }
