@@ -153,15 +153,15 @@ class MyFlyersTableViewController: UITableViewController {
         
         switch(segue.identifier ?? "") {
         case "listToView":
-            guard segue.destination is FlyerViewController else {
+            guard let detailVC = segue.destination as? FlyerViewController else {
                 fatalError("Unexpected destination: \(segue.destination)");
             }
             if let indexPath = tableView.indexPathForSelectedRow {
                 let event: Event
                 if searchController.isActive && searchController.searchBar.text != "" {
-                    event = filteredEvents[indexPath.row]
+                    detailVC.event = filteredEvents[indexPath.row]
                 } else {
-                    event = self.events[indexPath.row]
+                    detailVC.event = self.events[indexPath.row]
                 }
             }
 //            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController

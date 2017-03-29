@@ -17,8 +17,10 @@ class FlyerViewController: UIViewController {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var eventImage: UIImageView!
     
     var user: User?
+    var event: Event?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,26 @@ class FlyerViewController: UIViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
             self.present(vc, animated: true, completion: nil)
         }
+        
+        guard let setEvent = event else {
+            fatalError("No event to display");
+        }
+        
+        self.name.text = setEvent.name
+        //self.location = setEvent.location
+        //TODO: get the location
+        
+        //Setting up the date as a string
+        var dateString = ""
+        if (setEvent.startDate != setEvent.endDate)
+        {
+            dateString += setEvent.startDate.description + " - "
+        }
+        dateString += setEvent.endDate.description
+        
+        self.date.text = dateString
+        self.descriptionTextView.text = setEvent.description
+        self.eventImage.image = setEvent.image
 
         // Do any additional setup after loading the view.
     }
