@@ -19,6 +19,7 @@
 		1BDD80951E779CA500D74B97 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD80941E779CA500D74B97 /* SettingsViewController.swift */; };
 		1BDD80971E779CAC00D74B97 /* SnapSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD80961E779CAC00D74B97 /* SnapSlider.swift */; };
 		4FABF60D7E2376DB10EA50E1 /* Pods_VFlyerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14B6EC77CF8F95C3DD2DF68 /* Pods_VFlyerTests.framework */; };
+		612796351E8B3750008680E8 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612796341E8B3750008680E8 /* OverlayView.swift */; };
 		617436F41E8852240005A0DD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 617436F31E8852240005A0DD /* Login.storyboard */; };
 		617436F61E897F720005A0DD /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617436F51E897F720005A0DD /* EventView.swift */; };
 		617436F81E8981C60005A0DD /* EventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 617436F71E8981C60005A0DD /* EventView.xib */; };
@@ -60,6 +61,7 @@
 		1BDD80961E779CAC00D74B97 /* SnapSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapSlider.swift; sourceTree = "<group>"; };
 		32F41EF864FCFA3E135C7232 /* Pods-VFlyer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFlyer.release.xcconfig"; path = "Pods/Target Support Files/Pods-VFlyer/Pods-VFlyer.release.xcconfig"; sourceTree = "<group>"; };
 		38B5205944FEE88B2C3F4163 /* Pods-VFlyerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFlyerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VFlyerTests/Pods-VFlyerTests.release.xcconfig"; sourceTree = "<group>"; };
+		612796341E8B3750008680E8 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		617436F31E8852240005A0DD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		617436F51E897F720005A0DD /* EventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		617436F71E8981C60005A0DD /* EventView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventView.xib; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				8E4DBCCD1E86F4C0002BADBB /* FlyerTableViewCell.swift */,
 				1BDD80961E779CAC00D74B97 /* SnapSlider.swift */,
 				617436F51E897F720005A0DD /* EventView.swift */,
+				612796341E8B3750008680E8 /* OverlayView.swift */,
 				617436F71E8981C60005A0DD /* EventView.xib */,
 			);
 			name = Views;
@@ -424,6 +427,7 @@
 				8EA7C1971E71EB850051C277 /* Event.swift in Sources */,
 				8E4DBCD01E86FF3D002BADBB /* FlyerViewController.swift in Sources */,
 				1BAD2E151E78C9F900126F7D /* DiscoverViewController.swift in Sources */,
+				612796351E8B3750008680E8 /* OverlayView.swift in Sources */,
 				1BDD80951E779CA500D74B97 /* SettingsViewController.swift in Sources */,
 				1B7EB7061E6C735A0069D549 /* AppDelegate.swift in Sources */,
 				1B4FEBD61E86F9240070B490 /* LocationController.swift in Sources */,

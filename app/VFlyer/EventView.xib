@@ -26,46 +26,49 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="475"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qy9-4J-zMs">
-                            <rect key="frame" x="30" y="363" width="315" height="24"/>
+                            <rect key="frame" x="15" y="383" width="345" height="24"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="rQs-a5-wdf">
-                            <rect key="frame" x="20" y="20" width="335" height="335"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="rQs-a5-wdf" secondAttribute="height" multiplier="1:1" id="H9F-gj-yji"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Start - Event End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJJ-YQ-Cqe">
-                            <rect key="frame" x="30" y="398" width="315" height="21"/>
+                            <rect key="frame" x="15" y="415" width="345" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VG9-Ub-wfe">
-                            <rect key="frame" x="30" y="389" width="315" height="1"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="G8P-gp-MG2"/>
-                            </constraints>
-                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSk-4e-6rP">
+                            <rect key="frame" x="15" y="438" width="345" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="rQs-a5-wdf" firstAttribute="leading" secondItem="zoS-rx-FhF" secondAttribute="leading" constant="20" id="7aQ-1Q-jcv"/>
-                        <constraint firstAttribute="trailing" secondItem="VG9-Ub-wfe" secondAttribute="trailing" constant="30" id="8rj-vd-WRE"/>
-                        <constraint firstItem="XJJ-YQ-Cqe" firstAttribute="top" secondItem="VG9-Ub-wfe" secondAttribute="bottom" constant="8" id="Jc4-f4-SsQ"/>
-                        <constraint firstItem="VG9-Ub-wfe" firstAttribute="leading" secondItem="zoS-rx-FhF" secondAttribute="leading" constant="30" id="M7J-5f-viF"/>
-                        <constraint firstAttribute="trailing" secondItem="rQs-a5-wdf" secondAttribute="trailing" constant="20" id="Rzu-Yx-AVw"/>
-                        <constraint firstItem="Qy9-4J-zMs" firstAttribute="leading" secondItem="zoS-rx-FhF" secondAttribute="leading" constant="30" id="XFp-yz-T5i"/>
-                        <constraint firstItem="VG9-Ub-wfe" firstAttribute="top" secondItem="Qy9-4J-zMs" secondAttribute="bottom" constant="2" id="a6T-Vk-HuT"/>
-                        <constraint firstItem="XJJ-YQ-Cqe" firstAttribute="leading" secondItem="zoS-rx-FhF" secondAttribute="leading" constant="30" id="eKu-Z6-O85"/>
-                        <constraint firstAttribute="trailing" secondItem="XJJ-YQ-Cqe" secondAttribute="trailing" constant="30" id="l0f-CM-tAg"/>
-                        <constraint firstAttribute="trailing" secondItem="Qy9-4J-zMs" secondAttribute="trailing" constant="30" id="qhy-lO-DhR"/>
+                        <constraint firstItem="rQs-a5-wdf" firstAttribute="leading" secondItem="zoS-rx-FhF" secondAttribute="leading" id="7aQ-1Q-jcv"/>
+                        <constraint firstAttribute="width" secondItem="zoS-rx-FhF" secondAttribute="height" multiplier="15:19" id="Enm-QT-fha"/>
+                        <constraint firstAttribute="trailing" secondItem="rQs-a5-wdf" secondAttribute="trailing" id="Rzu-Yx-AVw"/>
+                        <constraint firstItem="CSk-4e-6rP" firstAttribute="top" secondItem="XJJ-YQ-Cqe" secondAttribute="bottom" constant="2" id="TNh-h1-LvH"/>
+                        <constraint firstItem="Qy9-4J-zMs" firstAttribute="leading" secondItem="zoS-rx-FhF" secondAttribute="leading" constant="15" id="XFp-yz-T5i"/>
+                        <constraint firstAttribute="trailing" secondItem="CSk-4e-6rP" secondAttribute="trailing" constant="15" id="eHt-3b-4uH"/>
+                        <constraint firstItem="XJJ-YQ-Cqe" firstAttribute="leading" secondItem="zoS-rx-FhF" secondAttribute="leading" constant="15" id="eKu-Z6-O85"/>
+                        <constraint firstAttribute="trailing" secondItem="XJJ-YQ-Cqe" secondAttribute="trailing" constant="15" id="l0f-CM-tAg"/>
+                        <constraint firstAttribute="trailing" secondItem="Qy9-4J-zMs" secondAttribute="trailing" constant="15" id="qhy-lO-DhR"/>
+                        <constraint firstItem="XJJ-YQ-Cqe" firstAttribute="top" secondItem="Qy9-4J-zMs" secondAttribute="bottom" constant="8" id="t4W-td-CoW"/>
                         <constraint firstItem="Qy9-4J-zMs" firstAttribute="top" secondItem="rQs-a5-wdf" secondAttribute="bottom" constant="8" id="woU-6D-97y"/>
-                        <constraint firstItem="rQs-a5-wdf" firstAttribute="top" secondItem="zoS-rx-FhF" secondAttribute="top" constant="20" id="z8h-AK-D8L"/>
+                        <constraint firstItem="CSk-4e-6rP" firstAttribute="leading" secondItem="zoS-rx-FhF" secondAttribute="leading" constant="15" id="xuv-Z7-yhE"/>
+                        <constraint firstItem="rQs-a5-wdf" firstAttribute="top" secondItem="zoS-rx-FhF" secondAttribute="top" id="z8h-AK-D8L"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="gRe-LI-cRh" appends="YES" id="bwU-kn-oAD"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,6 +83,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="36.5" y="-58.5"/>
         </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="gRe-LI-cRh">
+            <connections>
+                <action selector="beingDragged:" destination="-1" id="nVi-LW-0jQ"/>
+            </connections>
+        </panGestureRecognizer>
     </objects>
     <resources>
         <image name="defaultPhoto" width="320" height="320"/>

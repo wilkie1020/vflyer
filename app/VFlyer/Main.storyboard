@@ -96,7 +96,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dra-aL-7y7">
                         <barButtonItem key="backBarButtonItem" title="Back" id="rIW-7y-PbE"/>
-                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="TH4-v4-ibc">
+                        <barButtonItem key="leftBarButtonItem" title="Back" style="done" id="TH4-v4-ibc">
                             <connections>
                                 <action selector="backPressed:" destination="boH-VT-flP" id="h9q-RC-q8Q"/>
                             </connections>
@@ -160,10 +160,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OjN-qo-CXE" customClass="EventView" customModule="VFlyer" customModuleProvider="target">
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjN-qo-CXE" customClass="EventView" customModule="VFlyer" customModuleProvider="target">
                                 <rect key="frame" x="8" y="84" width="359" height="452"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="y9e-vO-vSp" appends="YES" id="OUn-jI-6rd"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -185,7 +187,7 @@
                         <barButtonItem key="rightBarButtonItem" image="listViewIcon" width="50" id="vES-kx-UWW">
                             <connections>
                                 <action selector="listButtonPressed:" destination="o99-GD-pBG" id="dha-bZ-xvh"/>
-                                <segue destination="567-Sk-mIh" kind="presentation" identifier="discoverToList" modalTransitionStyle="flipHorizontal" id="F8m-lb-nnw"/>
+                                <segue destination="567-Sk-mIh" kind="presentation" identifier="discoverToList" modalTransitionStyle="crossDissolve" id="F8m-lb-nnw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -196,6 +198,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="y9e-vO-vSp">
+                    <connections>
+                        <action selector="handlePanGesture:" destination="o99-GD-pBG" id="M2P-Yu-tPf"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1380" y="-1540.4797601199402"/>
         </scene>
@@ -211,10 +218,10 @@
                             <tableViewSection headerTitle="Discovery Settings" id="miT-a1-Otn">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="s4h-K7-JHg">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s4h-K7-JHg" id="QMr-wQ-MV1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhk-VD-Z6p">
@@ -251,15 +258,15 @@
                             </tableViewSection>
                             <tableViewSection id="Gho-oy-4UV">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="lFI-e2-4hU">
-                                        <rect key="frame" x="0.0" y="166.5" width="375" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="lFI-e2-4hU">
+                                        <rect key="frame" x="0.0" y="167" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lFI-e2-4hU" id="dI6-oA-pem">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fek-SQ-Qqm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <state key="normal" title="Log Out"/>
                                                     <connections>
                                                         <action selector="logOutTriggered:" destination="yGc-Om-X11" eventType="primaryActionTriggered" id="Bgu-FY-Gc5"/>
@@ -278,15 +285,15 @@
                             </tableViewSection>
                             <tableViewSection id="uWd-Ka-Mfp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="4QT-MT-Wwk">
-                                        <rect key="frame" x="0.0" y="277.5" width="375" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="4QT-MT-Wwk">
+                                        <rect key="frame" x="0.0" y="247" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4QT-MT-Wwk" id="3sk-sh-kj2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7s-Ag-bUx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <state key="normal" title="Delete Account">
                                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -419,7 +426,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="discoverIcon" id="349-8C-cPG">
                             <connections>
-                                <segue destination="zME-1h-iyy" kind="presentation" identifier="listToDiscover" modalTransitionStyle="flipHorizontal" id="rG7-m5-KYY"/>
+                                <segue destination="zME-1h-iyy" kind="presentation" identifier="listToDiscover" modalTransitionStyle="crossDissolve" id="rG7-m5-KYY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
