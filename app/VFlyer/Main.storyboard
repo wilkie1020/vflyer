@@ -363,6 +363,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="dateLabel" destination="VKS-qO-zYp" id="k0y-BZ-lE2"/>
+                                    <outlet property="locationLabel" destination="Hkz-G7-pcX" id="HfZ-3c-bN1"/>
                                     <outlet property="nameLabel" destination="8Sh-En-F0g" id="ZX1-Ph-uKf"/>
                                     <outlet property="picture" destination="7kX-zN-x2f" id="Aad-pd-3dQ"/>
                                     <segue destination="boH-VT-flP" kind="show" identifier="listToView" id="yDl-3B-6mh"/>
@@ -465,6 +467,6 @@
         <image name="settingsIcon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zkZ-Xe-VFh"/>
+        <segue reference="4oA-fx-gxi"/>
     </inferredMetricsTieBreakers>
 </document>

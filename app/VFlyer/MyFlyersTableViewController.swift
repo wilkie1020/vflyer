@@ -86,6 +86,18 @@ class MyFlyersTableViewController: UITableViewController {
         } else {
             event = events[indexPath.row]
         }
+        
+        //Setting up the date as a string
+        var dateString = ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        if (event.startDate != event.endDate)
+        {
+            dateString += dateFormatter.string(from: event.startDate)  + " - "
+        }
+        dateString += dateFormatter.string(from: event.endDate)
+        
+        cell.dateLabel.text = dateString
         cell.nameLabel.text = event.name
         cell.picture.image = event.image
         return cell

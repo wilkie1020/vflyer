@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VFlyer/MyFlyersTableViewController.swift"
-            timestampString = "512517891.670868"
+            timestampString = "512519671.127584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
