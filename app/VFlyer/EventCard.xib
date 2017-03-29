@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventView" customModule="VFlyer" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventCard" customModule="VFlyer" customModuleProvider="target">
             <connections>
                 <outlet property="dateLabel" destination="XJJ-YQ-Cqe" id="PT7-y0-0OU"/>
                 <outlet property="imageView" destination="rQs-a5-wdf" id="fve-yk-YfS"/>

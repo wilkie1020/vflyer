@@ -127,55 +127,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="haG-lw-SWI">
-                                <rect key="frame" x="41" y="562" width="293" height="80"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8He-Wx-Wcl">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="0k1-pA-kSh"/>
-                                            <constraint firstAttribute="width" secondItem="8He-Wx-Wcl" secondAttribute="height" multiplier="1:1" id="YsD-K7-G0C"/>
-                                        </constraints>
-                                        <state key="normal" image="cross">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="noButtonTriggered:" destination="o99-GD-pBG" eventType="primaryActionTriggered" id="Miv-Tm-KqC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UF-ZE-d2a">
-                                        <rect key="frame" x="213" y="0.0" width="80" height="80"/>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="1UF-ZE-d2a" secondAttribute="height" multiplier="1:1" id="0eb-DX-mWL"/>
-                                            <constraint firstAttribute="height" constant="80" id="Yzf-fq-Uix"/>
-                                        </constraints>
-                                        <state key="normal" image="check">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="yesButtonTriggered:" destination="o99-GD-pBG" eventType="primaryActionTriggered" id="tej-CE-Epv"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjN-qo-CXE" customClass="EventView" customModule="VFlyer" customModuleProvider="target">
-                                <rect key="frame" x="8" y="84" width="359" height="452"/>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjN-qo-CXE" customClass="EventCardList" customModule="VFlyer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="y9e-vO-vSp" appends="YES" id="OUn-jI-6rd"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="haG-lw-SWI" secondAttribute="trailing" constant="25" id="0AJ-va-Lyb"/>
-                            <constraint firstAttribute="trailing" secondItem="OjN-qo-CXE" secondAttribute="trailing" constant="8" id="UNZ-kI-LqU"/>
-                            <constraint firstItem="OjN-qo-CXE" firstAttribute="leading" secondItem="lOB-iD-ugD" secondAttribute="leading" constant="8" id="hBr-es-3F7"/>
-                            <constraint firstItem="U17-yB-Kbq" firstAttribute="top" secondItem="haG-lw-SWI" secondAttribute="bottom" constant="25" id="hDV-mJ-aAn"/>
-                            <constraint firstItem="OjN-qo-CXE" firstAttribute="top" secondItem="vKY-tP-fi6" secondAttribute="bottom" constant="20" id="qZP-I7-vHV"/>
-                            <constraint firstItem="haG-lw-SWI" firstAttribute="leading" secondItem="lOB-iD-ugD" secondAttribute="leadingMargin" constant="25" id="tkN-BW-rrT"/>
+                            <constraint firstAttribute="trailing" secondItem="OjN-qo-CXE" secondAttribute="trailing" id="4oG-wJ-FGU"/>
+                            <constraint firstItem="OjN-qo-CXE" firstAttribute="top" secondItem="vKY-tP-fi6" secondAttribute="bottom" id="fsb-Ct-Pso"/>
+                            <constraint firstItem="U17-yB-Kbq" firstAttribute="top" secondItem="OjN-qo-CXE" secondAttribute="bottom" id="hgT-aM-Stz"/>
+                            <constraint firstItem="OjN-qo-CXE" firstAttribute="leading" secondItem="lOB-iD-ugD" secondAttribute="leading" id="pQo-07-w63"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Discover" id="PKO-kG-LRK">
@@ -192,17 +154,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="eventView" destination="OjN-qo-CXE" id="Pe8-Ns-u8O"/>
-                        <outlet property="noButton" destination="8He-Wx-Wcl" id="BZF-B6-zsV"/>
-                        <outlet property="yesButton" destination="1UF-ZE-d2a" id="MpM-pl-2oX"/>
+                        <outlet property="eventCardList" destination="OjN-qo-CXE" id="RCl-HJ-mlN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="y9e-vO-vSp">
-                    <connections>
-                        <action selector="handlePanGesture:" destination="o99-GD-pBG" id="M2P-Yu-tPf"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1380" y="-1540.4797601199402"/>
         </scene>
@@ -218,10 +173,10 @@
                             <tableViewSection headerTitle="Discovery Settings" id="miT-a1-Otn">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="s4h-K7-JHg">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s4h-K7-JHg" id="QMr-wQ-MV1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhk-VD-Z6p">
@@ -259,10 +214,10 @@
                             <tableViewSection id="Gho-oy-4UV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="lFI-e2-4hU">
-                                        <rect key="frame" x="0.0" y="167" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="166.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lFI-e2-4hU" id="dI6-oA-pem">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fek-SQ-Qqm">
@@ -286,10 +241,10 @@
                             <tableViewSection id="uWd-Ka-Mfp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="4QT-MT-Wwk">
-                                        <rect key="frame" x="0.0" y="247" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="246.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4QT-MT-Wwk" id="3sk-sh-kj2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7s-Ag-bUx">
@@ -361,7 +316,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2v-ql-qTV" id="hf1-TK-Ju8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ziK-Mj-oRy">
@@ -503,8 +458,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="check" width="22" height="22"/>
-        <image name="cross" width="22" height="22"/>
         <image name="defaultPhoto" width="320" height="320"/>
         <image name="discoverIcon" width="22" height="22"/>
         <image name="listViewIcon" width="22" height="22"/>

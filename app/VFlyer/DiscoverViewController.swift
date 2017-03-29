@@ -18,12 +18,11 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     var locationController = LocationController()
     var coord = CLLocationCoordinate2D()
     var eventsIndex = 0
-
-    @IBOutlet weak var eventView: EventView!
     
     //Buttons
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var eventCardList: EventCardList!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +51,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        noButton.layer.cornerRadius = 40
-        yesButton.layer.cornerRadius = 40
-        
-        eventView.backgroundColor = UIColor.red
+//        noButton.layer.cornerRadius = 40
+//        yesButton.layer.cornerRadius = 40
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,10 +102,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         if(locationController.service()) {
             user?.discoverEvents(coordinates: coord).then({ events in
                 print("Discovered events for user: \(events.count)")
-                if (events.count > 0) {
-                    self.events = events
-                    self.eventView.event = events[0]
-                }
+                
+                self.eventCardList.test = events
             })
         } else {
             //pop up option to enable gps
@@ -139,32 +134,32 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     
     @IBAction func noButtonTriggered(_ sender: UIButton) {
         print("No")
-        events?[0].unlikeEvent(forUser: user!).then { (result) in
-            if (result) {
-                self.events?.removeFirst()
-                if (self.events!.count > 0) {
-                    self.eventView.event = self.events?[0]
-                }
-                print("Events count: \(self.events!.count)")
-            } else {
-                print("Error")
-            }
-        }
+//        events?[0].unlikeEvent(forUser: user!).then { (result) in
+//            if (result) {
+//                self.events?.removeFirst()
+//                if (self.events!.count > 0) {
+//                    self.eventCard.event = self.events?[0]
+//                }
+//                print("Events count: \(self.events!.count)")
+//            } else {
+//                print("Error")
+//            }
+//        }
     }
     
     @IBAction func yesButtonTriggered(_ sender: UIButton) {
         print("Yes")
-        events?[0].likeEvent(forUser: user!).then { (result) in
-            if (result) {
-                self.events?.removeFirst()
-                if (self.events!.count > 0) {
-                    self.eventView.event = self.events?[0]
-                }
-                print("Events count: \(self.events!.count)")
-            } else {
-                print("Error")
-            }
-        }
+//        events?[0].likeEvent(forUser: user!).then { (result) in
+//            if (result) {
+//                self.events?.removeFirst()
+//                if (self.events!.count > 0) {
+//                    self.eventCard.event = self.events?[0]
+//                }
+//                print("Events count: \(self.events!.count)")
+//            } else {
+//                print("Error")
+//            }
+//        }
     }
     
     @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
@@ -181,11 +176,4 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         }
     }
 
-    @IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: self.view)
-        if let view = sender.view {
-            view.center = CGPoint(x:view.center.x + translation.x, y:view.center.y + translation.y)
-        }
-        sender.setTranslation(CGPoint.zero, in: self.eventView)
-    }
 }

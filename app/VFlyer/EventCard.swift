@@ -13,7 +13,7 @@ protocol DraggableViewDelegate {
     func cardSwipedRight(card: UIView) -> Void
 }
 
-@IBDesignable class EventView: UIView {
+@IBDesignable class EventCard: UIView {
     var delegate: DraggableViewDelegate!
     var originPoint: CGPoint!
     var overlayView: OverlayView!
@@ -92,7 +92,7 @@ protocol DraggableViewDelegate {
     func loadViewFromNib() -> UIView {
         
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "EventView", bundle: bundle)
+        let nib = UINib(nibName: "EventCard", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         
         return view
