@@ -166,10 +166,10 @@ class User {
         })
     }
     
-    public func discoverEvents(coordinates:CLLocationCoordinate2D) -> Promise<[Event]> {
+    public func discoverEvents(near location:CLLocationCoordinate2D) -> Promise<[Event]> {
         
-        let lat = coordinates.latitude
-        let lon = coordinates.longitude
+        let lat = location.latitude
+        let lon = location.longitude
         
         let url = URL(string: "events?lat=\(lat)&lon=\(lon)&userId=\(_id!)", relativeTo: BASE_URL)!
         var request = URLRequest(url: url)

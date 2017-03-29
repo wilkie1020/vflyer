@@ -9,8 +9,8 @@
 import UIKit
 
 protocol DraggableViewDelegate {
-    func cardSwipedLeft(card: UIView) -> Void
-    func cardSwipedRight(card: UIView) -> Void
+    func cardSwipedLeft(card: UIView)
+    func cardSwipedRight(card: UIView)
 }
 
 @IBDesignable class EventCard: UIView {
@@ -34,14 +34,16 @@ protocol DraggableViewDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBInspectable var event: Event? {
+    private var _event: Event?
+    var event: Event {
         get {
-            return self.event;
+            return self._event!;
         }
         set(event) {
-            nameLabel.text = event?.name
-            imageView.image = event?.image
-            dateLabel.text = "\(event?.startDate) - \(event?.endDate)"
+            self._event = event
+            nameLabel.text = event.name
+            imageView.image = event.image
+            dateLabel.text = "\(event.startDate) - \(event.endDate)"
         }
     }
     
@@ -129,7 +131,7 @@ protocol DraggableViewDelegate {
         }
     }
     
-    func updateOverlay(distance: CGFloat) -> Void {
+    func updateOverlay(distance: CGFloat) {
         if distance > 0 {
             overlayView.setMode(mode: GGOverlayViewMode.GGOverlayViewModeRight)
         } else {
@@ -138,7 +140,7 @@ protocol DraggableViewDelegate {
         overlayView.alpha = CGFloat(min(fabsf(Float(distance))/100, 0.4))
     }
     
-    func afterSwipeAction() -> Void {
+    func afterSwipeAction() {
         let floatXFromCenter = Float(xFromCenter)
         if floatXFromCenter > ACTION_MARGIN {
             self.rightAction()
@@ -153,7 +155,7 @@ protocol DraggableViewDelegate {
         }
     }
     
-    func rightAction() -> Void {
+    func rightAction() {
         let finishPoint: CGPoint = CGPoint(x: 500, y: 2 * CGFloat(yFromCenter) + self.originPoint.y)
         UIView.animate(withDuration: 0.3, animations: {
             self.center = finishPoint
@@ -164,7 +166,7 @@ protocol DraggableViewDelegate {
         delegate.cardSwipedRight(card: self)
     }
     
-    func leftAction() -> Void {
+    func leftAction() {
         let finishPoint: CGPoint = CGPoint(x: -500, y: 2 * CGFloat(yFromCenter) + self.originPoint.y)
         UIView.animate(withDuration: 0.3, animations: {
             self.center = finishPoint
@@ -175,7 +177,7 @@ protocol DraggableViewDelegate {
         delegate.cardSwipedLeft(card: self)
     }
     
-    func rightClickAction() -> Void {
+    func rightClickAction() {
         let finishPoint = CGPoint(x: 600, y: self.center.y)
         UIView.animate(withDuration: 0.3, animations: {
             self.center = finishPoint
@@ -187,7 +189,7 @@ protocol DraggableViewDelegate {
         delegate.cardSwipedRight(card: self)
     }
     
-    func leftClickAction() -> Void {
+    func leftClickAction() {
         let finishPoint: CGPoint = CGPoint(x: -600, y: self.center.y)
         UIView.animate(withDuration: 0.3, animations: {
             self.center = finishPoint

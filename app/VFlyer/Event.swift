@@ -49,7 +49,6 @@ class Event {
         
         self._id = _id
         self.name = name
-        
         self.description = description
         self.startDate = startDate
         self.endDate = endDate
@@ -88,6 +87,29 @@ class Event {
         request.httpMethod = "DELETE"
         
         print("DELETE \(url.absoluteURL)")
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        return Promise<Bool>(work: { fulfill, reject in
+            session.dataTask(with: request, completionHandler: { data, response, error in
+                if let error = error {
+                    reject(error)
+                } else if let _ = data, let response = response as? HTTPURLResponse {
+                    fulfill(response.statusCode == 200)
+                } else {
+                    fatalError("Something has gone horribly wrong.")
+                }
+            }).resume()
+        })
+    }
+    
+    public func passEvent(forUser user:User) -> Promise<Bool> {
+        let url = URL(string: "users/\(user._id!)/viewed?eventId=\(_id)", relativeTo: BASE_URL)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        print("POST \(url.absoluteURL)")
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)

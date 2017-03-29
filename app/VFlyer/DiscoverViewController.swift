@@ -14,14 +14,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
 
     //MARK: Properties
     var user: User?
-    var events: [Event]?
     var locationController = LocationController()
-    var coord = CLLocationCoordinate2D()
-    var eventsIndex = 0
-    
-    //Buttons
-    @IBOutlet weak var noButton: UIButton!
-    @IBOutlet weak var yesButton: UIButton!
+
     @IBOutlet weak var eventCardList: EventCardList!
 
     override func viewDidLoad() {
@@ -33,20 +27,36 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         
         locationController.delegate = self
         
-        if AccessToken.current == nil {
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
-            self.present(vc, animated: true, completion: nil)
-        }
-
-        if let accessToken = AccessToken.current, let userId = accessToken.userId {
-            user = User(userId: userId)
-            print("Here")
-            user?.login().then({
-                let test = "_id: \(self.user?._id)\nuserId: \(self.user?.userId)\nradius: \(self.user?.radius)\n"
-                print(test)
-                self.getFlyers()
+        if !locationController.service() {
+            //pop up option to enable gps
+            let alert = UIAlertController(title: "GPS Unavailable", message: "GPS Unavailable, enable GPS?", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Settings", style: .default) { action in
+                if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    UIApplication.shared.openURL(settingsURL as URL)
+                }
+                self.dismiss(animated: true, completion: nil)
             })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default) { action in
+                self.dismiss(animated: true, completion: nil)
+            })
+            self.present(alert, animated: true)
+        } else {
+            if AccessToken.current == nil {
+                let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+                self.present(vc, animated: true, completion: nil)
+            }
+
+            if let accessToken = AccessToken.current, let userId = accessToken.userId {
+                user = User(userId: userId)
+                print("Here")
+                user?.login().then({
+                    let test = "_id: \(self.user?._id)\nuserId: \(self.user?.userId)\nradius: \(self.user?.radius)\n"
+                    print(test)
+                    self.eventCardList.user = self.user
+                    self.eventCardList.loadCards()
+                })
+            }
         }
     }
     
@@ -59,8 +69,6 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     
     // MARK: - Navigation
 
@@ -93,33 +101,6 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
             fatalError("Unexpected Segue Identifier; \(segue.identifier)");
         }
 
-    }
-    
-    
-    //University lat 50.418034, long -104.590338
-    //MARK: Functions
-    func getFlyers() {
-        if(locationController.service()) {
-            user?.discoverEvents(coordinates: coord).then({ events in
-                print("Discovered events for user: \(events.count)")
-                
-                self.eventCardList.test = events
-            })
-        } else {
-            //pop up option to enable gps
-            let alert = UIAlertController(title: "GPS Unavailable", message: "GPS Unavailable, enable GPS?", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Settings", style: .default) { action in
-                if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
-                    UIApplication.shared.openURL(settingsURL as URL)
-                }
-                self.dismiss(animated: true, completion: nil)
-            })
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default) { action in
-                self.dismiss(animated: true, completion: nil)
-            })
-            self.present(alert, animated: true)
-        }
-        
     }
     
     //MARK: Actions
@@ -169,10 +150,10 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate {
     }
     
     func locationDidUpdate(location: CLLocation?) {
-        if(location != nil) {
-            coord = (location?.coordinate)!
+        if let location = location {
+            eventCardList.location = location.coordinate
         } else {
-            coord = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+            eventCardList.location = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
         }
     }
 
