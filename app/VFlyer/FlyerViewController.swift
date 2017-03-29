@@ -41,11 +41,14 @@ class FlyerViewController: UIViewController {
         
         //Setting up the date as a string
         var dateString = ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
         if (setEvent.startDate != setEvent.endDate)
         {
-            dateString += setEvent.startDate.description + " - "
+            dateString += dateFormatter.string(from: setEvent.startDate)  + " - "
         }
-        dateString += setEvent.endDate.description
+        dateString += dateFormatter.string(from: setEvent.endDate)
         
         self.date.text = dateString
         self.descriptionTextView.text = setEvent.description
