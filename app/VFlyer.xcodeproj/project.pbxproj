@@ -266,7 +266,7 @@
 				TargetAttributes = {
 					1B7EB7011E6C735A0069D549 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9R35ZD245F;
+						DevelopmentTeam = 6X5B26J782;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -569,14 +569,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VFlyer/VFlyer.entitlements;
-				DEVELOPMENT_TEAM = 9R35ZD245F;
+				DEVELOPMENT_TEAM = 6X5B26J782;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = VFlyer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.VFlyer;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.uregina.cs.455.group2.vFlyer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -588,14 +588,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VFlyer/VFlyer.entitlements;
-				DEVELOPMENT_TEAM = 9R35ZD245F;
+				DEVELOPMENT_TEAM = 6X5B26J782;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = VFlyer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.VFlyer;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.uregina.cs.455.group2.vFlyer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
