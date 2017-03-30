@@ -26,9 +26,11 @@ router.route('/')
         req.checkQuery('lon', 'Invalid longitude').isFloat();
         req.checkQuery('lat', 'Invalid latitude').isFloat();
         req.checkQuery('userId', 'Invalid user id').isMongoId();
+        req.checkQuery('limit').optional()
 
         req.sanitizeQuery('lon').toFloat();
         req.sanitizeQuery('lat').toFloat();
+        req.sanitizeQuery('limit').toInt();
 
         req.getValidationResult().then(function(result) {
             if (!result.isEmpty()) {
@@ -67,7 +69,7 @@ router.route('/')
                     }
 
                     res.json(200, events);
-                });
+                }).limit(req.query.limit || 0);
             });
         });
     })
