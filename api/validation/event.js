@@ -10,6 +10,7 @@ var validation = {
         }
     },
     'image': {
+        optional: true,
         notEmpty: {
             errorMessage: "Must not be left empty"
         }
