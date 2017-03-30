@@ -85,7 +85,6 @@ router.route('/:id')
                 return res.json(404, {"message": "Event Not Found"})
             }
 
-            console.log(data.image)
             res.json(200, data);
         })
     })
