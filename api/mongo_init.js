@@ -1,7 +1,9 @@
 use vflyer
 
-var events = [
-{
+db.users.remove({})
+db.events.remove({})
+
+db.events.insert({
     name: "Regina 1",
     description: "Event @ -104, 50",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -13,8 +15,9 @@ var events = [
       ],
       type: "Point"
     }
-},
-{
+});
+
+db.events.insert({
     name: "Regina 2",
     description: "Event @ -104, 50",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -26,8 +29,9 @@ var events = [
       ],
       type: "Point"
     }
-},
-{
+});
+
+db.events.insert({
     name: "Regina 3",
     description: "Event @ -104, 50",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -39,8 +43,9 @@ var events = [
       ],
       type: "Point"
     }
-},
-{
+});
+
+db.events.insert({
     name: "Regina 4",
     description: "Event @ -104, 50",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -52,8 +57,9 @@ var events = [
       ],
       type: "Point"
     }
-},
-{
+});
+
+db.events.insert({
     name: "Tor Hill Golf Course",
     description: "Event @ -104, 50",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -65,8 +71,9 @@ var events = [
       ],
       type: "Point"
     }
-},
-{
+});
+
+db.events.insert({
     name: "Balgonie",
     description: "Event @ -104, 50",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -78,8 +85,9 @@ var events = [
       ],
       type: "Point"
     }
-},
-{
+});
+
+db.events.insert({
     name: "Fort Qu'Appelle",
     description: "Event @ -103, 50",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -91,8 +99,9 @@ var events = [
       ],
       type: "Point"
     }
-},
-{
+});
+
+db.events.insert({
     name: "Saskatoon 1",
     description: "Event @ -106, 52",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -104,8 +113,9 @@ var events = [
       ],
       type: "Point"
     }
-},
-{
+});
+
+db.events.insert({
     name: "Saskatoon 2",
     description: "Event @ -106, 52",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -117,8 +127,9 @@ var events = [
       ],
       type: "Point"
     }
-},
-{
+});
+
+db.events.insert({
     name: "Saskatoon 3",
     description: "Event @ -106, 52",
     startDate: "2017-06-01T00:00:00.000Z",
@@ -130,12 +141,4 @@ var events = [
       ],
       type: "Point"
     }
-}
-];
-
-db.users.remove({})
-db.events.remove({})
-
-for (var i = 0; i < events.length; i++) {
-    db.events.insert(events[i]);
-}
+});
