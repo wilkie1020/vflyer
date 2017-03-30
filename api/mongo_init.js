@@ -131,9 +131,11 @@ var events = [
 }
 ];
 
+var db = connect('localhost:27017/vflyer');
+
 db.users.remove({});
 db.events.remove({});
 
-for (let event of events) {
-    db.events.insert(event);
+for (var i = 0; i < events.length; i++) {
+    db.events.insert(events[i])
 }
