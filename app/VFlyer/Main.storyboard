@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zME-1h-iyy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zME-1h-iyy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -128,17 +128,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjN-qo-CXE" customClass="EventCardList" customModule="VFlyer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="HL0-Kw-8dD">
+                                <rect key="frame" x="67.5" y="567" width="240" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00i-Tk-8GA">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="CD3-PU-D7C"/>
+                                            <constraint firstAttribute="width" constant="80" id="rfB-1u-2MP"/>
+                                        </constraints>
+                                        <state key="normal" image="cross"/>
+                                        <connections>
+                                            <action selector="buttonTouchDown:" destination="o99-GD-pBG" eventType="touchDown" id="Jv2-p7-qK3"/>
+                                            <action selector="noButtonTriggered:" destination="o99-GD-pBG" eventType="primaryActionTriggered" id="ciJ-2y-dHc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8o-HV-T87">
+                                        <rect key="frame" x="160" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="BQk-e5-3Tm"/>
+                                            <constraint firstAttribute="width" constant="80" id="LKa-Mg-6XN"/>
+                                        </constraints>
+                                        <state key="normal" image="check"/>
+                                        <connections>
+                                            <action selector="buttonTouchDown:" destination="o99-GD-pBG" eventType="touchDown" id="C4I-XY-vak"/>
+                                            <action selector="yesButtonTriggered:" destination="o99-GD-pBG" eventType="primaryActionTriggered" id="hOw-Pe-wLT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjN-qo-CXE">
+                                <rect key="frame" x="0.0" y="64" width="375" height="483"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4ad-K1-EPQ">
+                                        <rect key="frame" x="169" y="223" width="37" height="37"/>
+                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="4ad-K1-EPQ" firstAttribute="centerX" secondItem="OjN-qo-CXE" secondAttribute="centerX" id="9Jl-Zg-CUF"/>
+                                    <constraint firstItem="4ad-K1-EPQ" firstAttribute="centerY" secondItem="OjN-qo-CXE" secondAttribute="centerY" id="eOz-4d-Jt1"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="OjN-qo-CXE" secondAttribute="trailing" id="4oG-wJ-FGU"/>
-                            <constraint firstItem="OjN-qo-CXE" firstAttribute="top" secondItem="vKY-tP-fi6" secondAttribute="bottom" id="fsb-Ct-Pso"/>
-                            <constraint firstItem="U17-yB-Kbq" firstAttribute="top" secondItem="OjN-qo-CXE" secondAttribute="bottom" id="hgT-aM-Stz"/>
-                            <constraint firstItem="OjN-qo-CXE" firstAttribute="leading" secondItem="lOB-iD-ugD" secondAttribute="leading" id="pQo-07-w63"/>
+                            <constraint firstItem="HL0-Kw-8dD" firstAttribute="top" secondItem="OjN-qo-CXE" secondAttribute="bottom" constant="20" id="a9K-Ik-c10"/>
+                            <constraint firstItem="OjN-qo-CXE" firstAttribute="top" secondItem="vKY-tP-fi6" secondAttribute="bottom" id="kiq-xM-FLP"/>
+                            <constraint firstItem="U17-yB-Kbq" firstAttribute="top" secondItem="HL0-Kw-8dD" secondAttribute="bottom" constant="20" id="kve-Bk-OFA"/>
+                            <constraint firstItem="HL0-Kw-8dD" firstAttribute="centerX" secondItem="lOB-iD-ugD" secondAttribute="centerX" id="pbB-GP-azl"/>
+                            <constraint firstItem="OjN-qo-CXE" firstAttribute="leading" secondItem="lOB-iD-ugD" secondAttribute="leading" id="qsK-Us-NDO"/>
+                            <constraint firstAttribute="trailing" secondItem="OjN-qo-CXE" secondAttribute="trailing" id="vzW-ma-HAm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Discover" id="PKO-kG-LRK">
@@ -155,7 +198,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="4ad-K1-EPQ" id="xwD-R3-WKn"/>
                         <outlet property="eventCardList" destination="OjN-qo-CXE" id="RCl-HJ-mlN"/>
+                        <outlet property="noButton" destination="00i-Tk-8GA" id="P7m-q9-Xeh"/>
+                        <outlet property="yesButton" destination="z8o-HV-T87" id="HdM-xf-dhB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -174,10 +220,10 @@
                             <tableViewSection headerTitle="Discovery Settings" id="miT-a1-Otn">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="s4h-K7-JHg">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s4h-K7-JHg" id="QMr-wQ-MV1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhk-VD-Z6p">
@@ -215,10 +261,10 @@
                             <tableViewSection id="Gho-oy-4UV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="lFI-e2-4hU">
-                                        <rect key="frame" x="0.0" y="167" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="166.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lFI-e2-4hU" id="dI6-oA-pem">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fek-SQ-Qqm">
@@ -242,10 +288,10 @@
                             <tableViewSection id="uWd-Ka-Mfp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="4QT-MT-Wwk">
-                                        <rect key="frame" x="0.0" y="247" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="246.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4QT-MT-Wwk" id="3sk-sh-kj2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7s-Ag-bUx">
@@ -317,7 +363,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2v-ql-qTV" id="hf1-TK-Ju8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ziK-Mj-oRy">
@@ -461,12 +507,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="check" width="22" height="22"/>
+        <image name="cross" width="22" height="22"/>
         <image name="defaultPhoto" width="320" height="320"/>
         <image name="discoverIcon" width="22" height="22"/>
         <image name="listViewIcon" width="22" height="22"/>
         <image name="settingsIcon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4oA-fx-gxi"/>
+        <segue reference="zkZ-Xe-VFh"/>
     </inferredMetricsTieBreakers>
 </document>

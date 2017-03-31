@@ -24,7 +24,6 @@ class OverlayView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.white
         imageView = UIImageView(image: #imageLiteral(resourceName: "cross"))
         self.addSubview(imageView)
     }
@@ -37,10 +36,8 @@ class OverlayView: UIView {
         
         if _mode == GGOverlayViewMode.GGOverlayViewModeLeft {
             imageView.image = #imageLiteral(resourceName: "cross")
-            self.backgroundColor = UIColor.red
         } else {
             imageView.image = #imageLiteral(resourceName: "check")
-            self.backgroundColor = UIColor.green
         }
     }
     

@@ -15,6 +15,8 @@ class User {
     var userId: String
     var radius: Int?
     
+    var isLoggedIn: Bool
+    
     var json: [String: Any] {
         return [
             "_id": self._id!,
@@ -26,6 +28,7 @@ class User {
     //MARK: Initialization
     init(userId: String) {
         self.userId = userId
+        self.isLoggedIn = false
     }
     
     init?(json: [String: Any]) {
@@ -40,6 +43,7 @@ class User {
         self._id = _id;
         self.userId = userId;
         self.radius = radius;
+        self.isLoggedIn = false
     }
     
     let BASE_URL = URL(string: "http://159.203.7.42:8000/api/")
@@ -120,6 +124,7 @@ class User {
                             self._id = response["_id"] as! String
                             self.userId = response["userId"] as! String
                             self.radius = response["radius"] as! Int
+                            self.isLoggedIn = true
                         }
                         fulfill()
                     } else {

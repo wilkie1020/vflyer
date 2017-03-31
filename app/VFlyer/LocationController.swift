@@ -21,35 +21,36 @@ class LocationController: NSObject, CLLocationManagerDelegate{
     
     var delegate : LocationControllerDelegate?
     
-    override init()
-    {
+    override init() {
         super.init()
         self.location = nil
         self.locationManager.delegate = self
+    }
+    
+    func start() {
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-        
     }
     
-    func service() -> Bool
-    {
-        if CLLocationManager.locationServicesEnabled()
-        {
+    func stop() {
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func service() -> Bool {
+        if CLLocationManager.locationServicesEnabled() {
             return true
         }
-        else { return false }
+        else {
+            return false
+        }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        if(locations.last != nil)
-        {
+        if(locations.last != nil) {
             self.location = (locations.last?.coordinate)!
             self.delegate?.locationDidUpdate(location: (locations.last)!)
-        }
-        else
-        {
+        } else {
             self.location = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
         }
         

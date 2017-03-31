@@ -13,7 +13,7 @@ protocol DraggableViewDelegate {
     func cardSwipedRight(card: UIView)
 }
 
-@IBDesignable class EventCard: UIView {
+class EventCard: UIView {
     var delegate: DraggableViewDelegate!
     var originPoint: CGPoint!
     var overlayView: OverlayView!
@@ -76,6 +76,8 @@ protocol DraggableViewDelegate {
     
     func xibSetup() {
         view = loadViewFromNib()
+        
+        print(bounds.size)
         
         // use bounds not frame or it'll be offset
         view.frame = bounds
