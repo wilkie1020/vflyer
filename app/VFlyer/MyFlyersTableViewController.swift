@@ -172,8 +172,10 @@ class MyFlyersTableViewController: UITableViewController {
                 let event: Event
                 if searchController.isActive && searchController.searchBar.text != "" {
                     detailVC.event = filteredEvents[indexPath.row]
+                    detailVC.user = self.user
                 } else {
                     detailVC.event = self.events[indexPath.row]
+                    detailVC.user = self.user
                 }
             }
 //            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController

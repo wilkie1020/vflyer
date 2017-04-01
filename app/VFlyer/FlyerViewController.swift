@@ -9,7 +9,7 @@
 import UIKit
 import FacebookCore
 
-class FlyerViewController: UIViewController {
+class FlyerViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: Properties
     @IBOutlet weak var name: UILabel!
@@ -18,10 +18,24 @@ class FlyerViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var eventImage: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var buttonsView: UIStackView!
+    @IBOutlet weak var checkBoxButton: UIButton!
+    @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var noButton: UIButton!
     
+    
+    var likedToggle: Bool?
     var user: User?
     var event: Event?
 
+    override func viewWillAppear(_ animated: Bool) {
+        noButton.layer.cornerRadius = 40
+        yesButton.layer.cornerRadius = 40
+        
+        scrollView.contentSize = CGSize(width:375, height: (scrollView.contentSize.height + descriptionTextView.contentSize.height))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +49,7 @@ class FlyerViewController: UIViewController {
             fatalError("No event to display");
         }
         
+        likedToggle = true
         self.name.text = setEvent.name
         //self.location = setEvent.location
         //TODO: get the location
@@ -51,7 +66,7 @@ class FlyerViewController: UIViewController {
         dateString += dateFormatter.string(from: setEvent.endDate)
         
         self.date.text = dateString
-        self.descriptionTextView.text = setEvent.description
+        //self.descriptionTextView.text = setEvent.description
         self.eventImage.image = setEvent.image
 
         // Do any additional setup after loading the view.
@@ -75,4 +90,71 @@ class FlyerViewController: UIViewController {
     @IBAction func backPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    @IBAction func checkBoxTapped(_ sender: Any) {
+        switch likedToggle{
+        //cheked
+        case true?:
+            guard let user = user else {
+                fatalError("User not set")
+            }
+            
+            event?.unlikeEvent(forUser: user).then { result in
+                if result {
+                    print("unchecked")
+                    self.likedToggle = false
+                    self.checkBoxButton.setImage(#imageLiteral(resourceName: "emptyCheckBox"), for: UIControlState.normal)
+                }
+            }
+            
+        case false?:
+            guard let user = user else {
+                fatalError("User not set")
+            }
+            
+            event?.likeEvent(forUser: user).then { result in
+                if result {
+                    print("Checked")
+                    self.likedToggle = true
+                    self.checkBoxButton.setImage(#imageLiteral(resourceName: "checkedBox"), for: UIControlState.normal)
+                }
+            }
+        default:
+            print("default case hit")
+        }
+    }
+    
+    @IBAction func checkPressed(_ sender: Any) {
+        
+        guard let user = user else {
+            fatalError("User not set")
+        }
+        
+        event?.likeEvent(forUser: user).then { result in
+            if result {
+                
+            }
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    @IBAction func xPressed(_ sender: Any) {
+        
+        guard let user = user else {
+            fatalError("User not set")
+        }
+            event?.passEvent(forUser: user).then { result in
+            if result {
+                
+            }
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    
 }
