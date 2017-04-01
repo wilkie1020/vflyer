@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VFlyer/FlyerViewController.swift"
-            timestampString = "512763532.545893"
+            timestampString = "512765358.677104"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "checkBoxTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VFlyer/FlyerViewController.swift"
-            timestampString = "512763786.339768"
+            timestampString = "512765358.677104"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "checkBoxTapped(_:)"
             landmarkType = "7">
             <Locations>

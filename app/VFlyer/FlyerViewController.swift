@@ -24,8 +24,11 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     
-    
+    //Toggles
     var likedToggle: Bool?
+    var bottomHidden: Bool?
+    var checkBoxHidden: Bool?
+    
     var user: User?
     var event: Event?
 
@@ -34,6 +37,27 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
         yesButton.layer.cornerRadius = 40
         
         scrollView.contentSize = CGSize(width:375, height: (scrollView.contentSize.height + descriptionTextView.contentSize.height))
+        
+        switch bottomHidden{
+        case true?:
+            buttonsView.isHidden = true
+            scrollView.frame.size.height += buttonsView.frame.size.height
+        case false?:
+            buttonsView.isHidden = false
+        default:
+            print("do nothing")
+        }
+        
+        switch checkBoxHidden{
+        case true?:
+            checkBoxButton.isHidden = true
+        case false?:
+            checkBoxButton.isHidden = false
+            likedToggle = true
+        default:
+            print("do nothing")
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -49,7 +73,7 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
             fatalError("No event to display");
         }
         
-        likedToggle = true
+        
         self.name.text = setEvent.name
         //self.location = setEvent.location
         //TODO: get the location

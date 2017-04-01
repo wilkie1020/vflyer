@@ -173,9 +173,15 @@ class MyFlyersTableViewController: UITableViewController {
                 if searchController.isActive && searchController.searchBar.text != "" {
                     detailVC.event = filteredEvents[indexPath.row]
                     detailVC.user = self.user
+                    detailVC.bottomHidden = true
+                    //detailVC.buttonsView.isHidden = true
+                    //detailVC.scrollView.frame.size.height += detailVC.buttonsView.frame.size.height
                 } else {
                     detailVC.event = self.events[indexPath.row]
                     detailVC.user = self.user
+                    detailVC.bottomHidden = true
+                    //detailVC.buttonsView.isHidden = true
+                    //detailVC.scrollView.frame.size.height = detailVC.buttonsView.frame.size.height
                 }
             }
 //            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController

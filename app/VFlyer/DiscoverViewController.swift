@@ -134,6 +134,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
         }
     }
     
+    
     @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
         user?.loadLikedEvents().then({_ in
             self.performSegue(withIdentifier: "discoverToList", sender: nil)
