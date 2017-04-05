@@ -4,6 +4,7 @@ var events = [
     description: "Event @ -104, 50",
     startDate: new Date("2017-01-01T00:00:00.000Z"),
     endDate: new Date("2017-01-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -104.6189,
@@ -17,6 +18,7 @@ var events = [
     description: "Event @ -104, 50",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -104.6180,
@@ -30,6 +32,7 @@ var events = [
     description: "Event @ -104, 50",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -104.617,
@@ -43,6 +46,7 @@ var events = [
     description: "Event @ -104, 50",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -104.62,
@@ -56,6 +60,7 @@ var events = [
     description: "Event @ -104, 50",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -104.5,
@@ -69,6 +74,7 @@ var events = [
     description: "Event @ -104, 50",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -104.268600,
@@ -82,6 +88,7 @@ var events = [
     description: "Event @ -103, 50",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -103.787150,
@@ -95,6 +102,7 @@ var events = [
     description: "Event @ -106, 52",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -106.6700,
@@ -108,6 +116,7 @@ var events = [
     description: "Event @ -106, 52",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -106.6750,
@@ -121,6 +130,7 @@ var events = [
     description: "Event @ -106, 52",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
+    venue: "Sample Venue",
     location: {
       coordinates: [
         -106.66,

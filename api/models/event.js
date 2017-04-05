@@ -12,6 +12,7 @@ var EventSchema = new Schema({
     },
     image: { data: Buffer, contentType: String },
     description: String,
+    venue: String,
     startDate: Date,
     endDate: Date
 });

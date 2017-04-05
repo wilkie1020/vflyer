@@ -108,6 +108,7 @@ router.route('/:id')
                 event.name = req.body.name;
                 event.image = req.body.image;
                 event.description = req.body.description;
+                event.venue = requ.body.venue;
                 event.startDate = req.body.startDate;
                 event.endDate = req.body.endDate;
                 event.save();
