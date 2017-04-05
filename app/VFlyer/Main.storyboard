@@ -206,6 +206,9 @@ Nullam rutrum sapien vitae lorem ultricies sodales. Pellentesque egestas neque a
                                     <constraint firstItem="4ad-K1-EPQ" firstAttribute="centerX" secondItem="OjN-qo-CXE" secondAttribute="centerX" id="9Jl-Zg-CUF"/>
                                     <constraint firstItem="4ad-K1-EPQ" firstAttribute="centerY" secondItem="OjN-qo-CXE" secondAttribute="centerY" id="eOz-4d-Jt1"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ruw-0x-fI9" appends="YES" id="Wdg-RO-t4o"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -239,6 +242,12 @@ Nullam rutrum sapien vitae lorem ultricies sodales. Pellentesque egestas neque a
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crF-Cl-Eqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ruw-0x-fI9">
+                    <connections>
+                        <action selector="itemTapped:" destination="o99-GD-pBG" id="GLP-NE-v1R"/>
+                        <segue destination="boH-VT-flP" kind="show" identifier="discoverToDetail" id="jJf-lp-QHn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1380" y="-1540.4797601199402"/>
         </scene>
@@ -551,5 +560,6 @@ Nullam rutrum sapien vitae lorem ultricies sodales. Pellentesque egestas neque a
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zkZ-Xe-VFh"/>
+        <segue reference="jJf-lp-QHn"/>
     </inferredMetricsTieBreakers>
 </document>

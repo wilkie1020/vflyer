@@ -45,7 +45,7 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
         case false?:
             buttonsView.isHidden = false
         default:
-            print("do nothing")
+            print("Bottom default")
         }
         
         switch checkBoxHidden{
@@ -55,7 +55,7 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
             checkBoxButton.isHidden = false
             likedToggle = true
         default:
-            print("do nothing")
+            print("Checkbox default")
         }
         
     }

@@ -95,12 +95,24 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         //Sets navVC to be the destination of the segue which should be the Navigation controller
-        guard let navVC = segue.destination as? UINavigationController else {
-            fatalError("Unexpected destination: \(segue.destination)");
-        }
         
-        switch(segue.identifier ?? "") {
+        switch (segue.identifier ?? ""){
+        case "discoverToDetail":
+            guard let detailVC = segue.destination as? FlyerViewController else {
+                fatalError("Unexpected destination: \(segue.destination)");
+            }
+            //sets the user for page
+            detailVC.user = self.user
+            locationController.stop()
+            detailVC.bottomHidden = false
+            detailVC.checkBoxHidden = true
+            detailVC.event = loadedCards[0].event
+        
+
         case "discoverToList":
+            guard let navVC = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)");
+            }
             //Sets discoverVC to be the first viewController on the navigation stack. This should be the Disocver view.
             //If unable to set this a fatal error occured.
             guard let discoverVC = navVC.viewControllers.first as? MyFlyersTableViewController else {
@@ -110,6 +122,9 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             discoverVC.user = self.user
             locationController.stop()
         case "discoverToSettings":
+            guard let navVC = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)");
+            }
             //Sets discoverVC to be the first viewController on the navigation stack. This should be the Disocver view.
             //If unable to set this a fatal error occured.
             guard let settingsVC = navVC.viewControllers.first as? SettingsViewController else {
@@ -189,6 +204,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
 //            }
         }
     }
+    
+    
     
     // MARK: - DraggableViewDelegate
     
