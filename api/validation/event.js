@@ -20,6 +20,11 @@ var validation = {
             errorMessage: "Must not be left empty"
         }
     },
+    'venue': {
+        notEmpty: {
+            errorMessage: "Must not be left empty"
+        }
+    },
     'startDate': {
         isISO8601: {
             errorMessage: "Invalid date format"
