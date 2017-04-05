@@ -14,15 +14,17 @@ class Event {
     var name: String
     var image: UIImage
     var description: String
+    var venue: String
     var startDate: Date
     var endDate: Date
     
     //MARK: Initialization
-    init?(id: String, name: String, image: UIImage, description: String, startDate: Date, endDate: Date) {
+    init?(id: String, name: String, image: UIImage, description: String, startDate: Date, endDate: Date, venue: String) {
         self._id = id
         self.name = name
         self.image = image
         self.description = description
+        self.venue = venue
         self.startDate = startDate
         self.endDate = endDate
     }
@@ -32,6 +34,7 @@ class Event {
             let _id = json["_id"] as? String,
             let name = json["name"] as? String,
             let description = json["description"] as? String,
+            let venue = json["venue"] as? String,
             let startDateString = json["startDate"] as? String,
             let startDate = Date(iso8601String: startDateString),
             let endDateString = json["endDate"] as? String,
@@ -52,6 +55,7 @@ class Event {
         self.description = description
         self.startDate = startDate
         self.endDate = endDate
+        self.venue = venue
     }
     
     // MARK: Methods

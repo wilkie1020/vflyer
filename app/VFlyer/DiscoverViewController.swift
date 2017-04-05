@@ -76,7 +76,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             user?.login().then({
                 print("Logged in")
                 //University lat 50.418034, long -104.590338
-                var location = CLLocationCoordinate2D(latitude: 50.418034, longitude: -104.590338)
+                let location = CLLocationCoordinate2D(latitude: 50.418034, longitude: -104.590338)
                 self.loadCards(near: location)
             })
         } else {
@@ -197,12 +197,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
     var test = 0
     
     func locationDidUpdate(location: CLLocation?) {
-        if let location = location {
-//            if test == 0 {
-//                self.loadCards(near: location.coordinate)
-//                test += 1
-//            }
-        }
+        //see if array is empty and ensure update hase not occured recently
     }
     
     

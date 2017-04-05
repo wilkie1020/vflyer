@@ -169,7 +169,7 @@ class MyFlyersTableViewController: UITableViewController {
                 fatalError("Unexpected destination: \(segue.destination)");
             }
             if let indexPath = tableView.indexPathForSelectedRow {
-                let event: Event
+                //let event: Event
                 if searchController.isActive && searchController.searchBar.text != "" {
                     detailVC.event = filteredEvents[indexPath.row]
                     detailVC.user = self.user

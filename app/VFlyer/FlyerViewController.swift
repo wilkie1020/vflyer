@@ -75,8 +75,7 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
         
         
         self.name.text = setEvent.name
-        //self.location = setEvent.location
-        //TODO: get the location
+        self.location.text = setEvent.venue
         
         //Setting up the date as a string
         var dateString = ""
@@ -85,12 +84,12 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
         dateFormatter.timeStyle = .medium
         if (setEvent.startDate != setEvent.endDate)
         {
-            dateString += dateFormatter.string(from: setEvent.startDate)  + " - "
+            dateString += dateFormatter.string(from: setEvent.startDate)  + " \n- "
         }
         dateString += dateFormatter.string(from: setEvent.endDate)
         
         self.date.text = dateString
-        //self.descriptionTextView.text = setEvent.description
+        self.descriptionTextView.text = setEvent.description
         self.eventImage.image = setEvent.image
 
         // Do any additional setup after loading the view.
