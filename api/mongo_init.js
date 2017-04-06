@@ -23,7 +23,7 @@ var events = [
     endDate: new Date("2017-06-07T015:00:00.000Z"),
     location: {
       coordinates: [
-        --104.638665,
+        -104.638665,
         50.451915
       ],
       type: "Point"
