@@ -47,6 +47,7 @@ var events = [
 {
     name: "Tor Hill Golf Course",
     description: "Event @ -104, 50",
+    venue: "Sample Venue",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
     location: {
@@ -60,6 +61,7 @@ var events = [
 {
     name: "Balgonie",
     description: "Event @ -104, 50",
+    venue: "Sample Venue",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
     location: {
@@ -73,6 +75,7 @@ var events = [
 {
     name: "Fort Qu'Appelle",
     description: "Event @ -103, 50",
+    venue: "Sample Venue",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
     location: {
@@ -86,6 +89,7 @@ var events = [
 {
     name: "Saskatoon 1",
     description: "Event @ -106, 52",
+    venue: "Sample Venue",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
     location: {
@@ -99,6 +103,7 @@ var events = [
 {
     name: "Saskatoon 2",
     description: "Event @ -106, 52",
+    venue: "Sample Venue",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
     location: {
@@ -112,6 +117,7 @@ var events = [
 {
     name: "Saskatoon 3",
     description: "Event @ -106, 52",
+    venue: "Sample Venue",
     startDate: new Date("2017-06-01T00:00:00.000Z"),
     endDate: new Date("2017-06-01T01:00:00.000Z"),
     location: {
