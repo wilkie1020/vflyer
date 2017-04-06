@@ -76,8 +76,9 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             user?.login().then({
                 print("Logged in")
                 //University lat 50.418034, long -104.590338
-                let location = CLLocationCoordinate2D(latitude: 50.418034, longitude: -104.590338)
-                self.loadCards(near: location)
+                let location = self.locationController.location
+                //let location = CLLocationCoordinate2D(latitude: 50.418034, longitude: -104.590338)
+                self.loadCards(near: location!)
             })
         } else {
             

@@ -100,6 +100,7 @@ class MyFlyersTableViewController: UITableViewController {
         cell.dateLabel.text = dateString
         cell.nameLabel.text = event.name
         cell.picture.image = event.image
+        cell.locationLabel.text = event.venue
         return cell
     }
 

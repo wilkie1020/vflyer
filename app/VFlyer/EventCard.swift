@@ -33,6 +33,7 @@ class EventCard: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var venueLabel: UILabel!
     
     private var _event: Event?
     var event: Event {
@@ -44,6 +45,7 @@ class EventCard: UIView {
             nameLabel.text = event.name
             imageView.image = event.image
             dateLabel.text = "\(event.startDate) - \(event.endDate)"
+            venueLabel.text = event.venue
         }
     }
     
