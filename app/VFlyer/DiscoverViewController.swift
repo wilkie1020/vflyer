@@ -16,6 +16,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
     var user: User?
     var locationController = LocationController()
     var lastUpdate: Date?
+    var SwiftTimer = Timer()
     
     fileprivate let MAX_BUFFER_SIZE = 2
 //    fileprivate let CARD_HEIGHT: CGFloat = 366
@@ -42,6 +43,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
         self.navigationItem.titleView = iconImage
         
         locationController.delegate = self
+        SwiftTimer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(DiscoverViewController.updateLocation), userInfo: nil, repeats: true)
         
         noButton.layer.cornerRadius = 40
         yesButton.layer.cornerRadius = 40
@@ -79,10 +81,14 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
                 let location = self.locationController.location
                 //let location = CLLocationCoordinate2D(latitude: 50.418034, longitude: -104.590338)
                 self.loadCards(near: location!)
+                //self.updateLocation()
+                
             })
         } else {
             
         }
+        
+        //locationController.stop()
     }
     
     override func didReceiveMemoryWarning() {
@@ -168,6 +174,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             card.overlayView.alpha = 1
         })
         card.leftClickAction()
+        updateLocation()
     }
     
     @IBAction func buttonTouchDown(_ sender: UIButton) {
@@ -191,17 +198,45 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             card.overlayView.alpha = 1
         })
         card.rightClickAction()
+        updateLocation()
     }
     
     // MARK: - LocationControllerDelegate
     
-    var test = 0
     
     func locationDidUpdate(location: CLLocation?) {
         //see if array is empty and ensure update hase not occured recently
+        
     }
     
+    func updateLocation(){
+        locationController.start()
+        
+        
+        print("2 minutes passed")
+        print(locationController.locations?.count ?? 0)
+        
+
+        loadCards(near: locationController.location!)
+
+        
+        if(loadedCards.count == 0){
+            emptyArray()
+        }
+        
+        locationController.stop()
+    }
     
+    func emptyArray(){
+            
+            let alert = UIAlertController(title: "", message: "No New Events Available", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
+                self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "discoverToList", sender: nil)
+            })
+            self.present(alert, animated: true)
+        
+    }
     
     // MARK: - DraggableViewDelegate
     
@@ -237,6 +272,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             }
             cardsLoadedIndex += 1
         }
+        
     }
     
     func loadCards(near location:CLLocationCoordinate2D) {
@@ -252,6 +288,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
                 self.activityIndicator.stopAnimating()
             })
         }
+        
     }
     
     private func removeCard() {
@@ -275,6 +312,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
         event.passEvent(forUser: user).then { result in
             if result {
                 self.removeCard()
+                self.updateLocation()
             }
         }
     }
@@ -290,6 +328,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
         event.likeEvent(forUser: user).then { result in
             if result {
                 self.removeCard()
+                self.updateLocation()
             }
         }
     }

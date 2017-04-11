@@ -18,6 +18,7 @@ class LocationController: NSObject, CLLocationManagerDelegate{
     static let SharedManager = LocationController()
     let locationManager = CLLocationManager()
     var location: CLLocationCoordinate2D?
+    var locations: [CLLocation]?
     
     var delegate : LocationControllerDelegate?
     
@@ -30,6 +31,7 @@ class LocationController: NSObject, CLLocationManagerDelegate{
     func start() {
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
+    
     }
     
     func stop() {
@@ -47,9 +49,11 @@ class LocationController: NSObject, CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        self.locations = locations
         if(locations.last != nil) {
             self.location = (locations.last?.coordinate)!
             self.delegate?.locationDidUpdate(location: (locations.last)!)
+            
         } else {
             self.location = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
         }
