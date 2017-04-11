@@ -14,6 +14,7 @@ class EventCardList: UIView, DraggableViewDelegate {
     let CARD_HEIGHT: CGFloat = 386
     let CARD_WIDTH: CGFloat = 290
     
+    
     private var cardsLoadedIndex = 0
     private var loadedCards = [EventCard]()
     private var allCards = [EventCard]()

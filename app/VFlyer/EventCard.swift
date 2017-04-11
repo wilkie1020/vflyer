@@ -19,6 +19,7 @@ class EventCard: UIView {
     var overlayView: OverlayView!
     var xFromCenter: Float!
     var yFromCenter: Float!
+    let dateFormatString = "MMM dd, hh:mm a"
     
     let ACTION_MARGIN: Float = 120      //%%% distance from center where the action applies. Higher = swipe further in order for the action to be called
     let SCALE_STRENGTH: Float = 4       //%%% how quickly the card shrinks. Higher = slower shrinking
@@ -44,7 +45,9 @@ class EventCard: UIView {
             self._event = event
             nameLabel.text = event.name
             imageView.image = event.image
-            dateLabel.text = "\(event.startDate) - \(event.endDate)"
+            let dateFormat = DateFormatter()
+            dateFormat.dateFormat = dateFormatString
+            dateLabel.text = "\(dateFormat.string(from: event.startDate)) - \(dateFormat.string(from: event.endDate))"
             venueLabel.text = event.venue
         }
     }

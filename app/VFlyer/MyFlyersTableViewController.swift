@@ -13,6 +13,8 @@ class MyFlyersTableViewController: UITableViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     
+    let dateFormatString = "MMM dd, hh:mm a"
+    
     //MARK: Properties
     var user: User?
     var events = [Event]()
@@ -90,7 +92,7 @@ class MyFlyersTableViewController: UITableViewController {
         //Setting up the date as a string
         var dateString = ""
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = dateFormatString
         if (event.startDate != event.endDate)
         {
             dateString += dateFormatter.string(from: event.startDate)  + " - "

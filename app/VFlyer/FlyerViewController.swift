@@ -29,6 +29,8 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
     var bottomHidden: Bool?
     var checkBoxHidden: Bool?
     
+    let dateFormatString = "MMM dd, hh:mm a"
+    
     var user: User?
     var event: Event?
 
@@ -80,8 +82,7 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
         //Setting up the date as a string
         var dateString = ""
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
+        dateFormatter.dateFormat = dateFormatString
         if (setEvent.startDate != setEvent.endDate)
         {
             dateString += dateFormatter.string(from: setEvent.startDate)  + " \n- "
