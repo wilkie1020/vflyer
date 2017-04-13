@@ -163,7 +163,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
     @IBAction func unwindDislike(sender: UIStoryboardSegue){
         if let sourceViewController = sender.source as? FlyerViewController {
             self.user = sourceViewController.user
-            self.removeCard()
+            
+            noButtonTriggered(sender)
         }
         
     }
@@ -171,7 +172,9 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
     @IBAction func unwindLike(sender: UIStoryboardSegue){
         if let sourceViewController = sender.source as? FlyerViewController {
             self.user = sourceViewController.user
-            self.removeCard()
+            
+            yesButtonTriggered(sender)
+            
         }
         
     }
@@ -183,7 +186,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
         })
     }
     
-    @IBAction func noButtonTriggered(_ sender: UIButton) {
+    @IBAction func noButtonTriggered(_ sender: Any) {
         if loadedCards.count <= 0 {
             return
         }
@@ -194,7 +197,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             card.overlayView.alpha = 1
         })
         card.leftClickAction()
-        updateLocation()
+        //updateLocation()
     }
     
     @IBAction func buttonTouchDown(_ sender: UIButton) {
@@ -207,7 +210,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
         })
     }
     
-    @IBAction func yesButtonTriggered(_ sender: UIButton) {
+    @IBAction func yesButtonTriggered(_ sender: Any) {
         if loadedCards.count <= 0 {
             return
         }
@@ -218,7 +221,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             card.overlayView.alpha = 1
         })
         card.rightClickAction()
-        updateLocation()
+        //updateLocation()
     }
     
     // MARK: - LocationControllerDelegate
@@ -240,7 +243,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
         loadCards(near: locationController.location!)
 
         
-        if(loadedCards.count == 0){
+        if(loadedCards.count <= 0){
             emptyArray()
         }
         
@@ -249,9 +252,9 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
     
     func emptyArray(){
             
-            let alert = UIAlertController(title: "", message: "No New Events Available", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "", message: "No New Events Available. Perhaps Adjust Your Range Settings", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
-                self.dismiss(animated: true, completion: nil)
+                //self.dismiss(animated: true, completion: nil)
                 self.performSegue(withIdentifier: "discoverToList", sender: nil)
             })
             self.present(alert, animated: true)
@@ -306,6 +309,9 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             user.discoverEvents(near: location).then({ events in
                 self.createCards(events)
                 self.activityIndicator.stopAnimating()
+                if(self.loadedCards.count <= 0){
+                    self.emptyArray()
+                }
             })
         }
         
@@ -318,6 +324,9 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             loadedCards.append(allCards[cardsLoadedIndex])
             cardsLoadedIndex = cardsLoadedIndex + 1
             eventCardList.insertSubview(loadedCards[MAX_BUFFER_SIZE - 1], belowSubview: loadedCards[MAX_BUFFER_SIZE - 2])
+        }
+        if(self.loadedCards.count <= 0){
+            self.emptyArray()
         }
     }
     
