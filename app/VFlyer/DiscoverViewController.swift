@@ -43,7 +43,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
         self.navigationItem.titleView = iconImage
         
         locationController.delegate = self
-        SwiftTimer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(DiscoverViewController.updateLocation), userInfo: nil, repeats: true)
+        SwiftTimer = Timer.scheduledTimer(timeInterval: 120, target:self, selector: #selector(DiscoverViewController.updateLocation), userInfo: nil, repeats: true)
         
         noButton.layer.cornerRadius = 40
         yesButton.layer.cornerRadius = 40
@@ -114,6 +114,7 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             detailVC.bottomHidden = false
             detailVC.checkBoxHidden = true
             detailVC.event = loadedCards[0].event
+            detailVC.segueFromController = "DiscoverViewController"
         
 
         case "discoverToList":
@@ -140,6 +141,8 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             //sets the user at the discover page before seguingfatalError("Unexpected destination: \(navVC.viewControllers.first)");
             settingsVC.user = self.user
             locationController.stop()
+        case "unwindToDiscover":
+            print("do nothing special yet")
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)");
         }
@@ -153,7 +156,24 @@ class DiscoverViewController: UIViewController, LocationControllerDelegate, Drag
             self.user = sourceViewController.user
         } else if let sourceViewController = sender.source as? FlyerViewController {
             self.user = sourceViewController.user
+            loadCards(near: locationController.location!)
         }
+    }
+    
+    @IBAction func unwindDislike(sender: UIStoryboardSegue){
+        if let sourceViewController = sender.source as? FlyerViewController {
+            self.user = sourceViewController.user
+            self.removeCard()
+        }
+        
+    }
+    
+    @IBAction func unwindLike(sender: UIStoryboardSegue){
+        if let sourceViewController = sender.source as? FlyerViewController {
+            self.user = sourceViewController.user
+            self.removeCard()
+        }
+        
     }
     
     

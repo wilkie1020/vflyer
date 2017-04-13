@@ -28,6 +28,7 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
     var likedToggle: Bool?
     var bottomHidden: Bool?
     var checkBoxHidden: Bool?
+    var segueFromController: String!
     
     let dateFormatString = "MMM dd, hh:mm a"
     
@@ -109,6 +110,20 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
         // Pass the selected object to the new view controller.
     }
     
+    @IBAction func unwindSegue(_ sender: Any) {
+        if segueFromController == "DiscoverViewController"
+        {
+            self.performSegue(withIdentifier: "unwindToDiscover", sender: nil)
+        }
+        else if segueFromController == "MyFlyersTableViewController"
+        {
+            
+            self.performSegue(withIdentifier: "unwindToList", sender: nil)
+        }
+
+    }
+
+    
     //MARK: Actions
     
     @IBAction func backPressed(_ sender: Any) {
@@ -160,8 +175,8 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
                 
             }
         }
-        
-        self.navigationController?.popViewController(animated: true)
+        unwindSegue(sender)
+        //self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -175,8 +190,8 @@ class FlyerViewController: UIViewController, UIScrollViewDelegate {
                 
             }
         }
-        
-        self.navigationController?.popViewController(animated: true)
+        unwindSegue(sender)
+        //self.navigationController?.popViewController(animated: true)
         
     }
     

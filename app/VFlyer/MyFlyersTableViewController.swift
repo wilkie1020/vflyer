@@ -156,6 +156,18 @@ class MyFlyersTableViewController: UITableViewController {
             self.user = sourceViewController.user
         } else if let sourceViewController = sender.source as? FlyerViewController {
             self.user = sourceViewController.user
+            if let user = user {
+                user.login().then({
+                    user.loadLikedEvents().then({ events in
+                        self.events = events
+                        print("Liked events for user: \(events.count)")
+                        DispatchQueue.main.async{
+                            self.tableView.reloadData()
+                        }
+                    })
+                })
+            }
+            
         }
     }
 
@@ -178,12 +190,14 @@ class MyFlyersTableViewController: UITableViewController {
                     detailVC.user = self.user
                     detailVC.bottomHidden = true
                     detailVC.checkBoxHidden = false
+                    detailVC.segueFromController = "MyFlyersTableViewController"
 
                 } else {
                     detailVC.event = self.events[indexPath.row]
                     detailVC.user = self.user
                     detailVC.bottomHidden = true
                     detailVC.checkBoxHidden = false
+                    detailVC.segueFromController = "MyFlyersTableViewController"
                 }
             }
 //            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
