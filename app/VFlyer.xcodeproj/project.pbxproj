@@ -23,7 +23,6 @@
 		617436F41E8852240005A0DD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 617436F31E8852240005A0DD /* Login.storyboard */; };
 		617436F61E897F720005A0DD /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617436F51E897F720005A0DD /* EventCard.swift */; };
 		617436F81E8981C60005A0DD /* EventCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 617436F71E8981C60005A0DD /* EventCard.xib */; };
-		61B1401E1E8B3E8B002A43AA /* EventCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B1401D1E8B3E8B002A43AA /* EventCardList.swift */; };
 		61C210941E870E2500E1E84D /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C210931E870E2500E1E84D /* Promise.swift */; };
 		61C210961E87151000E1E84D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C210951E87151000E1E84D /* Date.swift */; };
 		7615C620A1FE8DB7598BD07D /* Pods_VFlyer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0820C25DE13B2A667F94F29 /* Pods_VFlyer.framework */; };
@@ -66,7 +65,6 @@
 		617436F31E8852240005A0DD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		617436F51E897F720005A0DD /* EventCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		617436F71E8981C60005A0DD /* EventCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCard.xib; sourceTree = "<group>"; };
-		61B1401D1E8B3E8B002A43AA /* EventCardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCardList.swift; sourceTree = "<group>"; };
 		61C210931E870E2500E1E84D /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		61C210951E87151000E1E84D /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		8E3C70351E76029900EBC3EC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				617436F51E897F720005A0DD /* EventCard.swift */,
 				617436F71E8981C60005A0DD /* EventCard.xib */,
 				612796341E8B3750008680E8 /* OverlayView.swift */,
-				61B1401D1E8B3E8B002A43AA /* EventCardList.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -427,7 +424,6 @@
 				8E3C70361E76029900EBC3EC /* User.swift in Sources */,
 				1B7EB7081E6C735B0069D549 /* LoginViewController.swift in Sources */,
 				1BAD2E131E78C88500126F7D /* MyFlyersTableViewController.swift in Sources */,
-				61B1401E1E8B3E8B002A43AA /* EventCardList.swift in Sources */,
 				8EA7C1971E71EB850051C277 /* Event.swift in Sources */,
 				8E4DBCD01E86FF3D002BADBB /* FlyerViewController.swift in Sources */,
 				1BAD2E151E78C9F900126F7D /* DiscoverViewController.swift in Sources */,
